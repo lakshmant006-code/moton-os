@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Img, OffthreadVideo, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Img, OffthreadVideo, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { el } from "./reel";
 import { BODY, C, Cursor, HEAD, Lockup, PdfIcon, UI, Win, backOut, lerp, ramp } from "./ui";
 
@@ -187,7 +187,7 @@ export const Meet: React.FC = () => {
   );
 };
 
-/* S6 and S7 share the Reef window. */
+/* S6, S7 and S9 share the Reef window. */
 const ReefBar: React.FC = () => (
   <div style={{ display: "flex", alignItems: "center", gap: 26, width: "100%", fontFamily: BODY, fontSize: 16, color: C.gray3 }}>
     <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
@@ -276,20 +276,39 @@ export const Canvas: React.FC = () => {
   );
 };
 
-/* S7: real capture of the app writing a study sheet, only the punched in part, slowed to fill the beat. */
-export const Generate: React.FC = () => {
+/* Two real shots in the Reef window, hard cut on a beat. Each clip is pre cropped to 16:9. */
+const Footage: React.FC<{ shots: { src: string; dur: number; rate?: number; push?: number; origin?: string }[] }> = ({ shots }) => {
   const f = useCurrentFrame();
+  let start = 0;
   return (
     <AbsoluteFill>
       <Win {...REEF_WIN} bar={<ReefBar />}>
-        <AbsoluteFill style={{ overflow: "hidden", background: "#fff" }}>
-          <OffthreadVideo src={staticFile("canvas-generate.mp4")} muted playbackRate={0.475}
-            style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${1.04 + ramp(f, 0, 114) * 0.12})`, transformOrigin: "42% 88%" }} />
+        <AbsoluteFill style={{ overflow: "hidden", background: "#FAFAFA" }}>
+          {shots.map((sh) => {
+            const from = start;
+            start += sh.dur;
+            if (f < from || f >= from + sh.dur) return null;
+            return (
+              <Sequence key={sh.src} from={from} durationInFrames={sh.dur} layout="none">
+                <OffthreadVideo src={staticFile(sh.src)} muted playbackRate={sh.rate ?? 1}
+                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover",
+                    transform: `scale(${1 + ramp(f - from, 0, sh.dur, (t) => t) * (sh.push ?? 0.04)})`, transformOrigin: sh.origin ?? "50% 50%" }} />
+              </Sequence>
+            );
+          })}
         </AbsoluteFill>
       </Win>
     </AbsoluteFill>
   );
 };
+
+/* S7: the template node gets wired to the lecture, then the AI's formula sheet appears. Cut at 23.1s (frame 48). */
+export const Generate: React.FC = () => (
+  <Footage shots={[
+    { src: "gen-wire.mp4", dur: 48, push: 0.05, origin: "30% 40%" },
+    { src: "gen-sheet.mp4", dur: 66, rate: 0.7, push: 0.08, origin: "62% 80%" },
+  ]} />
+);
 
 /* S8: a big flashcard flips to its answer on a beat, then shows the page it came from. */
 // Hits after the cut at 25.3s: 25.85 (f16), 26.375 (f32), 26.95 (f49), 27.475 (f65).
@@ -325,31 +344,13 @@ export const Flashcards: React.FC = () => {
   );
 };
 
-/* S9: the same job, by hand versus with Reef. The Reef bar lands on the 30.225s hit (frame 33). */
-export const Bars: React.FC = () => {
-  const f = useCurrentFrame();
-  const e = el("S9", "bars");
-  const rows = e.v<{ label: string; value: string }[]>("rows");
-  const grow = [ramp(f, 2, 16), ramp(f, 22, 33)];
-  const widths = [1, 0.035];
-  return (
-    <AbsoluteFill style={{ background: "#fff" }}>
-      <div style={{ position: "absolute", top: 150, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
-        <Img src={staticFile("octopus.png")} style={{ height: 150, transform: `scale(${ramp(f, 0, 10, backOut)})` }} />
-      </div>
-      <div style={{ position: "absolute", top: 342, left: 0, right: 0, textAlign: "center", fontFamily: BODY, fontSize: 32, fontWeight: 700, letterSpacing: "0.05em", color: C.gray3, opacity: fadeIn(f, 6) }}>{e.v("title").toUpperCase()}</div>
-      {rows.map((r, i) => (
-        <div key={r.label} style={{ position: "absolute", top: 450 + i * 130, left: 250, width: 1420, display: "flex", alignItems: "center", gap: 36, fontFamily: BODY, opacity: fadeIn(f - i * 6, 6) }}>
-          <span style={{ width: 230, fontSize: 42, color: i ? C.maroon : C.gray3, fontWeight: i ? 700 : 600 }}>{r.label}</span>
-          <div style={{ flex: 1, height: 56, borderRadius: 28, background: C.app, overflow: "hidden" }}>
-            <div style={{ width: `${Math.max(4, widths[i] * 100 * grow[i])}%`, height: "100%", borderRadius: 28, background: i ? C.maroon : C.muted }} />
-          </div>
-          <span style={{ width: 200, fontSize: 46, fontWeight: 700, color: i ? C.maroon : C.gray3, opacity: ramp(f, 10 + i * 22, 18 + i * 22) }}>{r.value}</span>
-        </div>
-      ))}
-    </AbsoluteFill>
-  );
-};
+/* S9: two real features. Library course roadmap, then the study buddy on the 30.725s cut (frame 48). */
+export const Extras: React.FC = () => (
+  <Footage shots={[
+    { src: "library.mp4", dur: 48, push: 0.04, origin: "40% 45%" },
+    { src: "buddy.mp4", dur: 50, push: 0.05, origin: "60% 55%" },
+  ]} />
+);
 
 /* S10: end card, cut in on the big 32.4s hit. */
 export const EndCard: React.FC = () => {

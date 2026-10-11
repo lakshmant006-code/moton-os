@@ -1,0 +1,881 @@
+{
+ "id": "reef-launch",
+ "title": "Reef launch",
+ "version": 1,
+ "path": "projects/reef-launch",
+ "src": "video.mp4",
+ "w": 1920,
+ "h": 1080,
+ "fps": 30,
+ "duration": 37.0,
+ "reference": "Helumi launch video (whatships.com/videos/helumi): format only, all copy and UI are Reef's own",
+ "brand": {
+  "colors": [
+   {
+    "id": "maroon",
+    "name": "Maroon",
+    "v": "#8C1D40"
+   },
+   {
+    "id": "gold",
+    "name": "Gold",
+    "v": "#FFC627"
+   },
+   {
+    "id": "ink",
+    "name": "Ink",
+    "v": "#191919"
+   },
+   {
+    "id": "muted",
+    "name": "Muted",
+    "v": "#BFBFBF"
+   },
+   {
+    "id": "page",
+    "name": "Page",
+    "v": "#FFFFFF"
+   }
+  ],
+  "fonts": [
+   {
+    "id": "head",
+    "name": "Headlines",
+    "v": "Poppins"
+   },
+   {
+    "id": "ui",
+    "name": "UI",
+    "v": "Inter"
+   }
+  ],
+  "logo": "assets/octopus.png"
+ },
+ "audio": {
+  "music": "assets/music.mp3",
+  "bpm": 110,
+  "drop": 15.2,
+  "musicVol": 0.6,
+  "sfxVol": 0.8,
+  "note": "\"Be My Lover\" (Instrumental) by I'MIN, Epidemic Sound, trimmed from 1.16s so its first big hit lands on the logo at 15.2s."
+ },
+ "assets": [
+  {
+   "id": "assets/octopus.png",
+   "name": "octopus.png",
+   "type": "image",
+   "from": "QuizAI repo"
+  },
+  {
+   "id": "assets/wallpaper.jpg",
+   "name": "wallpaper.jpg",
+   "type": "image",
+   "from": "QuizAI repo (decor/quiet-lake)"
+  },
+  {
+   "id": "assets/canvas-generate.mp4",
+   "name": "canvas-generate.mp4",
+   "type": "video",
+   "from": "QuizAI repo (landing/generate.mp4, 12.4s to 16.2s)"
+  },
+  {
+   "id": "assets/music.mp3",
+   "name": "music.mp3",
+   "type": "audio",
+   "from": "Epidemic Sound"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "S1",
+   "name": "Exam soon",
+   "t": [
+    0,
+    3.2
+   ],
+   "els": [
+    {
+     "id": "notifs",
+     "label": "Notifications",
+     "t": [
+      0.3,
+      3.2
+     ],
+     "box": [
+      62,
+      8,
+      24,
+      16
+     ],
+     "src": "src/scenes.tsx:Hook",
+     "props": {
+      "rows": {
+       "type": "list",
+       "label": "Notifications",
+       "cols": [
+        {
+         "k": "title",
+         "type": "text"
+        },
+        {
+         "k": "body",
+         "type": "text"
+        }
+       ],
+       "v": [
+        {
+         "title": "BIO 181 Midterm",
+         "body": "Thursday at 9:00 AM, in 2 days"
+        },
+        {
+         "title": "Study group",
+         "body": "did anyone make flashcards yet?"
+        }
+       ]
+      },
+      "clock": {
+       "type": "text",
+       "label": "Menu bar clock",
+       "v": "Tue 11:48 PM"
+      }
+     }
+    },
+    {
+     "id": "s1cap",
+     "label": "Caption",
+     "t": [
+      0.2,
+      3.2
+     ],
+     "box": [
+      15,
+      85,
+      70,
+      9
+     ],
+     "src": "src/Caption.tsx",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "exam in two days. again."
+      },
+      "hl": {
+       "type": "text",
+       "label": "Highlighted words",
+       "v": "two days."
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Words appear one by one, highlighter sweeps under the highlighted words"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S2",
+   "name": "Too many tabs",
+   "t": [
+    3.2,
+    7.4
+   ],
+   "els": [
+    {
+     "id": "tabs",
+     "label": "Browser tabs",
+     "t": [
+      3.2,
+      7.4
+     ],
+     "box": [
+      12.5,
+      4.4,
+      75,
+      75
+     ],
+     "src": "src/scenes.tsx:Tabs",
+     "props": {
+      "folder": {
+       "type": "text",
+       "label": "Folder",
+       "v": "BIO 181"
+      },
+      "files": {
+       "type": "list",
+       "label": "Files",
+       "cols": [
+        {
+         "k": "name",
+         "type": "text"
+        }
+       ],
+       "v": [
+        {
+         "name": "Lecture 01.pdf"
+        },
+        {
+         "name": "Lecture 02.pdf"
+        },
+        {
+         "name": "Lecture 03.pdf"
+        },
+        {
+         "name": "Lecture 04.pdf"
+        },
+        {
+         "name": "Lecture 05.pdf"
+        },
+        {
+         "name": "Lecture 06.pdf"
+        },
+        {
+         "name": "Lecture 07.pdf"
+        },
+        {
+         "name": "Lecture 08.pdf"
+        },
+        {
+         "name": "Lecture 09.pdf"
+        },
+        {
+         "name": "Lecture 10.pdf"
+        },
+        {
+         "name": "Lecture 11.pdf"
+        },
+        {
+         "name": "Lecture 12.pdf"
+        }
+       ]
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Folder full of lectures, then a browser fills up with one tab per PDF until the tabs squeeze"
+      }
+     }
+    },
+    {
+     "id": "s2cap",
+     "label": "Caption",
+     "t": [
+      3.4,
+      7.4
+     ],
+     "box": [
+      15,
+      85,
+      70,
+      9
+     ],
+     "src": "src/Caption.tsx",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "so you open every lecture, one tab at a time."
+      },
+      "hl": {
+       "type": "text",
+       "label": "Highlighted words",
+       "v": "one tab at a time."
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Words appear one by one, highlighter sweeps under the highlighted words"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S3",
+   "name": "By hand",
+   "t": [
+    7.4,
+    11.0
+   ],
+   "els": [
+    {
+     "id": "card",
+     "label": "Flashcard draft",
+     "t": [
+      7.4,
+      11.0
+     ],
+     "box": [
+      30,
+      18,
+      40,
+      40
+     ],
+     "src": "src/scenes.tsx:ByHand",
+     "props": {
+      "q": {
+       "type": "longtext",
+       "label": "Question being typed",
+       "v": "What does the mitochondrial inner membrane do?"
+      },
+      "count": {
+       "type": "text",
+       "label": "Counter",
+       "v": "card 3 of 120"
+      },
+      "clockFrom": {
+       "type": "text",
+       "label": "Clock start",
+       "v": "11:52 PM"
+      },
+      "clockTo": {
+       "type": "text",
+       "label": "Clock end",
+       "v": "1:37 AM"
+      }
+     }
+    },
+    {
+     "id": "s3cap",
+     "label": "Caption",
+     "t": [
+      7.6,
+      11.0
+     ],
+     "box": [
+      15,
+      85,
+      70,
+      9
+     ],
+     "src": "src/Caption.tsx",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "flashcards by hand? hours."
+      },
+      "hl": {
+       "type": "text",
+       "label": "Highlighted words",
+       "v": "hours."
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Words appear one by one, highlighter sweeps under the highlighted words"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S4",
+   "name": "Generic chatbot",
+   "t": [
+    11.0,
+    15.2
+   ],
+   "els": [
+    {
+     "id": "chat",
+     "label": "Chat window",
+     "t": [
+      11.0,
+      15.2
+     ],
+     "box": [
+      27,
+      12,
+      46,
+      60
+     ],
+     "src": "src/scenes.tsx:Chatbot",
+     "props": {
+      "ask": {
+       "type": "text",
+       "label": "Question",
+       "v": "quiz me on lecture 7"
+      },
+      "reply": {
+       "type": "longtext",
+       "label": "Reply",
+       "v": "Sure! Here are some general biology questions. 1. What is a cell? 2. Name three organelles. 3. What is DNA?"
+      },
+      "flag": {
+       "type": "text",
+       "label": "Flag",
+       "v": "not from your lecture"
+      }
+     }
+    },
+    {
+     "id": "s4cap",
+     "label": "Caption",
+     "t": [
+      11.2,
+      15.2
+     ],
+     "box": [
+      15,
+      85,
+      70,
+      9
+     ],
+     "src": "src/Caption.tsx",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "a chatbot? it doesn't know your class."
+      },
+      "hl": {
+       "type": "text",
+       "label": "Highlighted words",
+       "v": "your class."
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Words appear one by one, highlighter sweeps under the highlighted words"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S5",
+   "name": "Meet Reef",
+   "t": [
+    15.2,
+    18.6
+   ],
+   "els": [
+    {
+     "id": "lockup",
+     "label": "Logo reveal",
+     "t": [
+      15.2,
+      18.6
+     ],
+     "box": [
+      27,
+      38,
+      46,
+      22
+     ],
+     "src": "src/scenes.tsx:Meet",
+     "props": {
+      "lead": {
+       "type": "text",
+       "label": "Lead",
+       "v": "meet"
+      },
+      "name": {
+       "type": "text",
+       "label": "Name",
+       "v": "reef."
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Lands on the music drop: word, octopus pops in, name slides in"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S6",
+   "name": "One canvas",
+   "t": [
+    18.6,
+    22.6
+   ],
+   "els": [
+    {
+     "id": "canvas",
+     "label": "Reef canvas",
+     "t": [
+      18.6,
+      22.6
+     ],
+     "box": [
+      12.5,
+      4.4,
+      75,
+      75
+     ],
+     "src": "src/scenes.tsx:Canvas",
+     "props": {
+      "files": {
+       "type": "list",
+       "label": "Files dropped",
+       "cols": [
+        {
+         "k": "name",
+         "type": "text"
+        },
+        {
+         "k": "meta",
+         "type": "text"
+        }
+       ],
+       "v": [
+        {
+         "name": "BIO 181, Lecture 7.pdf",
+         "meta": "42 pages"
+        },
+        {
+         "name": "Lecture 8.pdf",
+         "meta": "38 pages"
+        },
+        {
+         "name": "Lab Notes.docx",
+         "meta": "6 pages"
+        }
+       ]
+      },
+      "note": {
+       "type": "text",
+       "label": "Sticky note",
+       "v": "ask about ATP on Thursday"
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Files drop onto the dotted canvas one by one, a sticky note lands, wires draw between them"
+      }
+     }
+    },
+    {
+     "id": "s6cap",
+     "label": "Caption",
+     "t": [
+      18.8,
+      22.6
+     ],
+     "box": [
+      15,
+      85,
+      70,
+      9
+     ],
+     "src": "src/Caption.tsx",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "drop every file on one canvas."
+      },
+      "hl": {
+       "type": "text",
+       "label": "Highlighted words",
+       "v": "one canvas."
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Words appear one by one, highlighter sweeps under the highlighted words"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S7",
+   "name": "AI study guide",
+   "t": [
+    22.6,
+    26.4
+   ],
+   "els": [
+    {
+     "id": "gen",
+     "label": "App footage",
+     "t": [
+      22.6,
+      26.4
+     ],
+     "box": [
+      12.5,
+      4.4,
+      75,
+      75
+     ],
+     "src": "public/canvas-generate.mp4",
+     "props": {
+      "motion": {
+       "type": "motion",
+       "label": "Shot",
+       "v": "Real Reef capture: workflow wired to a lecture, the AI card writes a formula sheet. Slow push in"
+      }
+     }
+    },
+    {
+     "id": "s7cap",
+     "label": "Caption",
+     "t": [
+      22.8,
+      26.4
+     ],
+     "box": [
+      15,
+      85,
+      70,
+      9
+     ],
+     "src": "src/Caption.tsx",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "wire them up, and the AI writes your study guide."
+      },
+      "hl": {
+       "type": "text",
+       "label": "Highlighted words",
+       "v": "study guide."
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Words appear one by one, highlighter sweeps under the highlighted words"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S8",
+   "name": "Flashcards",
+   "t": [
+    26.4,
+    30.2
+   ],
+   "els": [
+    {
+     "id": "flash",
+     "label": "Flashcard",
+     "t": [
+      26.4,
+      30.2
+     ],
+     "box": [
+      31,
+      14,
+      38,
+      50
+     ],
+     "src": "src/scenes.tsx:Flashcards",
+     "props": {
+      "q": {
+       "type": "longtext",
+       "label": "Question",
+       "v": "Which organelle produces most of the cell's ATP?"
+      },
+      "a": {
+       "type": "text",
+       "label": "Answer",
+       "v": "Mitochondria"
+      },
+      "source": {
+       "type": "text",
+       "label": "Source",
+       "v": "Source: p. 12 of your upload"
+      },
+      "count": {
+       "type": "text",
+       "label": "Counter",
+       "v": "1 of 24"
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Card stack deals in, top card flips to the answer, source chip pops"
+      }
+     }
+    },
+    {
+     "id": "s8cap",
+     "label": "Caption",
+     "t": [
+      26.6,
+      30.2
+     ],
+     "box": [
+      15,
+      85,
+      70,
+      9
+     ],
+     "src": "src/Caption.tsx",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "flashcards from your notes, with the page they came from."
+      },
+      "hl": {
+       "type": "text",
+       "label": "Highlighted words",
+       "v": "the page"
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Words appear one by one, highlighter sweeps under the highlighted words"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S9",
+   "name": "Time back",
+   "t": [
+    30.2,
+    33.0
+   ],
+   "els": [
+    {
+     "id": "bars",
+     "label": "Before and after",
+     "t": [
+      30.2,
+      33.0
+     ],
+     "box": [
+      20,
+      30,
+      60,
+      30
+     ],
+     "src": "src/scenes.tsx:Bars",
+     "props": {
+      "title": {
+       "type": "text",
+       "label": "Measure",
+       "v": "making a practice test"
+      },
+      "rows": {
+       "type": "list",
+       "label": "Bars",
+       "cols": [
+        {
+         "k": "label",
+         "type": "text"
+        },
+        {
+         "k": "value",
+         "type": "text"
+        }
+       ],
+       "v": [
+        {
+         "label": "by hand",
+         "value": "hours"
+        },
+        {
+         "label": "with reef",
+         "value": "seconds"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "s9cap",
+     "label": "Caption",
+     "t": [
+      30.4,
+      33.0
+     ],
+     "box": [
+      15,
+      85,
+      70,
+      9
+     ],
+     "src": "src/Caption.tsx",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "more time to actually study."
+      },
+      "hl": {
+       "type": "text",
+       "label": "Highlighted words",
+       "v": "actually study."
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Words appear one by one, highlighter sweeps under the highlighted words"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S10",
+   "name": "End card",
+   "t": [
+    33.0,
+    37.0
+   ],
+   "els": [
+    {
+     "id": "end",
+     "label": "End card",
+     "t": [
+      33.0,
+      37.0
+     ],
+     "box": [
+      25,
+      22,
+      50,
+      56
+     ],
+     "src": "src/scenes.tsx:EndCard",
+     "props": {
+      "lead": {
+       "type": "text",
+       "label": "Lead",
+       "v": "meet"
+      },
+      "name": {
+       "type": "text",
+       "label": "Name",
+       "v": "reef."
+      },
+      "line1": {
+       "type": "text",
+       "label": "Line 1",
+       "v": "your PDFs and notes, wired into"
+      },
+      "line2": {
+       "type": "text",
+       "label": "Line 2",
+       "v": "one study canvas."
+      },
+      "cta": {
+       "type": "text",
+       "label": "Button",
+       "v": "start your workflow"
+      },
+      "fine": {
+       "type": "text",
+       "label": "Small print",
+       "v": "free for students · runs in any browser · quizai.help"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "notes": []
+}

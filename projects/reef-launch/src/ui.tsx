@@ -171,7 +171,7 @@ export const Lockup: React.FC<{ lead: string; name: string; size: number; f: num
     <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: size * 0.16 }}>
       <span style={{ fontFamily: HEAD, fontStyle: "italic", fontWeight: 400, fontSize: size, color: C.ink, letterSpacing: "-0.02em", opacity: a, transform: `translateX(${(1 - a) * -30}px)` }}>{lead}</span>
       <Img src={staticFile("octopus.png")} style={{ height: size * 1.12, transform: `scale(${o}) rotate(${(1 - o) * -20}deg)` }} />
-      <span style={{ fontFamily: HEAD, fontWeight: 600, fontSize: size, color: C.maroon, letterSpacing: "-0.02em", opacity: b, transform: `translateX(${(1 - b) * 40}px)` }}>{name}</span>
+      <span style={{ fontFamily: HEAD, fontWeight: 400, fontSize: size, color: C.ink, letterSpacing: "-0.02em", opacity: b, transform: `translateX(${(1 - b) * 40}px)` }}>{name}</span>
     </div>
   );
 };

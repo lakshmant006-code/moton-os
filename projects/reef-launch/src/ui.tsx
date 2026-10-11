@@ -158,10 +158,13 @@ export const Caption: React.FC<{ text: string; hl: string; start: number; end: n
   );
 };
 
-export const Lockup: React.FC<{ lead: string; name: string; size: number; f: number; t0?: number }> = ({ lead, name, size, f, t0 = 0 }) => {
-  const a = ramp(f, t0, t0 + 10);
-  const o = ramp(f, t0 + 6, t0 + 20, backOut);
-  const b = ramp(f, t0 + 12, t0 + 24);
+// Frame windows for the word, the octopus pop and the name, so a beat can be hit exactly.
+export const Lockup: React.FC<{ lead: string; name: string; size: number; f: number; at?: { a: number[]; o: number[]; b: number[] } }> = ({
+  lead, name, size, f, at = { a: [0, 10], o: [6, 20], b: [12, 24] },
+}) => {
+  const a = ramp(f, at.a[0], at.a[1]);
+  const o = ramp(f, at.o[0], at.o[1], backOut);
+  const b = ramp(f, at.b[0], at.b[1]);
   return (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: size * 0.16 }}>
       <span style={{ fontFamily: HEAD, fontStyle: "italic", fontWeight: 600, fontSize: size, color: C.ink, letterSpacing: "-0.03em", opacity: a, transform: `translateX(${(1 - a) * -30}px)` }}>{lead}</span>

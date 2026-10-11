@@ -34,20 +34,31 @@ export const Main: React.FC = () => {
   const span = ((b - a) + 1440) % 1440;
   const clock = late ? `Wed ${fromMin(a + span * Math.min(1, (sec - s3[0]) / (s3[1] - s3[0])))}` : base;
 
-  // The rounded screen is shown for the desktop parts and fades out for the full white beats.
+  // The rounded screen is shown for the desktop parts. It pops in out of the white page and hard cuts away on the beat.
   let shell = 0;
   let scale = 1;
   for (const [first, last] of IN_SCREEN) {
     const s = sceneFrames(first);
     const e = sceneFrames(last);
-    const end = e.from + e.dur;
-    if (f >= s.from && f < end) {
-      const fin = s.from === 0 ? 1 : ramp(f, s.from, s.from + 10);
-      const fout = 1 - ramp(f, end - 6, end);
-      shell = Math.min(fin, fout);
+    if (f >= s.from && f < e.from + e.dur) {
+      const fin = s.from === 0 ? 1 : ramp(f, s.from, s.from + 7);
+      shell = fin;
       scale = lerp(0.94, 1, fin);
     }
   }
+
+  // Camera inside the screen: push in on whatever the caption is about.
+  const local = (id: string) => f - sceneFrames(id).from;
+  const inScene = (id: string) => { const s = sceneFrames(id); return f >= s.from && f < s.from + s.dur; };
+  let cam = { s: 1, ox: 50, oy: 50 };
+  if (inScene("S1")) cam = { s: 1 + 0.38 * ramp(local("S1"), 0, 56), ox: 97, oy: 8 };
+  else if (inScene("S2")) {
+    const lf = local("S2");
+    const folder = 0.14 * ramp(lf, 0, 30) * (1 - ramp(lf, 34, 44));
+    const tabs = 0.62 * ramp(lf, 62, 96);
+    cam = lf < 44 ? { s: 1 + folder, ox: 40, oy: 38 } : { s: 1 + tabs, ox: 50, oy: 11 };
+  } else if (inScene("S3")) cam = { s: 1 + 0.07 * ramp(local("S3"), 0, 100), ox: 62, oy: 30 };
+  else if (inScene("S4")) cam = { s: 1 + 0.06 * ramp(local("S4"), 0, 120), ox: 50, oy: 50 };
   const lastFrame = Math.round(reel.duration * FPS);
 
   return (
@@ -57,17 +68,19 @@ export const Main: React.FC = () => {
 
       {shell > 0 && (
         <Shell opacity={shell} scale={scale}>
-          <Wallpaper zoom={1 + sec * 0.002} />
-          <MenuBar clock={clock} />
-          <Dock />
-          {Object.entries(SCENES).map(([id, Comp]) => {
-            const { from, dur } = sceneFrames(id);
-            return (
-              <Sequence key={id} from={from} durationInFrames={dur}>
-                <Comp clock={clock} />
-              </Sequence>
-            );
-          })}
+          <AbsoluteFill style={{ transform: `scale(${cam.s})`, transformOrigin: `${cam.ox}% ${cam.oy}%` }}>
+            <Wallpaper zoom={1 + sec * 0.002} />
+            <MenuBar clock={clock} />
+            <Dock />
+            {Object.entries(SCENES).map(([id, Comp]) => {
+              const { from, dur } = sceneFrames(id);
+              return (
+                <Sequence key={id} from={from} durationInFrames={dur}>
+                  <Comp clock={clock} />
+                </Sequence>
+              );
+            })}
+          </AbsoluteFill>
         </Shell>
       )}
 

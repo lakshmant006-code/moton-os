@@ -1,7 +1,7 @@
 {
  "id": "reef-launch",
  "title": "Reef launch",
- "version": 6,
+ "version": 7,
  "path": "projects/reef-launch",
  "src": "video.mp4",
  "w": 1920,
@@ -1361,6 +1361,11 @@
        "type": "motion",
        "label": "Shot",
        "v": "Real Reef capture. Shot 1 (to 30.725s): Library, Course roadmap tab. Shot 2: the study buddy pup plays with its ball"
+      },
+      "badge": {
+       "type": "text",
+       "label": "Badge on the pup",
+       "v": "New: study buddy"
       }
      }
     },
@@ -1382,12 +1387,12 @@
       "text": {
        "type": "text",
        "label": "Text",
-       "v": "plus a course roadmap and a study buddy."
+       "v": "plus a course roadmap and a new study buddy."
       },
       "hl": {
        "type": "text",
        "label": "Highlighted words",
-       "v": "study buddy."
+       "v": "new study buddy."
       },
       "motion": {
        "type": "motion",

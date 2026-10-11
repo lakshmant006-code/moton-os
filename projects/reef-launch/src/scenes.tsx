@@ -276,8 +276,21 @@ export const Canvas: React.FC = () => {
   );
 };
 
+/* Gold "New" pill that pops onto a shot. Gold background takes ink text, per the brand rules. */
+const Badge: React.FC<{ text: string; f: number }> = ({ text, f }) => {
+  const p = ramp(f, 2, 12, backOut);
+  const [tag, ...rest] = text.split(":");
+  return (
+    <div style={{ position: "absolute", left: 40, top: 36, display: "flex", alignItems: "center", gap: 12, padding: "12px 22px 12px 12px", borderRadius: 999,
+      background: "#fff", boxShadow: "0 10px 30px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)", fontFamily: BODY, transform: `scale(${p})`, transformOrigin: "0 50%", opacity: Math.min(1, p * 2) }}>
+      <span style={{ padding: "6px 14px", borderRadius: 999, background: C.gold, color: C.ink, fontWeight: 700, fontSize: 22, letterSpacing: "0.04em" }}>{tag.toUpperCase()}</span>
+      <span style={{ fontSize: 26, fontWeight: 600, color: C.ink }}>{rest.join(":").trim()}</span>
+    </div>
+  );
+};
+
 /* Two real shots in the Reef window, hard cut on a beat. Each clip is pre cropped to 16:9. */
-const Footage: React.FC<{ shots: { src: string; dur: number; rate?: number; push?: number; origin?: string }[] }> = ({ shots }) => {
+const Footage: React.FC<{ shots: { src: string; dur: number; rate?: number; push?: number; origin?: string; badge?: string }[] }> = ({ shots }) => {
   const f = useCurrentFrame();
   let start = 0;
   return (
@@ -293,6 +306,7 @@ const Footage: React.FC<{ shots: { src: string; dur: number; rate?: number; push
                 <OffthreadVideo src={staticFile(sh.src)} muted playbackRate={sh.rate ?? 1}
                   style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover",
                     transform: `scale(${1 + ramp(f - from, 0, sh.dur, (t) => t) * (sh.push ?? 0.04)})`, transformOrigin: sh.origin ?? "50% 50%" }} />
+                {sh.badge && <Badge text={sh.badge} f={f - from} />}
               </Sequence>
             );
           })}
@@ -347,8 +361,9 @@ export const Flashcards: React.FC = () => {
 /* S9: two real features. Library course roadmap, then the study buddy on the 30.725s cut (frame 48). */
 export const Extras: React.FC = () => (
   <Footage shots={[
+    // badge text lives in reel.json
     { src: "library.mp4", dur: 48, push: 0.04, origin: "40% 45%" },
-    { src: "buddy.mp4", dur: 50, push: 0.05, origin: "60% 55%" },
+    { src: "buddy.mp4", dur: 50, push: 0.05, origin: "60% 55%", badge: el("S9", "extras").v("badge") },
   ]} />
 );
 

@@ -65,6 +65,8 @@ export const Main: React.FC = () => {
     <AbsoluteFill style={{ background: "#fff" }}>
       <Audio src={staticFile("music.mp3")}
         volume={(fr) => reel.audio.musicVol * interpolate(fr, [0, 6, lastFrame - 45, lastFrame], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })} />
+      {/* Synthesized from reel.json audio.sfxCues by sfx/make_sfx.py */}
+      <Audio src={staticFile(reel.audio.sfx)} volume={reel.audio.sfxVol} />
 
       {shell > 0 && (
         <Shell opacity={shell} scale={scale}>

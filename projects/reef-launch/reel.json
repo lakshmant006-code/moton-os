@@ -1,7 +1,7 @@
 {
  "id": "reef-launch",
  "title": "Reef launch",
- "version": 2,
+ "version": 3,
  "path": "projects/reef-launch",
  "src": "video.mp4",
  "w": 1920,
@@ -57,7 +57,582 @@
   "drop": 15.24,
   "musicVol": 0.6,
   "sfxVol": 0.8,
-  "note": "\"Be My Lover\" (Instrumental) by I'MIN, Epidemic Sound, trimmed from 1.16s. The big hit at 15.24s lands the octopus; scene cuts sit on the strong hits at 17.65, 21.5, 25.3, 29.125 and 32.4s."
+  "note": "\"Be My Lover\" (Instrumental) by I'MIN, Epidemic Sound, trimmed from 1.16s. The big hit at 15.24s lands the octopus; scene cuts sit on the strong hits at 17.65, 21.5, 25.3, 29.125 and 32.4s.",
+  "sfx": "sfx.wav",
+  "sfxCues": [
+   {
+    "t": 0.0,
+    "kind": "air",
+    "dur": 1.6,
+    "gain": 0.14,
+    "what": "camera drifts in on the alerts"
+   },
+   {
+    "t": 0.13,
+    "kind": "ding",
+    "freq": 1318,
+    "gain": 0.36,
+    "what": "exam alert"
+   },
+   {
+    "t": 0.66,
+    "kind": "ding",
+    "freq": 1568,
+    "gain": 0.36,
+    "what": "study group alert"
+   },
+   {
+    "t": 4.033,
+    "kind": "click",
+    "gain": 0.6,
+    "what": "double click, 1"
+   },
+   {
+    "t": 4.133,
+    "kind": "click",
+    "gain": 0.55,
+    "what": "double click, 2"
+   },
+   {
+    "t": 4.333,
+    "kind": "whoosh",
+    "dur": 0.35,
+    "gain": 0.4,
+    "what": "browser opens"
+   },
+   {
+    "t": 4.467,
+    "kind": "tick",
+    "freq": 900,
+    "gain": 0.32,
+    "what": "tab 1 opens"
+   },
+   {
+    "t": 4.65,
+    "kind": "tick",
+    "freq": 960,
+    "gain": 0.34,
+    "what": "tab 2 opens"
+   },
+   {
+    "t": 4.833,
+    "kind": "tick",
+    "freq": 1020,
+    "gain": 0.36,
+    "what": "tab 3 opens"
+   },
+   {
+    "t": 5.017,
+    "kind": "tick",
+    "freq": 1080,
+    "gain": 0.38,
+    "what": "tab 4 opens"
+   },
+   {
+    "t": 5.2,
+    "kind": "tick",
+    "freq": 1140,
+    "gain": 0.4,
+    "what": "tab 5 opens"
+   },
+   {
+    "t": 5.267,
+    "kind": "air",
+    "dur": 1.0,
+    "gain": 0.3,
+    "what": "punch in on the tabs"
+   },
+   {
+    "t": 5.383,
+    "kind": "tick",
+    "freq": 1200,
+    "gain": 0.42000000000000004,
+    "what": "tab 6 opens"
+   },
+   {
+    "t": 5.567,
+    "kind": "tick",
+    "freq": 1260,
+    "gain": 0.44,
+    "what": "tab 7 opens"
+   },
+   {
+    "t": 5.75,
+    "kind": "tick",
+    "freq": 1320,
+    "gain": 0.46,
+    "what": "tab 8 opens"
+   },
+   {
+    "t": 5.933,
+    "kind": "tick",
+    "freq": 1380,
+    "gain": 0.48,
+    "what": "tab 9 opens"
+   },
+   {
+    "t": 6.117,
+    "kind": "tick",
+    "freq": 1440,
+    "gain": 0.5,
+    "what": "tab 10 opens"
+   },
+   {
+    "t": 6.3,
+    "kind": "tick",
+    "freq": 1500,
+    "gain": 0.52,
+    "what": "tab 11 opens"
+   },
+   {
+    "t": 6.483,
+    "kind": "tick",
+    "freq": 1560,
+    "gain": 0.54,
+    "what": "tab 12 opens"
+   },
+   {
+    "t": 7.4,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 7.463,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 7.527,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 7.59,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 7.653,
+    "kind": "space",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 7.717,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 7.78,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 7.843,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 7.907,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 7.97,
+    "kind": "space",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.033,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.097,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.16,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.223,
+    "kind": "space",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.287,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.35,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.413,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.477,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.54,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.603,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.667,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.73,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.793,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.857,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.92,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 8.983,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.047,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.11,
+    "kind": "space",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.173,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.237,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.3,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.363,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.427,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.49,
+    "kind": "space",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.553,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.617,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.68,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.743,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.807,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.87,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.933,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 9.997,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 10.06,
+    "kind": "space",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 10.123,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 10.187,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 10.25,
+    "kind": "key",
+    "gain": 0.42,
+    "what": "typing"
+   },
+   {
+    "t": 10.667,
+    "kind": "send",
+    "gain": 0.5,
+    "what": "message sent"
+   },
+   {
+    "t": 11.4,
+    "kind": "pop",
+    "freq": 520,
+    "gain": 0.4,
+    "what": "reply bubble"
+   },
+   {
+    "t": 12.533,
+    "kind": "bonk",
+    "gain": 0.5,
+    "what": "not from your lecture"
+   },
+   {
+    "t": 14.7,
+    "kind": "whoosh",
+    "dur": 0.45,
+    "gain": 0.35,
+    "what": "meet"
+   },
+   {
+    "t": 15.167,
+    "kind": "swish",
+    "gain": 0.35,
+    "what": "reef. slides in"
+   },
+   {
+    "t": 15.2,
+    "kind": "pop",
+    "freq": 300,
+    "gain": 0.75,
+    "what": "octopus lands on the drop"
+   },
+   {
+    "t": 17.65,
+    "kind": "whoosh",
+    "dur": 0.4,
+    "gain": 0.4,
+    "what": "screen pops in"
+   },
+   {
+    "t": 18.117,
+    "kind": "thud",
+    "gain": 0.6,
+    "what": "file 1 lands"
+   },
+   {
+    "t": 18.65,
+    "kind": "thud",
+    "gain": 0.6,
+    "what": "file 2 lands"
+   },
+   {
+    "t": 19.183,
+    "kind": "thud",
+    "gain": 0.6,
+    "what": "file 3 lands"
+   },
+   {
+    "t": 19.717,
+    "kind": "pop",
+    "freq": 700,
+    "gain": 0.4,
+    "what": "sticky note"
+   },
+   {
+    "t": 19.85,
+    "kind": "zip",
+    "dur": 0.85,
+    "gain": 0.3,
+    "what": "wires draw"
+   },
+   {
+    "t": 19.917,
+    "kind": "pop",
+    "freq": 560,
+    "gain": 0.45,
+    "what": "workflow node"
+   },
+   {
+    "t": 21.5,
+    "kind": "whoosh",
+    "dur": 0.4,
+    "gain": 0.35,
+    "what": "cut to the app"
+   },
+   {
+    "t": 22.167,
+    "kind": "shimmer",
+    "dur": 1.4,
+    "gain": 0.3,
+    "what": "AI writes the study guide"
+   },
+   {
+    "t": 25.3,
+    "kind": "swish",
+    "gain": 0.4,
+    "what": "cards deal in"
+   },
+   {
+    "t": 25.433,
+    "kind": "swish",
+    "gain": 0.25,
+    "what": "cards deal in"
+   },
+   {
+    "t": 26.6,
+    "kind": "flip",
+    "gain": 0.55,
+    "what": "card flips"
+   },
+   {
+    "t": 27.4,
+    "kind": "pop",
+    "freq": 640,
+    "gain": 0.45,
+    "what": "source chip"
+   },
+   {
+    "t": 29.158,
+    "kind": "pop",
+    "freq": 300,
+    "gain": 0.5,
+    "what": "octopus"
+   },
+   {
+    "t": 29.192,
+    "kind": "riser",
+    "dur": 0.47,
+    "gain": 0.25,
+    "what": "by hand bar grows"
+   },
+   {
+    "t": 30.225,
+    "kind": "ding",
+    "freq": 1760,
+    "gain": 0.5,
+    "what": "with reef lands"
+   },
+   {
+    "t": 32.4,
+    "kind": "whoosh",
+    "dur": 0.4,
+    "gain": 0.4,
+    "what": "end card"
+   },
+   {
+    "t": 33.067,
+    "kind": "pop",
+    "freq": 480,
+    "gain": 0.55,
+    "what": "button"
+   },
+   {
+    "t": 33.333,
+    "kind": "chime",
+    "gain": 0.35,
+    "what": "sign off"
+   }
+  ]
  },
  "assets": [
   {

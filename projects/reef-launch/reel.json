@@ -1,7 +1,7 @@
 {
  "id": "reef-launch",
  "title": "Reef launch",
- "version": 3,
+ "version": 4,
  "path": "projects/reef-launch",
  "src": "video.mp4",
  "w": 1920,
@@ -41,11 +41,16 @@
    {
     "id": "head",
     "name": "Headlines",
-    "v": "Poppins"
+    "v": "Playfair Display"
+   },
+   {
+    "id": "body",
+    "name": "Body and buttons",
+    "v": "Figtree"
    },
    {
     "id": "ui",
-    "name": "UI",
+    "name": "Desktop apps",
     "v": "Inter"
    }
   ],

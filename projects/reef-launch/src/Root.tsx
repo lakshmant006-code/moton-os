@@ -3,12 +3,16 @@ import { Main } from "./Main";
 import { reel } from "./reel";
 
 const FONTS: [string, string, string, string][] = [
-  ["Poppins", "poppins-latin-500-normal.woff2", "500", "normal"],
-  ["Poppins", "poppins-latin-600-normal.woff2", "600", "normal"],
-  ["Poppins", "poppins-latin-700-normal.woff2", "700", "normal"],
-  ["Poppins", "poppins-latin-500-italic.woff2", "500", "italic"],
-  ["Poppins", "poppins-latin-600-italic.woff2", "600", "italic"],
-  ["Poppins", "poppins-latin-700-italic.woff2", "700", "italic"],
+  ["Playfair Display", "playfair-display-latin-400-normal.woff2", "400", "normal"],
+  ["Playfair Display", "playfair-display-latin-500-normal.woff2", "500", "normal"],
+  ["Playfair Display", "playfair-display-latin-600-normal.woff2", "600", "normal"],
+  ["Playfair Display", "playfair-display-latin-400-italic.woff2", "400", "italic"],
+  ["Playfair Display", "playfair-display-latin-500-italic.woff2", "500", "italic"],
+  ["Playfair Display", "playfair-display-latin-600-italic.woff2", "600", "italic"],
+  ["Figtree", "figtree-latin-400-normal.woff2", "400", "normal"],
+  ["Figtree", "figtree-latin-500-normal.woff2", "500", "normal"],
+  ["Figtree", "figtree-latin-600-normal.woff2", "600", "normal"],
+  ["Figtree", "figtree-latin-700-normal.woff2", "700", "normal"],
   ["Inter", "Inter-Regular.otf", "400", "normal"],
   ["Inter", "Inter-Medium.otf", "500", "normal"],
   ["Inter", "Inter-SemiBold.otf", "600", "normal"],

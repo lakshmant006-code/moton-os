@@ -17,7 +17,9 @@ export const C = {
   hairline: "rgba(0,0,0,0.07)",
   hairlineStrong: "rgba(0,0,0,0.14)",
 };
-export const HEAD = "Poppins, Inter, sans-serif";
+// The website pairing (quizai.help): Playfair Display for display type, Figtree for body and buttons.
+export const HEAD = "'Playfair Display', Georgia, serif";
+export const BODY = "Figtree, Arial, sans-serif";
 export const UI = "Inter, Arial, sans-serif";
 
 const easeOut = Easing.bezier(0.16, 1, 0.3, 1);
@@ -144,7 +146,7 @@ export const Caption: React.FC<{ text: string; hl: string; start: number; end: n
   const after = hs < 0 ? [] : words.slice(hs + hw.length).map((w, j) => word(w, hs + hw.length + j));
   return (
     <div style={{ position: "absolute", left: 0, right: 0, top: 918, display: "flex", justifyContent: "center", opacity: out }}>
-      <div style={{ fontFamily: HEAD, fontStyle: "italic", fontWeight: 600, fontSize: 46, letterSpacing: "-0.01em", whiteSpace: "nowrap" }}>
+      <div style={{ fontFamily: HEAD, fontStyle: "italic", fontWeight: 500, fontSize: 50, letterSpacing: "-0.005em", whiteSpace: "nowrap" }}>
         {before}
         {mid.length > 0 && (
           <span style={{ position: "relative", display: "inline-block", marginRight: "0.26em" }}>
@@ -167,9 +169,9 @@ export const Lockup: React.FC<{ lead: string; name: string; size: number; f: num
   const b = ramp(f, at.b[0], at.b[1]);
   return (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: size * 0.16 }}>
-      <span style={{ fontFamily: HEAD, fontStyle: "italic", fontWeight: 600, fontSize: size, color: C.ink, letterSpacing: "-0.03em", opacity: a, transform: `translateX(${(1 - a) * -30}px)` }}>{lead}</span>
+      <span style={{ fontFamily: HEAD, fontStyle: "italic", fontWeight: 400, fontSize: size, color: C.ink, letterSpacing: "-0.02em", opacity: a, transform: `translateX(${(1 - a) * -30}px)` }}>{lead}</span>
       <Img src={staticFile("octopus.png")} style={{ height: size * 1.12, transform: `scale(${o}) rotate(${(1 - o) * -20}deg)` }} />
-      <span style={{ fontFamily: HEAD, fontWeight: 700, fontSize: size, color: C.maroon, letterSpacing: "-0.02em", opacity: b, transform: `translateX(${(1 - b) * 40}px)` }}>{name}</span>
+      <span style={{ fontFamily: HEAD, fontWeight: 600, fontSize: size, color: C.maroon, letterSpacing: "-0.02em", opacity: b, transform: `translateX(${(1 - b) * 40}px)` }}>{name}</span>
     </div>
   );
 };

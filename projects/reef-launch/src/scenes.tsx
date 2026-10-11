@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Img, OffthreadVideo, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { el } from "./reel";
-import { C, Cursor, HEAD, Lockup, PdfIcon, UI, Win, backOut, lerp, ramp } from "./ui";
+import { BODY, C, Cursor, HEAD, Lockup, PdfIcon, UI, Win, backOut, lerp, ramp } from "./ui";
 
 const fadeIn = (f: number, n = 6) => ramp(f, 0, n);
 
@@ -189,10 +189,11 @@ export const Meet: React.FC = () => {
 
 /* S6 and S7 share the Reef window. */
 const ReefBar: React.FC = () => (
-  <div style={{ display: "flex", alignItems: "center", gap: 26, width: "100%", fontFamily: UI, fontSize: 16, color: C.gray3 }}>
-    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+  <div style={{ display: "flex", alignItems: "center", gap: 26, width: "100%", fontFamily: BODY, fontSize: 16, color: C.gray3 }}>
+    <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
       <Img src={staticFile("octopus.png")} style={{ height: 30 }} />
-      <span style={{ fontFamily: HEAD, fontWeight: 700, fontSize: 22, color: C.maroon, letterSpacing: "-0.02em" }}>Reef</span>
+      <span style={{ fontFamily: HEAD, fontSize: 27, color: C.ink, letterSpacing: "-0.01em" }}>reef</span>
+      <span style={{ fontFamily: HEAD, fontSize: 14, color: C.maroon }}>beta</span>
     </div>
     <span>Dashboard</span><span>Summaries</span><span>Tasks</span>
     <span style={{ marginLeft: "auto" }}>Library</span><span>Help</span>
@@ -211,7 +212,7 @@ const Toolbar: React.FC = () => (
 );
 
 const FileCard: React.FC<{ name: string; meta: string; dark?: boolean; tag?: string }> = ({ name, meta, dark, tag = "PDF" }) => (
-  <div style={{ width: 280, borderRadius: 16, background: "#fff", boxShadow: "0 8px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.07)", overflow: "hidden", fontFamily: UI }}>
+  <div style={{ width: 280, borderRadius: 16, background: "#fff", boxShadow: "0 8px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.07)", overflow: "hidden", fontFamily: BODY }}>
     <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 14px" }}>
       <span style={{ padding: "2px 6px", borderRadius: 4, background: tag === "PDF" ? "#D93025" : "#2F6FED", color: "#fff", fontSize: 12, fontWeight: 700 }}>{tag}</span>
       <span style={{ fontSize: 16, fontWeight: 600, color: C.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{name}</span>
@@ -259,10 +260,10 @@ export const Canvas: React.FC = () => {
               </div>
             );
           })}
-          <div style={{ position: "absolute", left: 590, top: 470, width: 240, padding: "16px 18px", borderRadius: 12, background: C.goldTint, border: "1px solid #F5DC94", fontFamily: UI, fontSize: 19, color: C.ink, boxShadow: "0 6px 18px rgba(0,0,0,0.08)", transform: `scale(${note}) rotate(-2deg)`, opacity: Math.min(1, note * 2) }}>
+          <div style={{ position: "absolute", left: 590, top: 470, width: 240, padding: "16px 18px", borderRadius: 12, background: C.goldTint, border: "1px solid #F5DC94", fontFamily: BODY, fontSize: 19, color: C.ink, boxShadow: "0 6px 18px rgba(0,0,0,0.08)", transform: `scale(${note}) rotate(-2deg)`, opacity: Math.min(1, note * 2) }}>
             {e.v("note")}
           </div>
-          <div style={{ position: "absolute", left: 930, top: 220, width: 320, borderRadius: 16, background: "#fff", boxShadow: "0 8px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(140,29,64,0.25)", fontFamily: UI, overflow: "hidden", transform: `scale(${node})`, opacity: Math.min(1, node * 2) }}>
+          <div style={{ position: "absolute", left: 930, top: 220, width: 320, borderRadius: 16, background: "#fff", boxShadow: "0 8px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(140,29,64,0.25)", fontFamily: BODY, overflow: "hidden", transform: `scale(${node})`, opacity: Math.min(1, node * 2) }}>
             <div style={{ padding: "13px 18px", background: C.maroonTint, fontWeight: 700, fontSize: 17, color: C.maroon }}>Workflow</div>
             <div style={{ padding: "12px 18px", fontSize: 16, color: C.gray3 }}>Wired in: {Math.round(wire * 4)} items</div>
             <div style={{ margin: "0 18px 18px", padding: "12px 0", textAlign: "center", borderRadius: 10, background: C.maroon, color: "#fff", fontWeight: 700, fontSize: 17 }}>+ AI card</div>
@@ -299,7 +300,7 @@ export const Flashcards: React.FC = () => {
   const chip = ramp(f, 58, 66, backOut);
   const deal = (i: number) => ramp(f, i * 3, 10 + i * 3);
   const W = 960, H = 560, X = (1440 - W) / 2, Y = 100;
-  const face: React.CSSProperties = { position: "absolute", inset: 0, borderRadius: 28, background: "#fff", backfaceVisibility: "hidden", boxShadow: "0 24px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)", padding: "56px 68px", fontFamily: UI };
+  const face: React.CSSProperties = { position: "absolute", inset: 0, borderRadius: 28, background: "#fff", backfaceVisibility: "hidden", boxShadow: "0 24px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)", padding: "56px 68px", fontFamily: BODY };
   return (
     <AbsoluteFill style={dotGrid}>
       {[2, 1].map((i) => (
@@ -311,11 +312,11 @@ export const Flashcards: React.FC = () => {
             <div style={{ display: "flex", justifyContent: "space-between", fontSize: 20, fontWeight: 700, letterSpacing: "0.06em", color: C.maroon }}>
               <span>QUESTION</span><span style={{ color: C.gray3, letterSpacing: 0, fontWeight: 500 }}>{e.v("count")}</span>
             </div>
-            <div style={{ fontFamily: HEAD, fontWeight: 600, fontSize: 56, lineHeight: 1.22, color: C.ink, marginTop: 56 }}>{e.v("q")}</div>
+            <div style={{ fontFamily: HEAD, fontWeight: 500, fontSize: 60, lineHeight: 1.18, color: C.ink, marginTop: 56 }}>{e.v("q")}</div>
           </div>
           <div style={{ ...face, transform: "rotateY(180deg)" }}>
             <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: "0.06em", color: C.maroon }}>ANSWER</div>
-            <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: 92, color: C.maroon, marginTop: 64, letterSpacing: "-0.02em" }}>{e.v("a")}</div>
+            <div style={{ fontFamily: HEAD, fontStyle: "italic", fontWeight: 600, fontSize: 100, color: C.maroon, marginTop: 52, letterSpacing: "-0.015em" }}>{e.v("a")}</div>
             <div style={{ display: "inline-flex", marginTop: 56, padding: "14px 24px", borderRadius: 999, background: C.goldTint, border: "1px solid #F5DC94", fontSize: 26, color: C.ink, transform: `scale(${chip})`, transformOrigin: "0 50%" }}>{e.v("source")}</div>
           </div>
         </div>
@@ -336,9 +337,9 @@ export const Bars: React.FC = () => {
       <div style={{ position: "absolute", top: 150, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
         <Img src={staticFile("octopus.png")} style={{ height: 150, transform: `scale(${ramp(f, 0, 10, backOut)})` }} />
       </div>
-      <div style={{ position: "absolute", top: 342, left: 0, right: 0, textAlign: "center", fontFamily: UI, fontSize: 32, fontWeight: 700, letterSpacing: "0.05em", color: C.gray3, opacity: fadeIn(f, 6) }}>{e.v("title").toUpperCase()}</div>
+      <div style={{ position: "absolute", top: 342, left: 0, right: 0, textAlign: "center", fontFamily: BODY, fontSize: 32, fontWeight: 700, letterSpacing: "0.05em", color: C.gray3, opacity: fadeIn(f, 6) }}>{e.v("title").toUpperCase()}</div>
       {rows.map((r, i) => (
-        <div key={r.label} style={{ position: "absolute", top: 450 + i * 130, left: 250, width: 1420, display: "flex", alignItems: "center", gap: 36, fontFamily: UI, opacity: fadeIn(f - i * 6, 6) }}>
+        <div key={r.label} style={{ position: "absolute", top: 450 + i * 130, left: 250, width: 1420, display: "flex", alignItems: "center", gap: 36, fontFamily: BODY, opacity: fadeIn(f - i * 6, 6) }}>
           <span style={{ width: 230, fontSize: 42, color: i ? C.maroon : C.gray3, fontWeight: i ? 700 : 600 }}>{r.label}</span>
           <div style={{ flex: 1, height: 56, borderRadius: 28, background: C.app, overflow: "hidden" }}>
             <div style={{ width: `${Math.max(4, widths[i] * 100 * grow[i])}%`, height: "100%", borderRadius: 28, background: i ? C.maroon : C.muted }} />
@@ -362,12 +363,12 @@ export const EndCard: React.FC = () => {
       <div style={{ transform: `translateY(${interpolate(f, [0, 10], [30, 0], { extrapolateRight: "clamp" })}px)` }}>
         <Lockup lead={e.v("lead")} name={e.v("name")} size={124} f={f} at={{ a: [0, 4], o: [0, 8], b: [2, 8] }} />
       </div>
-      <div style={{ marginTop: 34, textAlign: "center", fontFamily: HEAD, fontSize: 42, lineHeight: 1.4, color: C.gray2, opacity: l, transform: `translateY(${(1 - l) * 16}px)` }}>
+      <div style={{ marginTop: 34, textAlign: "center", fontFamily: HEAD, fontSize: 46, lineHeight: 1.3, color: C.gray2, opacity: l, transform: `translateY(${(1 - l) * 16}px)` }}>
         <div>{e.v("line1")}</div>
-        <div style={{ fontWeight: 700, color: C.ink }}>{e.v("line2")}</div>
+        <div style={{ fontStyle: "italic", fontWeight: 500, color: C.ink }}>{e.v("line2")}</div>
       </div>
-      <div style={{ marginTop: 46, padding: "22px 50px", borderRadius: 999, background: C.maroon, color: "#fff", fontFamily: HEAD, fontWeight: 600, fontSize: 34, boxShadow: "0 6px 18px rgba(140,29,64,0.3)", transform: `scale(${b})` }}>{e.v("cta")}</div>
-      <div style={{ marginTop: 32, fontFamily: UI, fontSize: 25, color: C.gray3, opacity: s }}>{e.v("fine")}</div>
+      <div style={{ marginTop: 46, padding: "22px 50px", borderRadius: 999, background: C.maroon, color: "#fff", fontFamily: BODY, fontWeight: 600, fontSize: 34, boxShadow: "0 6px 18px rgba(140,29,64,0.3)", transform: `scale(${b})` }}>{e.v("cta")}</div>
+      <div style={{ marginTop: 32, fontFamily: BODY, fontSize: 25, color: C.gray3, opacity: s }}>{e.v("fine")}</div>
     </AbsoluteFill>
   );
 };

@@ -320,12 +320,12 @@ export const Generate: React.FC = () => (
   <Footage shots={[
     { src: "s7-wire.mp4", dur: 48, push: 0.05, origin: "30% 40%" },
     { src: "s7-workflow.mp4", dur: 66, push: 0.06, origin: "80% 45%" },
-    { src: "s7-sheet.mp4", dur: 83, push: 0.08, origin: "62% 80%" },
+    { src: "s7-sheet.mp4", dur: 50, push: 0.08, origin: "62% 80%" },
   ]} />
 );
 
 /* S8: two flashcards. Each one flips on a hit and then shows the page it came from. */
-// Hits after the cut at 28.05s: 29.125 (f32), 29.65 (f48), 30.75 (f81), 31.825 (f113).
+// Hits after the cut at 26.95s: 28.05 (f33), 28.55 (f48), 29.65 (f81), 30.75 (f114).
 const FlashCard: React.FC<{ q: string; a: string; source: string; count: string; flip: number; chip: number }> = ({ q, a, source, count, flip, chip }) => {
   const face: React.CSSProperties = { position: "absolute", inset: 0, borderRadius: 28, background: "#fff", backfaceVisibility: "hidden", boxShadow: "0 24px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)", padding: "56px 68px", fontFamily: BODY };
   return (
@@ -371,24 +371,24 @@ export const Flashcards: React.FC = () => {
   );
 };
 
-/* S9: free lectures. Library tab, a lecture added to the canvas, the lecture beside its notes. Cuts on 35.1s and 36.775s. */
+/* S9: free lectures. Library tab, a lecture added to the canvas, the lecture beside its notes. Cuts on 33.1s and 34.77s. */
 export const Lectures: React.FC = () => (
   <Footage shots={[
-    { src: "s9-library.mp4", dur: 81, push: 0.04, origin: "50% 40%" },
+    { src: "s9-library.mp4", dur: 54, push: 0.04, origin: "50% 40%" },
     { src: "s9-added.mp4", dur: 50, push: 0.05, origin: "60% 30%" },
-    { src: "s9-lecture.mp4", dur: 66, push: 0.06, origin: "70% 40%" },
+    { src: "s9-lecture.mp4", dur: 43, push: 0.06, origin: "70% 40%" },
   ]} />
 );
 
-/* S10: the new study buddy. Tap me, Let's go, Play with me. Cuts on 41.125s and 43.3s. The NEW badge stays up throughout. */
+/* S10: the new study buddy. Tap me, Let's go, Play with me. Cuts on 37.87s and 39.47s. The NEW badge stays up throughout. */
 export const Buddy: React.FC = () => {
   const f = useCurrentFrame();
   return (
     <AbsoluteFill>
       <Footage shots={[
-        { src: "s10-tap.mp4", dur: 65, push: 0.04, origin: "70% 60%" },
-        { src: "s10-walk.mp4", dur: 65, push: 0.04, origin: "60% 60%" },
-        { src: "s10-play.mp4", dur: 66, push: 0.05, origin: "70% 55%" },
+        { src: "s10-tap.mp4", dur: 50, push: 0.04, origin: "70% 60%" },
+        { src: "s10-walk.mp4", dur: 48, push: 0.04, origin: "60% 60%" },
+        { src: "s10-play.mp4", dur: 50, push: 0.05, origin: "70% 55%" },
       ]} />
       <div style={{ position: "absolute", left: REEF_WIN.x, top: REEF_WIN.y + 48 }}>
         <Badge text={el("S10", "buddy").v("badge")} f={f} />
@@ -397,7 +397,7 @@ export const Buddy: React.FC = () => {
   );
 };
 
-/* S11: end card, on the 45.5s hit as the music eases into its breakdown. */
+/* S11: end card, on the 41.125s hit; the music fades out from 43.5s. */
 export const EndCard: React.FC = () => {
   const f = useCurrentFrame();
   const e = el("S11", "end");

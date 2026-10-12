@@ -192,7 +192,78 @@ def shimmer(dur=1.2, **_):
     return norm(out[: int(dur * SR) + SR // 2])
 
 
-KINDS = {"ding": ding, "chime": chime, "click": click, "tick": tick, "key": key, "space": space, "pop": pop, "thud": thud,
+# ---- index card sounds (the flashcard scene) --------------------------------
+
+def paper(dur, lo=1500, hi=7000):
+    """Paper texture: band limited noise with a fast random grain, like fibers rubbing."""
+    n = band(noise(dur), lo, hi)
+    grain = onepole(np.abs(noise(dur)), 300)
+    return n * (0.35 + grain / (np.max(grain) or 1))
+
+
+def cardslide(**_):
+    d = 0.32
+    p = np.linspace(0, 1, int(d * SR))
+    x = onepole(paper(d, 800, 9000), 7000 - 5000 * p)
+    shape = np.clip(p / 0.15, 0, 1) * (1 - np.clip((p - 0.55) / 0.45, 0, 1)) ** 1.5
+    return norm(x * shape)
+
+
+def cardtap(**_):
+    d = 0.09
+    t = t_axis(d)
+    body = np.sin(2 * np.pi * np.cumsum(170 + 90 * np.exp(-t / 0.01)) / SR) * env(len(t), 0.0008, 0.018)
+    click = band(noise(d), 2500, 8000) * env(len(t), 0.0003, 0.0035)
+    return norm(0.8 * body + 0.6 * click)
+
+
+def cardflip(**_):
+    d = 0.34
+    out = np.zeros(int(d * SR))
+    # lift: rising air as the card leaves the deck
+    a = paper(0.12, 1200, 6000)
+    pa = np.linspace(0, 1, len(a))
+    a = onepole(a, 2000 + 6000 * pa) * np.sin(np.pi * pa) ** 2
+    out[: len(a)] += 0.7 * a
+    # turn: quicker falling air
+    b = paper(0.09, 1500, 8000)
+    pb = np.linspace(0, 1, len(b))
+    b = onepole(b, 9000 - 6000 * pb) * np.sin(np.pi * pb) ** 2
+    s = int(0.1 * SR)
+    out[s: s + len(b)] += 0.6 * b
+    # snap: the card's edge as it lands face up, then a soft tap
+    sn = band(noise(0.03), 3000, 10000) * env(int(0.03 * SR), 0.0002, 0.003)
+    s = int(0.25 * SR)
+    out[s: s + len(sn)] += 0.9 * sn
+    tp = cardtap() * 0.6
+    s = int(0.255 * SR)
+    out[s: s + len(tp)] += tp[: len(out) - s]
+    return norm(out)
+
+
+def reveal(**_):
+    """Soft marimba style up interval for a correct answer."""
+    out = np.zeros(int(0.7 * SR))
+    for i, f in enumerate([1318.5, 1975.5]):
+        t = t_axis(0.5)
+        tone = np.sin(2 * np.pi * f * t) + 0.25 * np.sin(2 * np.pi * f * 3.98 * t) * np.exp(-t / 0.02)
+        tone *= env(len(t), 0.002, 0.16)
+        s = int(i * 0.085 * SR)
+        out[s: s + len(tone)] += tone[: len(out) - s]
+    return norm(out)
+
+
+def chip(**_):
+    t = t_axis(0.1)
+    tick = np.sin(2 * np.pi * 2400 * t) * env(len(t), 0.0005, 0.01)
+    body = pop(760)[: len(t)]
+    x = np.zeros(len(t))
+    x[: len(body)] += 0.6 * body
+    return norm(0.7 * tick + x)
+
+
+KINDS = {"cardslide": cardslide, "cardtap": cardtap, "cardflip": cardflip, "reveal": reveal, "chip": chip,
+         "ding": ding, "chime": chime, "click": click, "tick": tick, "key": key, "space": space, "pop": pop, "thud": thud,
          "whoosh": whoosh, "air": air, "swish": swish, "flip": flip, "send": send, "bonk": bonk, "riser": riser,
          "zip": zip_, "shimmer": shimmer}
 

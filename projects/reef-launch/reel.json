@@ -1,13 +1,13 @@
 {
  "id": "reef-launch",
  "title": "Reef launch",
- "version": 7,
+ "version": 8,
  "path": "projects/reef-launch",
  "src": "video.mp4",
  "w": 1920,
  "h": 1080,
  "fps": 30,
- "duration": 37.0,
+ "duration": 50.0,
  "reference": "Helumi launch video (whatships.com/videos/helumi): format only, all copy and UI are Reef's own",
  "brand": {
   "colors": [
@@ -62,7 +62,7 @@
   "drop": 15.24,
   "musicVol": 0.6,
   "sfxVol": 0.8,
-  "note": "\"Be My Lover\" (Instrumental) by I'MIN, Epidemic Sound, trimmed from 1.16s. The big hit at 15.24s lands the octopus; scene cuts sit on the strong hits at 17.65, 21.5, 25.3, 29.125 and 32.4s.",
+  "note": "\"Be My Lover\" (Instrumental) by I'MIN, Epidemic Sound, trimmed from 1.16s for 51s. The big hit at 15.24s lands the octopus; cuts sit on strong hits; the breakdown from 46.5s carries the end card.",
   "sfx": "sfx.wav",
   "sfxCues": [
    {
@@ -567,79 +567,211 @@
    {
     "t": 23.1,
     "kind": "swish",
-    "gain": 0.35,
-    "what": "cut to the formula sheet"
+    "gain": 0.3,
+    "what": "cut to the workflow"
    },
    {
-    "t": 23.25,
+    "t": 23.4,
     "kind": "shimmer",
-    "dur": 1.3,
-    "gain": 0.28,
-    "what": "AI study guide appears"
+    "dur": 1.6,
+    "gain": 0.24,
+    "what": "AI card writes"
    },
    {
     "t": 25.3,
     "kind": "swish",
-    "gain": 0.4,
-    "what": "cards deal in"
+    "gain": 0.32,
+    "what": "cut to the formula sheet"
    },
    {
-    "t": 25.433,
-    "kind": "swish",
-    "gain": 0.25,
-    "what": "cards deal in"
+    "t": 25.55,
+    "kind": "ding",
+    "freq": 1568,
+    "gain": 0.28,
+    "what": "study guide ready"
    },
    {
-    "t": 26.6,
-    "kind": "flip",
+    "t": 28.05,
+    "kind": "cardslide",
     "gain": 0.55,
-    "what": "card flips"
+    "what": "deck slides in"
    },
    {
-    "t": 27.4,
-    "kind": "pop",
-    "freq": 640,
+    "t": 28.317,
+    "kind": "cardtap",
+    "gain": 0.35,
+    "what": "back card lands"
+   },
+   {
+    "t": 28.417,
+    "kind": "cardtap",
+    "gain": 0.42,
+    "what": "middle card lands"
+   },
+   {
+    "t": 28.517,
+    "kind": "cardtap",
+    "gain": 0.55,
+    "what": "top card lands"
+   },
+   {
+    "t": 28.85,
+    "kind": "cardflip",
+    "gain": 0.7,
+    "what": "card 1 flips"
+   },
+   {
+    "t": 29.15,
+    "kind": "reveal",
+    "gain": 0.38,
+    "what": "answer 1"
+   },
+   {
+    "t": 29.65,
+    "kind": "chip",
     "gain": 0.45,
-    "what": "source chip"
+    "what": "source 1"
    },
    {
-    "t": 29.125,
+    "t": 30.383,
+    "kind": "cardslide",
+    "gain": 0.5,
+    "what": "next card"
+   },
+   {
+    "t": 30.75,
+    "kind": "cardtap",
+    "gain": 0.5,
+    "what": "card 2 lands"
+   },
+   {
+    "t": 31.517,
+    "kind": "cardflip",
+    "gain": 0.7,
+    "what": "card 2 flips"
+   },
+   {
+    "t": 31.817,
+    "kind": "reveal",
+    "gain": 0.38,
+    "what": "answer 2"
+   },
+   {
+    "t": 31.983,
+    "kind": "chip",
+    "gain": 0.45,
+    "what": "source 2"
+   },
+   {
+    "t": 32.4,
     "kind": "whoosh",
     "dur": 0.4,
     "gain": 0.35,
     "what": "cut to the Library"
    },
    {
-    "t": 30.725,
+    "t": 33.0,
+    "kind": "click",
+    "gain": 0.5,
+    "what": "Lecture card tab"
+   },
+   {
+    "t": 33.72,
+    "kind": "tick",
+    "freq": 1100,
+    "gain": 0.28,
+    "what": "lecture list"
+   },
+   {
+    "t": 33.86,
+    "kind": "tick",
+    "freq": 1250,
+    "gain": 0.28,
+    "what": "lecture list"
+   },
+   {
+    "t": 35.1,
     "kind": "swish",
+    "gain": 0.3,
+    "what": "cut to the canvas"
+   },
+   {
+    "t": 36.775,
+    "kind": "swish",
+    "gain": 0.3,
+    "what": "cut to the lecture"
+   },
+   {
+    "t": 38.95,
+    "kind": "whoosh",
+    "dur": 0.4,
     "gain": 0.35,
     "what": "cut to the study buddy"
    },
    {
-    "t": 30.78,
+    "t": 39.05,
     "kind": "pop",
     "freq": 620,
-    "gain": 0.4,
-    "what": "study buddy"
+    "gain": 0.45,
+    "what": "NEW badge"
    },
    {
-    "t": 32.4,
+    "t": 39.4,
+    "kind": "click",
+    "gain": 0.45,
+    "what": "tap the pup"
+   },
+   {
+    "t": 39.45,
+    "kind": "pop",
+    "freq": 480,
+    "gain": 0.4,
+    "what": "pup reacts"
+   },
+   {
+    "t": 40.85,
+    "kind": "pop",
+    "freq": 700,
+    "gain": 0.35,
+    "what": "Let's go bubble"
+   },
+   {
+    "t": 41.125,
+    "kind": "swish",
+    "gain": 0.3,
+    "what": "pup walks"
+   },
+   {
+    "t": 43.3,
+    "kind": "swish",
+    "gain": 0.3,
+    "what": "cut to play"
+   },
+   {
+    "t": 43.35,
+    "kind": "pop",
+    "freq": 560,
+    "gain": 0.4,
+    "what": "Play with me"
+   },
+   {
+    "t": 45.5,
     "kind": "whoosh",
     "dur": 0.4,
     "gain": 0.4,
     "what": "end card"
    },
    {
-    "t": 33.067,
+    "t": 46.167,
     "kind": "pop",
     "freq": 480,
-    "gain": 0.55,
+    "gain": 0.5,
     "what": "button"
    },
    {
-    "t": 33.333,
+    "t": 46.433,
     "kind": "chime",
-    "gain": 0.35,
+    "gain": 0.32,
     "what": "sign off"
    }
   ]
@@ -664,28 +796,58 @@
    "from": "Epidemic Sound"
   },
   {
-   "id": "assets/gen-wire.mp4",
-   "name": "gen-wire.mp4",
+   "id": "assets/s7-wire.mp4",
+   "name": "s7-wire.mp4",
    "type": "video",
-   "from": "demo export (generate), 0.5s to 2.1s"
+   "from": "demo export (generate 0.5s)"
   },
   {
-   "id": "assets/gen-sheet.mp4",
-   "name": "gen-sheet.mp4",
+   "id": "assets/s7-workflow.mp4",
+   "name": "s7-workflow.mp4",
    "type": "video",
-   "from": "demo export (generate), 13.2s to 14.75s, played at 0.7x"
+   "from": "demo export (generate 5.6s, cropped to the workflow)"
   },
   {
-   "id": "assets/library.mp4",
-   "name": "library.mp4",
+   "id": "assets/s7-sheet.mp4",
+   "name": "s7-sheet.mp4",
    "type": "video",
-   "from": "demo export (lectures), 0.85s to 1.27s, cropped to the Library window, half speed, then held"
+   "from": "demo export (generate 12.95s, 0.65x)"
   },
   {
-   "id": "assets/buddy.mp4",
-   "name": "buddy.mp4",
+   "id": "assets/s9-library.mp4",
+   "name": "s9-library.mp4",
    "type": "video",
-   "from": "demo export (study buddy), 8.8s to 10.5s"
+   "from": "demo export (lectures 0.85s, 0.67x)"
+  },
+  {
+   "id": "assets/s9-added.mp4",
+   "name": "s9-added.mp4",
+   "type": "video",
+   "from": "demo export (lectures 7.9s)"
+  },
+  {
+   "id": "assets/s9-lecture.mp4",
+   "name": "s9-lecture.mp4",
+   "type": "video",
+   "from": "demo export (lectures 10.85s, 0.64x)"
+  },
+  {
+   "id": "assets/s10-tap.mp4",
+   "name": "s10-tap.mp4",
+   "type": "video",
+   "from": "demo export (study buddy 2.4s)"
+  },
+  {
+   "id": "assets/s10-walk.mp4",
+   "name": "s10-walk.mp4",
+   "type": "video",
+   "from": "demo export (study buddy 4.57s)"
+  },
+  {
+   "id": "assets/s10-play.mp4",
+   "name": "s10-play.mp4",
+   "type": "video",
+   "from": "demo export (study buddy 8.75s, 0.82x)"
   }
  ],
  "scenes": [
@@ -1191,7 +1353,7 @@
    "name": "AI study guide",
    "t": [
     21.5,
-    25.3
+    28.05
    ],
    "els": [
     {
@@ -1199,7 +1361,7 @@
      "label": "App footage",
      "t": [
       21.5,
-      25.3
+      28.05
      ],
      "box": [
       12.5,
@@ -1207,12 +1369,12 @@
       75,
       75
      ],
-     "src": "public/gen-wire.mp4 + public/gen-sheet.mp4",
+     "src": "public/s7-wire.mp4, s7-workflow.mp4, s7-sheet.mp4",
      "props": {
       "motion": {
        "type": "motion",
-       "label": "Shot",
-       "v": "Real Reef capture. Shot 1 (to 23.1s): a template node wired to the lecture, Generate ready. Shot 2: the AI's Statistics Formula Sheet appears beside it, gentle push in"
+       "label": "Shots",
+       "v": "Real Reef capture, cuts on 23.1s and 25.3s: template wired to the lecture, the whole workflow while the AI card writes, then the Statistics Formula Sheet"
       }
      }
     },
@@ -1221,7 +1383,7 @@
      "label": "Caption",
      "t": [
       21.7,
-      25.3
+      28.05
      ],
      "box": [
       15,
@@ -1254,16 +1416,16 @@
    "id": "S8",
    "name": "Flashcards",
    "t": [
-    25.3,
-    29.125
+    28.05,
+    32.4
    ],
    "els": [
     {
      "id": "flash",
      "label": "Flashcard",
      "t": [
-      25.3,
-      29.125
+      28.05,
+      32.4
      ],
      "box": [
       31,
@@ -1296,7 +1458,27 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "Card stack deals in, top card flips to the answer, source chip pops"
+       "v": "Deck deals in, card flips on the 29.1s hit, source pops, next card slides in on 30.75s and flips on 31.8s"
+      },
+      "q2": {
+       "type": "longtext",
+       "label": "Question 2",
+       "v": "What are the folds of the inner membrane called?"
+      },
+      "a2": {
+       "type": "text",
+       "label": "Answer 2",
+       "v": "Cristae"
+      },
+      "source2": {
+       "type": "text",
+       "label": "Source 2",
+       "v": "Source: p. 13 of your upload"
+      },
+      "count2": {
+       "type": "text",
+       "label": "Counter 2",
+       "v": "2 of 24"
       }
      }
     },
@@ -1304,8 +1486,8 @@
      "id": "s8cap",
      "label": "Caption",
      "t": [
-      25.5,
-      29.125
+      28.25,
+      32.4
      ],
      "box": [
       15,
@@ -1336,18 +1518,18 @@
   },
   {
    "id": "S9",
-   "name": "Roadmap and buddy",
+   "name": "Free lectures",
    "t": [
-    29.125,
-    32.4
+    32.4,
+    38.95
    ],
    "els": [
     {
-     "id": "extras",
+     "id": "lectures",
      "label": "App footage",
      "t": [
-      29.125,
-      32.4
+      32.4,
+      38.95
      ],
      "box": [
       12.5,
@@ -1355,17 +1537,12 @@
       75,
       75
      ],
-     "src": "public/library.mp4 + public/buddy.mp4",
+     "src": "public/s9-library.mp4, s9-added.mp4, s9-lecture.mp4",
      "props": {
       "motion": {
        "type": "motion",
-       "label": "Shot",
-       "v": "Real Reef capture. Shot 1 (to 30.725s): Library, Course roadmap tab. Shot 2: the study buddy pup plays with its ball"
-      },
-      "badge": {
-       "type": "text",
-       "label": "Badge on the pup",
-       "v": "New: study buddy"
+       "label": "Shots",
+       "v": "Real Reef capture, cuts on 35.1s and 36.775s: Library from Course roadmap to Lecture card, a lecture added to the canvas, then the lecture playing beside its notes"
       }
      }
     },
@@ -1373,8 +1550,8 @@
      "id": "s9cap",
      "label": "Caption",
      "t": [
-      29.325,
-      32.4
+      32.6,
+      38.95
      ],
      "box": [
       15,
@@ -1387,7 +1564,76 @@
       "text": {
        "type": "text",
        "label": "Text",
-       "v": "plus a course roadmap and a new study buddy."
+       "v": "free lectures open right next to your notes."
+      },
+      "hl": {
+       "type": "text",
+       "label": "Highlighted words",
+       "v": "right next to your notes."
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Words appear one by one, highlighter sweeps under the highlighted words"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S10",
+   "name": "New study buddy",
+   "t": [
+    38.95,
+    45.5
+   ],
+   "els": [
+    {
+     "id": "buddy",
+     "label": "App footage",
+     "t": [
+      38.95,
+      45.5
+     ],
+     "box": [
+      12.5,
+      4.4,
+      75,
+      75
+     ],
+     "src": "public/s10-tap.mp4, s10-walk.mp4, s10-play.mp4",
+     "props": {
+      "badge": {
+       "type": "text",
+       "label": "Badge",
+       "v": "New: study buddy"
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Shots",
+       "v": "Real Reef capture, cuts on 41.125s and 43.3s: Tap me, Let's go as it walks off, Play with me with the ball"
+      }
+     }
+    },
+    {
+     "id": "s10cap",
+     "label": "Caption",
+     "t": [
+      39.15,
+      45.5
+     ],
+     "box": [
+      15,
+      85,
+      70,
+      9
+     ],
+     "src": "src/Caption.tsx",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "and say hi to your new study buddy."
       },
       "hl": {
        "type": "text",
@@ -1404,19 +1650,19 @@
    ]
   },
   {
-   "id": "S10",
+   "id": "S11",
    "name": "End card",
    "t": [
-    32.4,
-    37.0
+    45.5,
+    50.0
    ],
    "els": [
     {
      "id": "end",
      "label": "End card",
      "t": [
-      32.4,
-      37.0
+      45.5,
+      50.0
      ],
      "box": [
       25,

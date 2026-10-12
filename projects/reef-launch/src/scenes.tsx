@@ -187,7 +187,7 @@ export const Meet: React.FC = () => {
   );
 };
 
-/* S6, S7 and S9 share the Reef window. */
+/* S6, S7, S9 and S10 share the Reef window. */
 const ReefBar: React.FC = () => (
   <div style={{ display: "flex", alignItems: "center", gap: 26, width: "100%", fontFamily: BODY, fontSize: 16, color: C.gray3 }}>
     <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
@@ -281,7 +281,7 @@ const Badge: React.FC<{ text: string; f: number }> = ({ text, f }) => {
   const p = ramp(f, 2, 12, backOut);
   const [tag, ...rest] = text.split(":");
   return (
-    <div style={{ position: "absolute", left: 40, top: 36, display: "flex", alignItems: "center", gap: 12, padding: "12px 22px 12px 12px", borderRadius: 999,
+    <div style={{ position: "absolute", left: 40, top: 36, display: "flex", alignItems: "center", gap: 12, whiteSpace: "nowrap", padding: "12px 22px 12px 12px", borderRadius: 999,
       background: "#fff", boxShadow: "0 10px 30px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)", fontFamily: BODY, transform: `scale(${p})`, transformOrigin: "0 50%", opacity: Math.min(1, p * 2) }}>
       <span style={{ padding: "6px 14px", borderRadius: 999, background: C.gold, color: C.ink, fontWeight: 700, fontSize: 22, letterSpacing: "0.04em" }}>{tag.toUpperCase()}</span>
       <span style={{ fontSize: 26, fontWeight: 600, color: C.ink }}>{rest.join(":").trim()}</span>
@@ -306,7 +306,6 @@ const Footage: React.FC<{ shots: { src: string; dur: number; rate?: number; push
                 <OffthreadVideo src={staticFile(sh.src)} muted playbackRate={sh.rate ?? 1}
                   style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover",
                     transform: `scale(${1 + ramp(f - from, 0, sh.dur, (t) => t) * (sh.push ?? 0.04)})`, transformOrigin: sh.origin ?? "50% 50%" }} />
-                {sh.badge && <Badge text={sh.badge} f={f - from} />}
               </Sequence>
             );
           })}
@@ -316,61 +315,92 @@ const Footage: React.FC<{ shots: { src: string; dur: number; rate?: number; push
   );
 };
 
-/* S7: the template node gets wired to the lecture, then the AI's formula sheet appears. Cut at 23.1s (frame 48). */
+/* S7: template wired to the lecture, the whole workflow while the AI writes, then the formula sheet. Cuts on 23.1s and 25.3s. */
 export const Generate: React.FC = () => (
   <Footage shots={[
-    { src: "gen-wire.mp4", dur: 48, push: 0.05, origin: "30% 40%" },
-    { src: "gen-sheet.mp4", dur: 66, rate: 0.7, push: 0.08, origin: "62% 80%" },
+    { src: "s7-wire.mp4", dur: 48, push: 0.05, origin: "30% 40%" },
+    { src: "s7-workflow.mp4", dur: 66, push: 0.06, origin: "80% 45%" },
+    { src: "s7-sheet.mp4", dur: 83, push: 0.08, origin: "62% 80%" },
   ]} />
 );
 
-/* S8: a big flashcard flips to its answer on a beat, then shows the page it came from. */
-// Hits after the cut at 25.3s: 25.85 (f16), 26.375 (f32), 26.95 (f49), 27.475 (f65).
+/* S8: two flashcards. Each one flips on a hit and then shows the page it came from. */
+// Hits after the cut at 28.05s: 29.125 (f32), 29.65 (f48), 30.75 (f81), 31.825 (f113).
+const FlashCard: React.FC<{ q: string; a: string; source: string; count: string; flip: number; chip: number }> = ({ q, a, source, count, flip, chip }) => {
+  const face: React.CSSProperties = { position: "absolute", inset: 0, borderRadius: 28, background: "#fff", backfaceVisibility: "hidden", boxShadow: "0 24px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)", padding: "56px 68px", fontFamily: BODY };
+  return (
+    <div style={{ position: "absolute", inset: 0, transformStyle: "preserve-3d", transform: `rotateY(${flip * 180}deg)` }}>
+      <div style={face}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 20, fontWeight: 700, letterSpacing: "0.06em", color: C.maroon }}>
+          <span>QUESTION</span><span style={{ color: C.gray3, letterSpacing: 0, fontWeight: 500 }}>{count}</span>
+        </div>
+        <div style={{ fontFamily: HEAD, fontWeight: 500, fontSize: 60, lineHeight: 1.18, color: C.ink, marginTop: 56 }}>{q}</div>
+      </div>
+      <div style={{ ...face, transform: "rotateY(180deg)" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 20, fontWeight: 700, letterSpacing: "0.06em", color: C.maroon }}>
+          <span>ANSWER</span><span style={{ color: C.gray3, letterSpacing: 0, fontWeight: 500 }}>{count}</span>
+        </div>
+        <div style={{ fontFamily: HEAD, fontStyle: "italic", fontWeight: 600, fontSize: 100, color: C.maroon, marginTop: 52, letterSpacing: "-0.015em" }}>{a}</div>
+        <div style={{ display: "inline-flex", marginTop: 56, padding: "14px 24px", borderRadius: 999, background: C.goldTint, border: "1px solid #F5DC94", fontSize: 26, color: C.ink, transform: `scale(${chip})`, transformOrigin: "0 50%" }}>{source}</div>
+      </div>
+    </div>
+  );
+};
+
 export const Flashcards: React.FC = () => {
   const f = useCurrentFrame();
   const e = el("S8", "flash");
-  const flip = ramp(f, 39, 49);
-  const chip = ramp(f, 58, 66, backOut);
-  const deal = (i: number) => ramp(f, i * 3, 10 + i * 3);
+  const deal = (i: number) => ramp(f, i * 3, 12 + i * 3);
   const W = 960, H = 560, X = (1440 - W) / 2, Y = 100;
-  const face: React.CSSProperties = { position: "absolute", inset: 0, borderRadius: 28, background: "#fff", backfaceVisibility: "hidden", boxShadow: "0 24px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)", padding: "56px 68px", fontFamily: BODY };
+  // card 1 leaves to the left as card 2 slides in from the deck
+  const swap = ramp(f, 70, 81);
+  const out1 = ramp(f, 68, 78);
+  const card = (style: React.CSSProperties, children: React.ReactNode) => (
+    <div style={{ position: "absolute", left: X, top: Y, width: W, height: H, perspective: 2000, ...style }}>{children}</div>
+  );
   return (
     <AbsoluteFill style={dotGrid}>
       {[2, 1].map((i) => (
         <div key={i} style={{ position: "absolute", left: X + i * 16, top: Y + i * 16, width: W, height: H, borderRadius: 28, background: "#fff", boxShadow: "0 0 0 1px rgba(0,0,0,0.06)", opacity: deal(i), transform: `translateY(${(1 - deal(i)) * 80}px)` }} />
       ))}
-      <div style={{ position: "absolute", left: X, top: Y, width: W, height: H, perspective: 2000, opacity: deal(0), transform: `translateY(${(1 - deal(0)) * 80}px)` }}>
-        <div style={{ position: "absolute", inset: 0, transformStyle: "preserve-3d", transform: `rotateY(${flip * 180}deg)` }}>
-          <div style={face}>
-            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 20, fontWeight: 700, letterSpacing: "0.06em", color: C.maroon }}>
-              <span>QUESTION</span><span style={{ color: C.gray3, letterSpacing: 0, fontWeight: 500 }}>{e.v("count")}</span>
-            </div>
-            <div style={{ fontFamily: HEAD, fontWeight: 500, fontSize: 60, lineHeight: 1.18, color: C.ink, marginTop: 56 }}>{e.v("q")}</div>
-          </div>
-          <div style={{ ...face, transform: "rotateY(180deg)" }}>
-            <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: "0.06em", color: C.maroon }}>ANSWER</div>
-            <div style={{ fontFamily: HEAD, fontStyle: "italic", fontWeight: 600, fontSize: 100, color: C.maroon, marginTop: 52, letterSpacing: "-0.015em" }}>{e.v("a")}</div>
-            <div style={{ display: "inline-flex", marginTop: 56, padding: "14px 24px", borderRadius: 999, background: C.goldTint, border: "1px solid #F5DC94", fontSize: 26, color: C.ink, transform: `scale(${chip})`, transformOrigin: "0 50%" }}>{e.v("source")}</div>
-          </div>
-        </div>
+      {f >= 68 && card({ opacity: swap, transform: `translate(${(1 - swap) * 16}px, ${(1 - swap) * 16}px)` },
+        <FlashCard q={e.v("q2")} a={e.v("a2")} source={e.v("source2")} count={e.v("count2")} flip={ramp(f, 104, 113)} chip={ramp(f, 117, 124, backOut)} />)}
+      {out1 < 1 && card({ opacity: deal(0) * (1 - out1), transform: `translate(${-out1 * 900}px, ${(1 - deal(0)) * 80}px) rotate(${-out1 * 8}deg)` },
+        <FlashCard q={e.v("q")} a={e.v("a")} source={e.v("source")} count={e.v("count")} flip={ramp(f, 24, 33)} chip={ramp(f, 46, 54, backOut)} />)}
+    </AbsoluteFill>
+  );
+};
+
+/* S9: free lectures. Library tab, a lecture added to the canvas, the lecture beside its notes. Cuts on 35.1s and 36.775s. */
+export const Lectures: React.FC = () => (
+  <Footage shots={[
+    { src: "s9-library.mp4", dur: 81, push: 0.04, origin: "50% 40%" },
+    { src: "s9-added.mp4", dur: 50, push: 0.05, origin: "60% 30%" },
+    { src: "s9-lecture.mp4", dur: 66, push: 0.06, origin: "70% 40%" },
+  ]} />
+);
+
+/* S10: the new study buddy. Tap me, Let's go, Play with me. Cuts on 41.125s and 43.3s. The NEW badge stays up throughout. */
+export const Buddy: React.FC = () => {
+  const f = useCurrentFrame();
+  return (
+    <AbsoluteFill>
+      <Footage shots={[
+        { src: "s10-tap.mp4", dur: 65, push: 0.04, origin: "70% 60%" },
+        { src: "s10-walk.mp4", dur: 65, push: 0.04, origin: "60% 60%" },
+        { src: "s10-play.mp4", dur: 66, push: 0.05, origin: "70% 55%" },
+      ]} />
+      <div style={{ position: "absolute", left: REEF_WIN.x, top: REEF_WIN.y + 48 }}>
+        <Badge text={el("S10", "buddy").v("badge")} f={f} />
       </div>
     </AbsoluteFill>
   );
 };
 
-/* S9: two real features. Library course roadmap, then the study buddy on the 30.725s cut (frame 48). */
-export const Extras: React.FC = () => (
-  <Footage shots={[
-    // badge text lives in reel.json
-    { src: "library.mp4", dur: 48, push: 0.04, origin: "40% 45%" },
-    { src: "buddy.mp4", dur: 50, push: 0.05, origin: "60% 55%", badge: el("S9", "extras").v("badge") },
-  ]} />
-);
-
-/* S10: end card, cut in on the big 32.4s hit. */
+/* S11: end card, on the 45.5s hit as the music eases into its breakdown. */
 export const EndCard: React.FC = () => {
   const f = useCurrentFrame();
-  const e = el("S10", "end");
+  const e = el("S11", "end");
   const l = ramp(f, 8, 18);
   const b = ramp(f, 14, 26, backOut);
   const s = ramp(f, 22, 32);

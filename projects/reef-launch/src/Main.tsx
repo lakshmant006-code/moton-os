@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { FPS, el, reel, sceneById, sceneFrames } from "./reel";
-import { ByHand, Canvas, Chatbot, EndCard, Extras, Flashcards, Generate, Hook, Meet, Tabs } from "./scenes";
+import { Buddy, ByHand, Canvas, Chatbot, EndCard, Flashcards, Generate, Hook, Lectures, Meet, Tabs } from "./scenes";
 import { Caption, Dock, MenuBar, Shell, Wallpaper, lerp, ramp } from "./ui";
 
 const toMin = (s: string) => {
@@ -16,10 +16,10 @@ const fromMin = (n: number) => {
 };
 
 const SCENES: Record<string, React.FC<{ clock: string }>> = {
-  S1: Hook, S2: Tabs, S3: ByHand, S4: Chatbot, S6: Canvas, S7: Generate, S8: Flashcards, S9: Extras,
+  S1: Hook, S2: Tabs, S3: ByHand, S4: Chatbot, S6: Canvas, S7: Generate, S8: Flashcards, S9: Lectures, S10: Buddy,
 };
-const FULL: Record<string, React.FC> = { S5: Meet, S10: EndCard };
-const IN_SCREEN = [["S1", "S4"], ["S6", "S9"]];
+const FULL: Record<string, React.FC> = { S5: Meet, S11: EndCard };
+const IN_SCREEN = [["S1", "S4"], ["S6", "S10"]];
 
 export const Main: React.FC = () => {
   const f = useCurrentFrame();

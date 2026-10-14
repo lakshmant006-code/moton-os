@@ -1,7 +1,7 @@
 {
  "id": "summer-launch",
  "title": "Summer launch",
- "version": 1,
+ "version": 2,
  "path": "projects/summer-launch",
  "src": "video.mp4",
  "w": 1920,
@@ -130,41 +130,6 @@
     "dur": 0.8
    },
    {
-    "t": 1.62,
-    "kind": "tick",
-    "gain": 0.3,
-    "what": "chip 1",
-    "freq": 900
-   },
-   {
-    "t": 1.74,
-    "kind": "tick",
-    "gain": 0.3,
-    "what": "chip 2",
-    "freq": 1010
-   },
-   {
-    "t": 1.86,
-    "kind": "tick",
-    "gain": 0.3,
-    "what": "chip 3",
-    "freq": 1120
-   },
-   {
-    "t": 1.98,
-    "kind": "tick",
-    "gain": 0.3,
-    "what": "chip 4",
-    "freq": 1230
-   },
-   {
-    "t": 2.1,
-    "kind": "tick",
-    "gain": 0.3,
-    "what": "chip 5",
-    "freq": 1340
-   },
-   {
     "t": 2.1,
     "kind": "air",
     "gain": 0.22,
@@ -172,10 +137,45 @@
     "dur": 1.6
    },
    {
-    "t": 4.35,
-    "kind": "click",
+    "t": 3.8,
+    "kind": "tick",
+    "freq": 900,
+    "gain": 0.28,
+    "what": "row 1 drops"
+   },
+   {
+    "t": 3.9,
+    "kind": "tick",
+    "freq": 1010,
+    "gain": 0.28,
+    "what": "row 2 drops"
+   },
+   {
+    "t": 4.0,
+    "kind": "tick",
+    "freq": 1120,
+    "gain": 0.28,
+    "what": "row 3 drops"
+   },
+   {
+    "t": 4.1,
+    "kind": "tick",
+    "freq": 1230,
+    "gain": 0.28,
+    "what": "row 4 drops"
+   },
+   {
+    "t": 4.2,
+    "kind": "tick",
+    "freq": 1340,
+    "gain": 0.28,
+    "what": "row 5 drops"
+   },
+   {
+    "t": 4.38,
+    "kind": "cardtap",
     "gain": 0.35,
-    "what": "chips line up"
+    "what": "rows land"
    },
    {
     "t": 4.5,
@@ -800,7 +800,7 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "The point bursts into a glowing brand blue orb that loops around, dragging numbered chips 1 to 5 into a column"
+       "v": "The point bursts into a glowing brand blue orb that loops around on its own, then settles at the top of the list"
       }
      }
     }
@@ -877,7 +877,7 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "Chips expand sideways into a five row glass list"
+       "v": "Five blank glass bars drop out of the orb, then stretch sideways into the list"
       }
      }
     }

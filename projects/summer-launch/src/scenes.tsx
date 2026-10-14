@@ -50,7 +50,7 @@ export const Scatter: React.FC<{ t: number }> = ({ t }) => {
 type Row = { who: string; task: string; due: string };
 const RowView: React.FC<{ r: Row; i: number; w: number; o: number }> = ({ r, i, w, o }) => (
   <div style={{ position: "absolute", left: 0, top: -L.card.row / 2 + 8, width: w, height: L.card.row - 16, display: "flex", alignItems: "center", gap: 18, padding: "0 18px", borderRadius: 14, background: "#fff", boxShadow: "0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.05)", overflow: "hidden", whiteSpace: "nowrap", fontFamily: UI }}>
-    <span style={{ width: 14, fontSize: 20, fontWeight: 600, color: C.gray }}>{i + 1}</span>
+    <span style={{ width: 14, fontSize: 20, fontWeight: 600, color: C.gray, opacity: o }}>{i + 1}</span>
     <div style={{ display: "flex", alignItems: "center", gap: 18, opacity: o, flex: 1 }}>
       <Avatar name={r.who} size={30} />
       <span style={{ fontSize: 20, fontWeight: 700, color: C.ink }}>{r.who}</span>
@@ -60,11 +60,10 @@ const RowView: React.FC<{ r: Row; i: number; w: number; o: number }> = ({ r, i, 
   </div>
 );
 
-/* Chips 1-5 trail the orb, then line up into a column and stretch into rows. */
+/* The orb settles at the top of the list and five blank bars drop out of it, then stretch into rows. */
 export const Queue: React.FC<{ t: number; orbAt: (t: number) => { x: number; y: number } }> = ({ t, orbAt }) => {
   const e = el("S3", "queue");
   const rows = e.v<Row[]>("rows");
-  const settle = ramp(t, 3.7, 4.35, easeInOut);
   const grow = ramp(t, 4.5, 5.25, easeInOut);
   const content = ramp(t, 5.0, 5.5);
   const dim = 1 - 0.65 * ramp(t, 8.8, 9.2);
@@ -72,14 +71,14 @@ export const Queue: React.FC<{ t: number; orbAt: (t: number) => { x: number; y: 
   const pillIn = ramp(t, 6.2, 6.7, backOut);
   const pill = el("S4", "pill");
   const tapped = ramp(t, 8.6, 8.75);
-  if (t < 1.6 || t > 15.4) return null;
+  if (t < 3.7 || t > 15.4) return null;
   return (
     <div style={{ position: "absolute", inset: 0, opacity: dim * (1 - out) }}>
       <div style={{ position: "absolute", left: L.card.x - 8, top: L.card.top - 8, width: L.card.w + 16, height: L.card.pad * 2 + L.card.row * 5 + 16, ...glass(0.35), opacity: content }} />
       {rows.map((r, i) => {
-        const appear = ramp(t, 1.6 + i * 0.12, 1.8 + i * 0.12, backOut);
-        const p = orbAt(t - 0.11 * (i + 1));
-        const cx = lerp(p.x - 26, L.card.x + 16, settle), cy = lerp(p.y + 34, rowY(i), settle);
+        const appear = ramp(t, 3.75 + i * 0.1, 3.95 + i * 0.1, backOut);
+        const drop = ramp(t, 3.75 + i * 0.1, 4.3 + i * 0.1);
+        const cx = L.card.x + 16, cy = lerp(262, rowY(i), drop);
         const w = lerp(52, L.card.w - 32, grow);
         return (
           <div key={i} style={{ position: "absolute", left: cx, top: cy, transform: `scale(${appear})`, transformOrigin: "26px 0" }}>

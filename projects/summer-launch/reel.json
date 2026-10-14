@@ -1,0 +1,1342 @@
+{
+ "id": "summer-launch",
+ "title": "Summer launch",
+ "version": 1,
+ "path": "projects/summer-launch",
+ "src": "video.mp4",
+ "w": 1920,
+ "h": 1080,
+ "fps": 30,
+ "duration": 40.0,
+ "reference": "Uploaded sales assistant launch video (format only). Copy, UI and brand are Summer's own (lakshmant006-code/time-manager)",
+ "brand": {
+  "colors": [
+   {
+    "id": "blue",
+    "name": "Brand blue",
+    "v": "#1900ff"
+   },
+   {
+    "id": "navy",
+    "name": "Navy",
+    "v": "#212d5c"
+   },
+   {
+    "id": "void",
+    "name": "Void",
+    "v": "#05070f"
+   },
+   {
+    "id": "peri",
+    "name": "Periwinkle",
+    "v": "#aab3e8"
+   },
+   {
+    "id": "white",
+    "name": "White",
+    "v": "#ffffff"
+   }
+  ],
+  "fonts": [
+   {
+    "id": "head",
+    "name": "Headlines",
+    "v": "Avant Gothic"
+   },
+   {
+    "id": "ui",
+    "name": "UI",
+    "v": "Inter"
+   }
+  ],
+  "logo": "assets/logo-dark.png"
+ },
+ "audio": {
+  "music": "assets/music.mp3",
+  "bpm": 110,
+  "drop": 15.24,
+  "musicVol": 0.6,
+  "sfxVol": 0.8,
+  "sfx": "sfx.wav",
+  "sfxCues": [
+   {
+    "t": 0.12,
+    "kind": "tick",
+    "gain": 0.16,
+    "what": "dots",
+    "freq": 1500
+   },
+   {
+    "t": 0.31,
+    "kind": "tick",
+    "gain": 0.16,
+    "what": "dots",
+    "freq": 1620
+   },
+   {
+    "t": 0.47,
+    "kind": "tick",
+    "gain": 0.16,
+    "what": "dots",
+    "freq": 1740
+   },
+   {
+    "t": 0.66,
+    "kind": "tick",
+    "gain": 0.16,
+    "what": "dots",
+    "freq": 1860
+   },
+   {
+    "t": 0.8,
+    "kind": "tick",
+    "gain": 0.16,
+    "what": "dots",
+    "freq": 1980
+   },
+   {
+    "t": 0.85,
+    "kind": "riser",
+    "gain": 0.2,
+    "what": "dots converge",
+    "dur": 0.6
+   },
+   {
+    "t": 0.97,
+    "kind": "tick",
+    "gain": 0.16,
+    "what": "dots",
+    "freq": 2100
+   },
+   {
+    "t": 1.12,
+    "kind": "tick",
+    "gain": 0.16,
+    "what": "dots",
+    "freq": 2220
+   },
+   {
+    "t": 1.5,
+    "kind": "pop",
+    "gain": 0.55,
+    "what": "orb appears",
+    "freq": 280
+   },
+   {
+    "t": 1.52,
+    "kind": "shimmer",
+    "gain": 0.2,
+    "what": "orb glow",
+    "dur": 0.8
+   },
+   {
+    "t": 1.62,
+    "kind": "tick",
+    "gain": 0.3,
+    "what": "chip 1",
+    "freq": 900
+   },
+   {
+    "t": 1.74,
+    "kind": "tick",
+    "gain": 0.3,
+    "what": "chip 2",
+    "freq": 1010
+   },
+   {
+    "t": 1.86,
+    "kind": "tick",
+    "gain": 0.3,
+    "what": "chip 3",
+    "freq": 1120
+   },
+   {
+    "t": 1.98,
+    "kind": "tick",
+    "gain": 0.3,
+    "what": "chip 4",
+    "freq": 1230
+   },
+   {
+    "t": 2.1,
+    "kind": "tick",
+    "gain": 0.3,
+    "what": "chip 5",
+    "freq": 1340
+   },
+   {
+    "t": 2.1,
+    "kind": "air",
+    "gain": 0.22,
+    "what": "orb loops",
+    "dur": 1.6
+   },
+   {
+    "t": 4.35,
+    "kind": "click",
+    "gain": 0.35,
+    "what": "chips line up"
+   },
+   {
+    "t": 4.5,
+    "kind": "swish",
+    "gain": 0.35,
+    "what": "rows stretch"
+   },
+   {
+    "t": 5.05,
+    "kind": "tick",
+    "gain": 0.2,
+    "what": "row text",
+    "freq": 1300
+   },
+   {
+    "t": 6.22,
+    "kind": "pop",
+    "gain": 0.4,
+    "what": "pill",
+    "freq": 520
+   },
+   {
+    "t": 6.7,
+    "kind": "air",
+    "gain": 0.12,
+    "what": "orb rolls",
+    "dur": 1.5
+   },
+   {
+    "t": 8.6,
+    "kind": "click",
+    "gain": 0.55,
+    "what": "tap Start"
+   },
+   {
+    "t": 8.62,
+    "kind": "pop",
+    "gain": 0.3,
+    "what": "Start",
+    "freq": 700
+   },
+   {
+    "t": 9.0,
+    "kind": "whoosh",
+    "gain": 0.35,
+    "what": "palette rises",
+    "dur": 0.4
+   },
+   {
+    "t": 9.5,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 9.556,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 9.611,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 9.667,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 9.722,
+    "kind": "space",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 9.778,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 9.833,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 9.889,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 9.944,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.0,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.056,
+    "kind": "space",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.111,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.167,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.222,
+    "kind": "space",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.278,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.333,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.389,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.444,
+    "kind": "space",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.5,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.556,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.611,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.667,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.722,
+    "kind": "space",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.778,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.833,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.889,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 10.944,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 11.0,
+    "kind": "space",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 11.056,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 11.111,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 11.167,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 11.222,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 11.278,
+    "kind": "key",
+    "gain": 0.3,
+    "what": "typing"
+   },
+   {
+    "t": 12.3,
+    "kind": "tick",
+    "gain": 0.3,
+    "what": "select word",
+    "freq": 1800
+   },
+   {
+    "t": 12.95,
+    "kind": "key",
+    "gain": 0.4,
+    "what": "delete"
+   },
+   {
+    "t": 13.1,
+    "kind": "key",
+    "gain": 0.32,
+    "what": "typing week"
+   },
+   {
+    "t": 13.191,
+    "kind": "key",
+    "gain": 0.32,
+    "what": "typing week"
+   },
+   {
+    "t": 13.282,
+    "kind": "key",
+    "gain": 0.32,
+    "what": "typing week"
+   },
+   {
+    "t": 13.373,
+    "kind": "key",
+    "gain": 0.32,
+    "what": "typing week"
+   },
+   {
+    "t": 14.6,
+    "kind": "click",
+    "gain": 0.55,
+    "what": "tap send"
+   },
+   {
+    "t": 14.65,
+    "kind": "send",
+    "gain": 0.45,
+    "what": "send"
+   },
+   {
+    "t": 15.24,
+    "kind": "whoosh",
+    "gain": 0.55,
+    "what": "burst on the drop",
+    "dur": 0.5
+   },
+   {
+    "t": 15.24,
+    "kind": "pop",
+    "gain": 0.5,
+    "what": "burst",
+    "freq": 220
+   },
+   {
+    "t": 15.5,
+    "kind": "air",
+    "gain": 0.18,
+    "what": "swarm",
+    "dur": 2.6
+   },
+   {
+    "t": 18.2,
+    "kind": "swish",
+    "gain": 0.35,
+    "what": "sorting"
+   },
+   {
+    "t": 19.05,
+    "kind": "cardtap",
+    "gain": 0.35,
+    "what": "chips settle"
+   },
+   {
+    "t": 19.13,
+    "kind": "cardtap",
+    "gain": 0.35,
+    "what": "chips settle"
+   },
+   {
+    "t": 19.21,
+    "kind": "cardtap",
+    "gain": 0.35,
+    "what": "chips settle"
+   },
+   {
+    "t": 19.3,
+    "kind": "swish",
+    "gain": 0.32,
+    "what": "rows stretch"
+   },
+   {
+    "t": 19.95,
+    "kind": "pop",
+    "gain": 0.38,
+    "what": "pill",
+    "freq": 520
+   },
+   {
+    "t": 21.2,
+    "kind": "click",
+    "gain": 0.55,
+    "what": "tap Start"
+   },
+   {
+    "t": 21.22,
+    "kind": "pop",
+    "gain": 0.3,
+    "what": "Start",
+    "freq": 700
+   },
+   {
+    "t": 21.5,
+    "kind": "cardslide",
+    "gain": 0.5,
+    "what": "card 1 in"
+   },
+   {
+    "t": 21.7,
+    "kind": "cardtap",
+    "gain": 0.4,
+    "what": "card 1 lands"
+   },
+   {
+    "t": 22.85,
+    "kind": "click",
+    "gain": 0.5,
+    "what": "tap action 1"
+   },
+   {
+    "t": 22.87,
+    "kind": "reveal",
+    "gain": 0.32,
+    "what": "done 1"
+   },
+   {
+    "t": 23.3,
+    "kind": "swish",
+    "gain": 0.38,
+    "what": "card 1 away"
+   },
+   {
+    "t": 23.675,
+    "kind": "cardslide",
+    "gain": 0.5,
+    "what": "card 2 in"
+   },
+   {
+    "t": 23.875,
+    "kind": "cardtap",
+    "gain": 0.4,
+    "what": "card 2 lands"
+   },
+   {
+    "t": 25.025,
+    "kind": "click",
+    "gain": 0.5,
+    "what": "tap action 2"
+   },
+   {
+    "t": 25.045,
+    "kind": "reveal",
+    "gain": 0.32,
+    "what": "done 2"
+   },
+   {
+    "t": 25.475,
+    "kind": "swish",
+    "gain": 0.38,
+    "what": "card 2 away"
+   },
+   {
+    "t": 25.85,
+    "kind": "cardslide",
+    "gain": 0.5,
+    "what": "card 3 in"
+   },
+   {
+    "t": 26.05,
+    "kind": "cardtap",
+    "gain": 0.4,
+    "what": "card 3 lands"
+   },
+   {
+    "t": 27.2,
+    "kind": "click",
+    "gain": 0.5,
+    "what": "tap action 3"
+   },
+   {
+    "t": 27.22,
+    "kind": "reveal",
+    "gain": 0.32,
+    "what": "done 3"
+   },
+   {
+    "t": 27.65,
+    "kind": "swish",
+    "gain": 0.38,
+    "what": "card 3 away"
+   },
+   {
+    "t": 28.05,
+    "kind": "pop",
+    "gain": 0.55,
+    "what": "week closed",
+    "freq": 360
+   },
+   {
+    "t": 28.08,
+    "kind": "chime",
+    "gain": 0.4,
+    "what": "week closed"
+   },
+   {
+    "t": 28.12,
+    "kind": "shimmer",
+    "gain": 0.3,
+    "what": "burst",
+    "dur": 1.2
+   },
+   {
+    "t": 30.225,
+    "kind": "air",
+    "gain": 0.3,
+    "what": "into the ring",
+    "dur": 2.0
+   },
+   {
+    "t": 30.75,
+    "kind": "chip",
+    "gain": 0.45,
+    "what": "goal checked"
+   },
+   {
+    "t": 31.3,
+    "kind": "chip",
+    "gain": 0.45,
+    "what": "goal checked"
+   },
+   {
+    "t": 31.825,
+    "kind": "chip",
+    "gain": 0.45,
+    "what": "goal checked"
+   },
+   {
+    "t": 32.05,
+    "kind": "whoosh",
+    "gain": 0.35,
+    "what": "ring clears",
+    "dur": 0.45
+   },
+   {
+    "t": 32.15,
+    "kind": "chip",
+    "gain": 0.45,
+    "what": "goal checked"
+   },
+   {
+    "t": 32.9,
+    "kind": "zip",
+    "gain": 0.16,
+    "what": "line draws the arch",
+    "dur": 2.55
+   },
+   {
+    "t": 35.675,
+    "kind": "pop",
+    "gain": 0.55,
+    "what": "arch fills",
+    "freq": 300
+   },
+   {
+    "t": 35.7,
+    "kind": "chime",
+    "gain": 0.38,
+    "what": "Summer"
+   },
+   {
+    "t": 36.8,
+    "kind": "pop",
+    "gain": 0.35,
+    "what": "badge",
+    "freq": 560
+   },
+   {
+    "t": 37.2,
+    "kind": "pop",
+    "gain": 0.42,
+    "what": "Get a Demo",
+    "freq": 460
+   }
+  ],
+  "note": "\"Be My Lover\" (Instrumental) by I'MIN, Epidemic Sound, trimmed from 1.16s; the drop at 15.24s bursts the list"
+ },
+ "assets": [
+  {
+   "id": "assets/logo-dark.png",
+   "name": "logo-dark.png",
+   "type": "image",
+   "from": "time-manager repo (brand/)"
+  },
+  {
+   "id": "assets/music.mp3",
+   "name": "music.mp3",
+   "type": "audio",
+   "from": "Epidemic Sound"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "S1",
+   "name": "Scattered hours",
+   "t": [
+    0,
+    1.5
+   ],
+   "els": [
+    {
+     "id": "dots",
+     "label": "Dots",
+     "t": [
+      0,
+      1.5
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:Scatter",
+     "props": {
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Loose dots dart around the dark void, then collapse into one point"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S2",
+   "name": "The orb",
+   "t": [
+    1.5,
+    4.5
+   ],
+   "els": [
+    {
+     "id": "orb",
+     "label": "Orb",
+     "t": [
+      1.5,
+      4.5
+     ],
+     "box": [
+      40,
+      30,
+      20,
+      40
+     ],
+     "src": "src/scenes.tsx:Orb",
+     "props": {
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "The point bursts into a glowing brand blue orb that loops around, dragging numbered chips 1 to 5 into a column"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S3",
+   "name": "This week's queue",
+   "t": [
+    4.5,
+    6.2
+   ],
+   "els": [
+    {
+     "id": "queue",
+     "label": "Timesheet queue",
+     "t": [
+      4.5,
+      9.0
+     ],
+     "box": [
+      21,
+      26,
+      58,
+      40
+     ],
+     "src": "src/scenes.tsx:Queue",
+     "props": {
+      "rows": {
+       "type": "list",
+       "label": "Rows",
+       "cols": [
+        {
+         "k": "who",
+         "type": "text"
+        },
+        {
+         "k": "task",
+         "type": "text"
+        },
+        {
+         "k": "due",
+         "type": "text"
+        }
+       ],
+       "v": [
+        {
+         "who": "J. Smith",
+         "task": "Riverside Apartments, Phase 2 timesheet",
+         "due": "Due today"
+        },
+        {
+         "who": "P. Gibbons",
+         "task": "Timesheet for week of Aug 31",
+         "due": "Due today"
+        },
+        {
+         "who": "Riverside Crew",
+         "task": "Approve 32.4 hours",
+         "due": "Due tomorrow"
+        },
+        {
+         "who": "H. Scorpio",
+         "task": "Desert Ridge Office Park assignment",
+         "due": "Due in 2 days"
+        },
+        {
+         "who": "Acme Steel Corp",
+         "task": "Invoice INV-2044",
+         "due": "Due in 2 days"
+        }
+       ]
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Chips expand sideways into a five row glass list"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S4",
+   "name": "Start",
+   "t": [
+    6.2,
+    9.0
+   ],
+   "els": [
+    {
+     "id": "pill",
+     "label": "Goal pill",
+     "t": [
+      6.2,
+      9.0
+     ],
+     "box": [
+      28,
+      70,
+      44,
+      6
+     ],
+     "src": "src/scenes.tsx:Queue",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "Close out this week's timesheets"
+      },
+      "cta": {
+       "type": "text",
+       "label": "Button",
+       "v": "Start"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S5",
+   "name": "Ask Summer",
+   "t": [
+    9.0,
+    15.24
+   ],
+   "els": [
+    {
+     "id": "ask",
+     "label": "Command palette",
+     "t": [
+      9.0,
+      15.24
+     ],
+     "box": [
+      22,
+      40,
+      56,
+      16
+     ],
+     "src": "src/scenes.tsx:Ask",
+     "props": {
+      "first": {
+       "type": "text",
+       "label": "Typed first",
+       "v": "Show hours we can bill this month"
+      },
+      "from": {
+       "type": "text",
+       "label": "Word replaced",
+       "v": "month"
+      },
+      "to": {
+       "type": "text",
+       "label": "Replacement",
+       "v": "week"
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Palette rises over the dimmed list, types, the orb scrubs out the last word and it retypes highlighted, then send"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S6",
+   "name": "Sorting",
+   "t": [
+    15.24,
+    19.3
+   ],
+   "els": [
+    {
+     "id": "swarm",
+     "label": "Chip swarm",
+     "t": [
+      15.24,
+      19.3
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:Swarm",
+     "props": {
+      "chips": {
+       "type": "list",
+       "label": "Chips",
+       "cols": [
+        {
+         "k": "name",
+         "type": "text"
+        }
+       ],
+       "v": [
+        {
+         "name": "Acme Steel Corp"
+        },
+        {
+         "name": "Initech Builders"
+        },
+        {
+         "name": "Globex Development"
+        },
+        {
+         "name": "Riverside Apartments, Phase 2"
+        },
+        {
+         "name": "Desert Ridge Office Park"
+        },
+        {
+         "name": "Shop Drawing Review"
+        },
+        {
+         "name": "Panel Layout (Vertex BD)"
+        },
+        {
+         "name": "J. Smith"
+        },
+        {
+         "name": "P. Gibbons"
+        },
+        {
+         "name": "H. Scorpio"
+        },
+        {
+         "name": "Riverside Crew"
+        },
+        {
+         "name": "OSHA 30"
+        }
+       ]
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "On the drop the list bursts into orbiting chips that shuffle, then all but three fall away"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S7",
+   "name": "Ranked",
+   "t": [
+    19.3,
+    21.5
+   ],
+   "els": [
+    {
+     "id": "ranked",
+     "label": "Ranked list",
+     "t": [
+      19.3,
+      21.5
+     ],
+     "box": [
+      21,
+      30,
+      58,
+      32
+     ],
+     "src": "src/scenes.tsx:Ranked",
+     "props": {
+      "rows": {
+       "type": "list",
+       "label": "Rows",
+       "cols": [
+        {
+         "k": "who",
+         "type": "text"
+        },
+        {
+         "k": "task",
+         "type": "text"
+        },
+        {
+         "k": "due",
+         "type": "text"
+        }
+       ],
+       "v": [
+        {
+         "who": "Acme Steel Corp",
+         "task": "Bill 12.0 unbilled hours",
+         "due": "Today"
+        },
+        {
+         "who": "Desert Ridge Office Park",
+         "task": "Fix a timer left running",
+         "due": "Today"
+        },
+        {
+         "who": "Acme Steel Corp",
+         "task": "Chase INV-2044",
+         "due": "Today"
+        }
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S8",
+   "name": "Do it",
+   "t": [
+    21.5,
+    28.05
+   ],
+   "els": [
+    {
+     "id": "cards",
+     "label": "Action cards",
+     "t": [
+      21.5,
+      28.05
+     ],
+     "box": [
+      31,
+      22,
+      38,
+      50
+     ],
+     "src": "src/scenes.tsx:Cards",
+     "props": {
+      "cards": {
+       "type": "list",
+       "label": "Cards",
+       "cols": [
+        {
+         "k": "who",
+         "type": "text"
+        },
+        {
+         "k": "ref",
+         "type": "text"
+        },
+        {
+         "k": "title",
+         "type": "text"
+        },
+        {
+         "k": "source",
+         "type": "text"
+        },
+        {
+         "k": "body",
+         "type": "text"
+        },
+        {
+         "k": "cta",
+         "type": "text"
+        }
+       ],
+       "v": [
+        {
+         "who": "Acme Steel Corp",
+         "ref": "PR-101",
+         "title": "12 hours on Riverside Apartments haven't been billed.",
+         "source": "Timesheet",
+         "body": "Panel Layout (Vertex BD), 12.0 h, ready for INV-2051",
+         "cta": "Add to invoice"
+        },
+        {
+         "who": "Desert Ridge Office Park",
+         "ref": "PR-102",
+         "title": "J. Smith's timer ran until 6:42 PM. Trim it to 5:00?",
+         "source": "Time entry",
+         "body": "Shop Drawing Review, Aug 25, 1:30 PM to 5:00 PM",
+         "cta": "Fix entry"
+        },
+        {
+         "who": "Acme Steel Corp",
+         "ref": "INV-2044",
+         "title": "$21,150 has been outstanding since Sep 1.",
+         "source": "Invoices",
+         "body": "Hi Jane, a quick reminder that INV-2044 is due. Thanks!",
+         "cta": "Send reminder"
+        }
+       ]
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Each card slides in on a beat, the orb taps its action, the button turns into a check and the card flies off"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S9",
+   "name": "Week closed",
+   "t": [
+    28.05,
+    30.225
+   ],
+   "els": [
+    {
+     "id": "done",
+     "label": "Done card",
+     "t": [
+      28.05,
+      30.225
+     ],
+     "box": [
+      40,
+      40,
+      20,
+      14
+     ],
+     "src": "src/scenes.tsx:Done",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "Week closed"
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Blue card bursts into a ring of dots"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S10",
+   "name": "Every goal",
+   "t": [
+    30.225,
+    32.4
+   ],
+   "els": [
+    {
+     "id": "ring",
+     "label": "Ring chart",
+     "t": [
+      30.225,
+      32.4
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:Ring",
+     "props": {
+      "goals": {
+       "type": "list",
+       "label": "Goals",
+       "cols": [
+        {
+         "k": "name",
+         "type": "text"
+        }
+       ],
+       "v": [
+        {
+         "name": "184.5 hours logged"
+        },
+        {
+         "name": "Timesheets approved"
+        },
+        {
+         "name": "Invoices sent"
+        },
+        {
+         "name": "Riverside Crew 96% on time"
+        }
+       ]
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Camera pulls back through a giant ring chart while goal pills check off on the beats"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S11",
+   "name": "Summer",
+   "t": [
+    32.4,
+    40.0
+   ],
+   "els": [
+    {
+     "id": "lockup",
+     "label": "Logo",
+     "t": [
+      32.4,
+      40.0
+     ],
+     "box": [
+      35,
+      30,
+      30,
+      30
+     ],
+     "src": "src/scenes.tsx:Lockup",
+     "props": {
+      "line": {
+       "type": "text",
+       "label": "Tagline",
+       "v": "Manage projects smarter. Track time efficiently."
+      },
+      "badge": {
+       "type": "text",
+       "label": "Badge",
+       "v": "Built for UBC BIM Services"
+      },
+      "cta": {
+       "type": "text",
+       "label": "Button",
+       "v": "Get a Demo"
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "One dot draws the arch outline through the quiet bars, the arch fills on the 35.675s hit, then the wordmark and button"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "notes": []
+}

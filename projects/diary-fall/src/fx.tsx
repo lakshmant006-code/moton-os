@@ -1,0 +1,214 @@
+import React from "react";
+import { AbsoluteFill, Easing, Img, interpolate, staticFile } from "remotion";
+
+export const W = 1920;
+export const H = 936;
+/* Diary page look: black pen on white ruled paper, nothing else. */
+export const C = { ink: "#111111", paper: "#fdfdfb", rule: "#cdcdcd" };
+export const HAND = "'Patrick Hand', 'Comic Sans MS', sans-serif";
+
+export const easeOut = Easing.bezier(0.16, 1, 0.3, 1);
+export const easeInOut = Easing.bezier(0.65, 0, 0.35, 1);
+export const easeIn = Easing.bezier(0.7, 0, 0.84, 0);
+export const backOut = Easing.bezier(0.34, 1.56, 0.64, 1);
+export const ramp = (t: number, a: number, b: number, ease = easeInOut) =>
+  interpolate(t, [a, b], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease });
+export const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
+
+/* Deterministic randoms, so every render of a frame is identical. */
+export const rnd = (seed: number) => {
+  const x = Math.sin(seed * 127.1 + 311.7) * 43758.5453;
+  return x - Math.floor(x);
+};
+
+/* Pixel sizes of the prepared cutouts in public/ (made by tools/prep_art.py). */
+export const IMG = {
+  front: [1534, 2866], side: [712, 2878], back: [1534, 2878], fall: [1374, 1344],
+  "front-head": [2730, 2800], "side-head": [2492, 2800], "back-head": [2730, 2800], lenses: [2730, 2800],
+} as const;
+export type ImgName = keyof typeof IMG;
+
+/* Puts image point (fx, fy) at screen point (sx, sy), k screen px per image px. */
+export const place = (name: ImgName, fx: number, fy: number, sx: number, sy: number, k: number): React.CSSProperties => ({
+  position: "absolute", left: sx - fx * k, top: sy - fy * k, width: IMG[name][0] * k, height: IMG[name][1] * k,
+});
+
+export const Pic: React.FC<{ name: string; style: React.CSSProperties }> = ({ name, style }) => (
+  <Img src={staticFile(`${name}.png`)} style={{ ...style, maxWidth: "none" }} />
+);
+
+/* The ruled diary page. `scroll` slides the rules (they rush upward during the fall). */
+export const Page: React.FC<{ scroll?: number; gap?: number }> = ({ scroll = 0, gap = 64 }) => (
+  <AbsoluteFill style={{
+    background: `repeating-linear-gradient(to bottom, transparent 0px, transparent ${gap - 2}px, ${C.rule} ${gap - 2}px, ${C.rule} ${gap}px), ${C.paper}`,
+    backgroundPosition: `0px ${(((-scroll % gap) + gap) % gap) + 30}px, 0 0`,
+  }} />
+);
+
+/* Hand drawn line boil: the drawing layer wobbles a hair every few frames, like a redrawn cartoon. */
+export const BoilDefs: React.FC<{ f: number }> = ({ f }) => (
+  <svg style={{ position: "absolute", width: 0, height: 0 }}>
+    <filter id="boil" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves={2} seed={Math.floor(f / 3) % 7} />
+      <feDisplacementMap in="SourceGraphic" scale={4} />
+    </filter>
+  </svg>
+);
+export const Boil: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <AbsoluteFill style={{ filter: "url(#boil)" }}>{children}</AbsoluteFill>
+);
+
+const line = (x1: number, y1: number, x2: number, y2: number, w: number, key: React.Key, color = C.ink, o = 1) => (
+  <line key={key} x1={x1.toFixed(1)} y1={y1.toFixed(1)} x2={x2.toFixed(1)} y2={y2.toFixed(1)} stroke={color} strokeWidth={w} strokeLinecap="round" opacity={o} />
+);
+
+/* Cartoon motion lines: little groups of 2 or 3 parallel pen strokes sliding along one direction. */
+export const MotionLines: React.FC<{ t: number; n?: number; angle?: number; speed?: number; seed?: number; w?: number; minLen?: number; maxLen?: number; color?: string; o?: number; area?: [number, number, number, number] }> = ({
+  t, n = 14, angle = -24, speed = 1800, seed = 1, w = 5, minLen = 90, maxLen = 320, color = C.ink, o = 1, area = [0, 0, W, H],
+}) => {
+  const a = (angle * Math.PI) / 180;
+  const dx = Math.cos(a), dy = Math.sin(a);
+  const [ax, ay, aw, ah] = area;
+  const span = aw + ah + 800;
+  return (
+    <svg width={W} height={H} style={{ position: "absolute", inset: 0, opacity: o }}>
+      {Array.from({ length: n }).flatMap((_, i) => {
+        const s = seed * 1000 + i * 17;
+        const len = lerp(minLen, maxLen, rnd(s + 1));
+        const v = speed * (0.7 + 0.6 * rnd(s + 3));
+        const along = ((rnd(s + 4) * span + v * t) % span) - span / 2;
+        const across = (rnd(s + 5) - 0.5) * (aw + ah) * 0.9;
+        const cx = ax + aw / 2 - dx * along - dy * across;
+        const cy = ay + ah / 2 - dy * along + dx * across;
+        const k = 2 + Math.floor(rnd(s + 6) * 2);
+        return Array.from({ length: k }).map((__, j) => {
+          const off = (j - (k - 1) / 2) * 22;
+          const l = len * (j === 1 ? 1 : 0.7);
+          const px = cx - dy * off, py = cy + dx * off;
+          return line(px, py, px + dx * l, py + dy * l, w, `${i}-${j}`, color);
+        });
+      })}
+    </svg>
+  );
+};
+
+/* Comic burst: clean radiating pen lines around a point, re-inked every few frames. */
+export const BurstLines: React.FC<{ f: number; cx: number; cy: number; n?: number; r0?: number; r1?: number; w?: number; every?: number; seed?: number; o?: number; grow?: number }> = ({
+  f, cx, cy, n = 48, r0 = 260, r1 = 900, w = 5, every = 3, seed = 5, o = 1, grow = 1,
+}) => {
+  const k = Math.floor(f / every);
+  return (
+    <svg width={W} height={H} style={{ position: "absolute", inset: 0, opacity: o }}>
+      {Array.from({ length: n }).map((_, i) => {
+        const s = seed * 777 + k * 53 + i * 11;
+        const a = ((i + (rnd(s) - 0.5) * 0.6) / n) * Math.PI * 2;
+        const a0 = r0 * (1 + 0.35 * rnd(s + 1));
+        const a1 = a0 + (r1 - a0) * (0.45 + 0.55 * rnd(s + 2)) * grow;
+        return line(cx + Math.cos(a) * a0, cy + Math.sin(a) * a0, cx + Math.cos(a) * a1, cy + Math.sin(a) * a1, w * (0.6 + 0.7 * rnd(s + 3)), i);
+      })}
+    </svg>
+  );
+};
+
+/* Shock marks: the little dashes that pop around someone on a beat. */
+export const Shock: React.FC<{ t: number; hits: number[]; cx: number; cy: number; rx: number; ry: number; n?: number; len?: number; w?: number }> = ({
+  t, hits, cx, cy, rx, ry, n = 10, len = 46, w = 6,
+}) => {
+  const h = hits.filter((x) => x <= t + 1e-6).pop();
+  if (h === undefined || t - h > 0.42) return null;
+  const p = (t - h) / 0.42;
+  const pop = ramp(p, 0, 0.25, backOut);
+  const o = 1 - ramp(p, 0.7, 1);
+  return (
+    <svg width={W} height={H} style={{ position: "absolute", inset: 0, opacity: o }}>
+      {Array.from({ length: n }).map((_, i) => {
+        // two fans, one either side of the subject
+        const side = i % 2 ? 1 : -1;
+        const a = (side > 0 ? 0 : Math.PI) + ((Math.floor(i / 2) / (n / 2 - 1)) - 0.5) * 1.3 + (rnd(h * 10 + i) - 0.5) * 0.12;
+        const r = 1 + 0.08 * pop;
+        const x0 = cx + Math.cos(a) * rx * r, y0 = cy + Math.sin(a) * ry * r;
+        const l = len * pop * (0.7 + 0.5 * rnd(h * 10 + i + 3));
+        return line(x0, y0, x0 + Math.cos(a) * l, y0 + Math.sin(a) * l, w, i);
+      })}
+    </svg>
+  );
+};
+
+/* Puff cloud doodle (dust when feet land). Outline of a union of circles: strokes first, then fills on top. */
+export const Puff: React.FC<{ x: number; y: number; p: number; s?: number; seed?: number }> = ({ x, y, p, s = 1, seed = 1 }) => {
+  if (p <= 0 || p >= 1) return null;
+  const k = s * (0.6 + 0.5 * ramp(p, 0, 0.4, easeOut));
+  const o = 1 - ramp(p, 0.55, 1);
+  const bubbles = [[-34, 0, 22], [-8, -14, 28], [22, -6, 24], [40, 6, 16], [6, 8, 22]].map(([bx, by, br], i) => [bx * k, by * k - 20 * p, br * k * (0.9 + 0.2 * rnd(seed + i))]);
+  return (
+    <svg width={W} height={H} style={{ position: "absolute", inset: 0, opacity: o }}>
+      {bubbles.map(([bx, by, br], i) => <circle key={`s${i}`} cx={x + bx} cy={y + by} r={br} fill="none" stroke={C.ink} strokeWidth={9} />)}
+      {bubbles.map(([bx, by, br], i) => <circle key={`f${i}`} cx={x + bx} cy={y + by} r={br} fill={C.paper} />)}
+    </svg>
+  );
+};
+
+/* Doodle stars and plus sparkles flying out of a point. */
+export const Doodles: React.FC<{ t: number; cx: number; cy: number; n?: number }> = ({ t, cx, cy, n = 26 }) => {
+  if (t <= 0) return null;
+  const star = (r: number) => Array.from({ length: 10 }).map((_, i) => {
+    const a = -Math.PI / 2 + (i * Math.PI) / 5;
+    const rr = i % 2 ? r * 0.45 : r;
+    return `${(Math.cos(a) * rr).toFixed(1)},${(Math.sin(a) * rr).toFixed(1)}`;
+  }).join(" ");
+  return (
+    <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+      {Array.from({ length: n }).map((_, i) => {
+        const s = 6100 + i * 23;
+        const a = rnd(s) * Math.PI * 2;
+        const v = 420 + 900 * rnd(s + 1);
+        const tt = Math.max(0, t - rnd(s + 2) * 0.15);
+        const r = 80 + v * (1 - Math.exp(-tt * 2.6)) / 2.6;
+        const x = cx + Math.cos(a) * r * 1.25, y = cy + Math.sin(a) * r * 0.75;
+        const size = 14 + 22 * rnd(s + 3);
+        const o = Math.min(1, tt / 0.05) * (1 - ramp(tt, 1.1, 1.7));
+        const rot = (rnd(s + 4) - 0.5) * 60 + tt * 90 * (rnd(s + 5) - 0.5);
+        const kind = rnd(s + 6);
+        return (
+          <g key={i} transform={`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${rot.toFixed(1)})`} opacity={o}>
+            {kind < 0.5 ? <polygon points={star(size)} fill={C.paper} stroke={C.ink} strokeWidth={5} strokeLinejoin="round" />
+              : kind < 0.8 ? <path d={`M${-size * 0.7} 0 L${size * 0.7} 0 M0 ${-size * 0.7} L0 ${size * 0.7}`} stroke={C.ink} strokeWidth={5} strokeLinecap="round" />
+              : <circle r={size * 0.25} fill={C.ink} />}
+          </g>
+        );
+      })}
+    </svg>
+  );
+};
+
+/* White outline around the lettering so it reads over rules, lines and ink. */
+const KNOCKOUT = Array.from({ length: 16 }).map((_, i) => `${(Math.cos((i / 16) * Math.PI * 2) * 7).toFixed(1)}px ${(Math.sin((i / 16) * Math.PI * 2) * 7).toFixed(1)}px 0 ${C.paper}`).join(", ");
+
+/* Hand lettered sound effects. Each letter is re-inked every few frames. */
+export const Letters: React.FC<{ text: string; f: number; t: number; x: number; y: number; size?: number; rot?: number; inAt?: number; outAt?: number; shake?: number }> = ({
+  text, f, t, x, y, size = 96, rot = -6, inAt = 0, outAt = 1e9, shake = 2,
+}) => {
+  if (t < inAt || t > outAt) return null;
+  const pop = ramp(t, inAt, inAt + 0.22, backOut);
+  const o = 1 - ramp(t, outAt - 0.2, outAt);
+  const k = Math.floor(f / 3);
+  return (
+    <div style={{ position: "absolute", left: x, top: y, transform: `translate(-50%, -50%) rotate(${rot}deg) scale(${pop})`, opacity: o, whiteSpace: "nowrap", fontFamily: HAND, fontSize: size, color: C.ink, letterSpacing: size * 0.04, lineHeight: 1, textShadow: KNOCKOUT }}>
+      {text.split("").map((ch, i) => (
+        <span key={i} style={{ display: "inline-block", transform: `translate(${((rnd(k * 31 + i) - 0.5) * shake).toFixed(1)}px, ${((rnd(k * 17 + i) - 0.5) * shake).toFixed(1)}px) rotate(${((rnd(k * 7 + i) - 0.5) * 8).toFixed(1)}deg)` }}>
+          {ch === " " ? " " : ch}
+        </span>
+      ))}
+    </div>
+  );
+};
+
+/* A faint print texture so the page is not dead flat. */
+export const Finish: React.FC<{ f: number }> = ({ f }) => (
+  <AbsoluteFill style={{ pointerEvents: "none" }}>
+    <svg style={{ position: "absolute", width: 0, height: 0 }}>
+      <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves={2} seed={f % 23} /><feColorMatrix type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0.05 0" /></filter>
+    </svg>
+    <AbsoluteFill style={{ filter: "url(#grain)" }} />
+  </AbsoluteFill>
+);

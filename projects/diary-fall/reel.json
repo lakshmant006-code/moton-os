@@ -1,0 +1,954 @@
+{
+ "id": "diary-fall",
+ "title": "Diary fall",
+ "version": 1,
+ "path": "projects/diary-fall",
+ "src": "video.mp4",
+ "w": 1920,
+ "h": 936,
+ "fps": 30,
+ "duration": 31.0,
+ "reference": "Same beats as projects/ink-fall, redrawn in a diary cartoon style (ruled notebook page, clean pen lines, hand lettered sound effects) after the user's reference pages. The character and falling pose are the user's own drawings",
+ "brand": {
+  "colors": [
+   {
+    "id": "ink",
+    "name": "Pen",
+    "v": "#111111"
+   },
+   {
+    "id": "paper",
+    "name": "Paper",
+    "v": "#fdfdfb"
+   },
+   {
+    "id": "rule",
+    "name": "Rules",
+    "v": "#cdcdcd"
+   }
+  ],
+  "fonts": [
+   {
+    "id": "hand",
+    "name": "Lettering",
+    "v": "Patrick Hand"
+   }
+  ],
+  "logo": ""
+ },
+ "audio": {
+  "music": "",
+  "bpm": 120,
+  "sfx": "score.wav",
+  "sfxVol": 1.0,
+  "note": "Score and effects are synthesized by sfx/make_score.py from the scene times and beat pulses. Drop a track in public/music.mp3 and set audio.music to use your own song."
+ },
+ "assets": [
+  {
+   "id": "assets/character-sheet.png",
+   "name": "character-sheet.png",
+   "type": "image",
+   "from": "User"
+  },
+  {
+   "id": "assets/falling.png",
+   "name": "falling.png",
+   "type": "image",
+   "from": "User"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "S1",
+   "name": "Ink storm",
+   "t": [
+    0,
+    2.0
+   ],
+   "els": [
+    {
+     "id": "figure",
+     "label": "Back view",
+     "t": [
+      0,
+      2.0
+     ],
+     "box": [
+      25,
+      5,
+      50,
+      95
+     ],
+     "src": "src/scenes.tsx:Storm",
+     "props": {
+      "img": {
+       "type": "media",
+       "label": "Image",
+       "v": "assets/character-sheet.png#back"
+      },
+      "zoomFrom": {
+       "type": "number",
+       "label": "Zoom from",
+       "v": 0.55
+      },
+      "zoomTo": {
+       "type": "number",
+       "label": "Zoom to",
+       "v": 0.63
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Back view on the ruled page, slow push in while groups of pen wind lines whip past; shock marks pop around the head on the beat"
+      }
+     }
+    },
+    {
+     "id": "pulse",
+     "label": "Beat marks",
+     "t": [
+      0,
+      2.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/fx.tsx:Shock",
+     "props": {
+      "at": {
+       "type": "list",
+       "label": "Hits (s)",
+       "v": [
+        0.67,
+        1.33
+       ]
+      },
+      "color": {
+       "type": "color",
+       "label": "Color",
+       "v": "brand.ink"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S2",
+   "name": "Into the hair",
+   "t": [
+    2.0,
+    3.5
+   ],
+   "els": [
+    {
+     "id": "head",
+     "label": "Back of head",
+     "t": [
+      2.0,
+      3.5
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:Nape",
+     "props": {
+      "img": {
+       "type": "media",
+       "label": "Image",
+       "v": "assets/character-sheet.png#back"
+      },
+      "zoomFrom": {
+       "type": "number",
+       "label": "Zoom from",
+       "v": 0.62
+      },
+      "zoomTo": {
+       "type": "number",
+       "label": "Zoom to",
+       "v": 2.6
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Hard cut closer on the back of the head, zoom lines rush in while the camera dives into the black hair"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S3",
+   "name": "Profile",
+   "t": [
+    3.5,
+    5.0
+   ],
+   "els": [
+    {
+     "id": "side",
+     "label": "Side view",
+     "t": [
+      3.5,
+      5.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:Profile",
+     "props": {
+      "img": {
+       "type": "media",
+       "label": "Image",
+       "v": "assets/character-sheet.png#side"
+      },
+      "zoom": {
+       "type": "number",
+       "label": "Zoom",
+       "v": 0.62
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Profile on the page, the camera slides from the ear to the face while speed lines streak past"
+      }
+     }
+    },
+    {
+     "id": "pulse",
+     "label": "Beat marks",
+     "t": [
+      3.5,
+      5.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/fx.tsx:Shock",
+     "props": {
+      "at": {
+       "type": "list",
+       "label": "Hits (s)",
+       "v": [
+        4.5
+       ]
+      },
+      "color": {
+       "type": "color",
+       "label": "Color",
+       "v": "brand.ink"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S4",
+   "name": "Eyes",
+   "t": [
+    5.0,
+    7.0
+   ],
+   "els": [
+    {
+     "id": "face",
+     "label": "Glasses close up",
+     "t": [
+      5.0,
+      7.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:Eyes",
+     "props": {
+      "img": {
+       "type": "media",
+       "label": "Image",
+       "v": "assets/character-sheet.png#front"
+      },
+      "zoomFrom": {
+       "type": "number",
+       "label": "Zoom from",
+       "v": 2.1
+      },
+      "zoomTo": {
+       "type": "number",
+       "label": "Zoom to",
+       "v": 2.4
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Extreme close up on the glasses, shock marks pop either side on the beat with a small camera bump"
+      }
+     }
+    },
+    {
+     "id": "pulse",
+     "label": "Beat marks",
+     "t": [
+      5.0,
+      7.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/fx.tsx:Shock",
+     "props": {
+      "at": {
+       "type": "list",
+       "label": "Hits (s)",
+       "v": [
+        5.5,
+        6.0,
+        6.5
+       ]
+      },
+      "color": {
+       "type": "color",
+       "label": "Color",
+       "v": "brand.ink"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S5",
+   "name": "Shades",
+   "t": [
+    7.0,
+    10.5
+   ],
+   "els": [
+    {
+     "id": "face",
+     "label": "Face",
+     "t": [
+      7.0,
+      10.5
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:Shades",
+     "props": {
+      "img": {
+       "type": "media",
+       "label": "Image",
+       "v": "assets/character-sheet.png#front"
+      },
+      "zoom": {
+       "type": "number",
+       "label": "Zoom",
+       "v": 1.45
+      },
+      "pour": {
+       "type": "list",
+       "label": "Ink pour (s)",
+       "v": [
+        7.15,
+        7.95
+       ]
+      },
+      "glint": {
+       "type": "number",
+       "label": "Glint at (s)",
+       "v": 8.4
+      },
+      "dive": {
+       "type": "list",
+       "label": "Dive into lens (s)",
+       "v": [
+        9.6,
+        10.5
+       ]
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Ink glugs into both lenses and turns them into shades, a glint crosses, then the camera dives into the left lens"
+      }
+     }
+    },
+    {
+     "id": "pulse",
+     "label": "Beat marks",
+     "t": [
+      7.0,
+      10.5
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/fx.tsx:Shock",
+     "props": {
+      "at": {
+       "type": "list",
+       "label": "Hits (s)",
+       "v": [
+        8.0,
+        9.0
+       ]
+      },
+      "color": {
+       "type": "color",
+       "label": "Color",
+       "v": "brand.ink"
+      }
+     }
+    },
+    {
+     "id": "glug",
+     "label": "Lettering",
+     "t": [
+      7.15,
+      8.45
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/fx.tsx:Letters",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "GLUG GLUG GLUG"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S6",
+   "name": "Flash",
+   "t": [
+    10.5,
+    11.0
+   ],
+   "els": [
+    {
+     "id": "wipe",
+     "label": "Diagonal flash",
+     "t": [
+      10.5,
+      11.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:Flash",
+     "props": {
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "The ruled page wipes in diagonally over the black"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S7",
+   "name": "Low angle",
+   "t": [
+    11.0,
+    14.5
+   ],
+   "els": [
+    {
+     "id": "legs",
+     "label": "Legs and sneakers",
+     "t": [
+      11.0,
+      14.5
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:LowAngle",
+     "props": {
+      "img": {
+       "type": "media",
+       "label": "Image",
+       "v": "assets/character-sheet.png#front"
+      },
+      "zoomFrom": {
+       "type": "number",
+       "label": "Zoom from",
+       "v": 0.82
+      },
+      "zoomTo": {
+       "type": "number",
+       "label": "Zoom to",
+       "v": 0.42
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Low angle on the sneakers in a pen burst, STOMP!, the camera tilts up the body then pulls back to the full figure"
+      }
+     }
+    },
+    {
+     "id": "pulse",
+     "label": "Beat marks",
+     "t": [
+      11.0,
+      14.5
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/fx.tsx:Shock",
+     "props": {
+      "at": {
+       "type": "list",
+       "label": "Hits (s)",
+       "v": [
+        13.0
+       ]
+      },
+      "color": {
+       "type": "color",
+       "label": "Color",
+       "v": "brand.ink"
+      }
+     }
+    },
+    {
+     "id": "stomp",
+     "label": "Lettering",
+     "t": [
+      11.0,
+      12.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/fx.tsx:Letters",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "STOMP!"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S8",
+   "name": "Stand",
+   "t": [
+    14.5,
+    17.0
+   ],
+   "els": [
+    {
+     "id": "figure",
+     "label": "Back silhouette",
+     "t": [
+      14.5,
+      17.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:Stand",
+     "props": {
+      "img": {
+       "type": "media",
+       "label": "Image",
+       "v": "assets/character-sheet.png#back"
+      },
+      "zoomFrom": {
+       "type": "number",
+       "label": "Zoom from",
+       "v": 0.27
+      },
+      "zoomTo": {
+       "type": "number",
+       "label": "Zoom to",
+       "v": 0.22
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Dissolves from front to back at the same size, so the character turns around; the burst lines fade as the camera eases back"
+      }
+     }
+    },
+    {
+     "id": "in",
+     "label": "Transition in",
+     "t": [
+      14.0,
+      14.5
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/Main.tsx",
+     "props": {
+      "dur": {
+       "type": "number",
+       "label": "Dissolve (s)",
+       "v": 0.5
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Front view dissolves into the back view at the same size"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S9",
+   "name": "Glow walk",
+   "t": [
+    17.0,
+    20.0
+   ],
+   "els": [
+    {
+     "id": "figure",
+     "label": "Walking away",
+     "t": [
+      17.0,
+      20.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:Walk",
+     "props": {
+      "img": {
+       "type": "media",
+       "label": "Image",
+       "v": "assets/character-sheet.png#back"
+      },
+      "zoom": {
+       "type": "number",
+       "label": "Zoom",
+       "v": 0.22
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Picks up from S8's last frame and walks away up the page, a puff of dust at every step"
+      }
+     }
+    },
+    {
+     "id": "pulse",
+     "label": "Beat marks",
+     "t": [
+      17.0,
+      20.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/fx.tsx:Shock",
+     "props": {
+      "at": {
+       "type": "list",
+       "label": "Hits (s)",
+       "v": [
+        17.0
+       ]
+      },
+      "color": {
+       "type": "color",
+       "label": "Color",
+       "v": "brand.ink"
+      }
+     }
+    },
+    {
+     "id": "in",
+     "label": "Transition in",
+     "t": [
+      16.5,
+      17.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/Main.tsx",
+     "props": {
+      "dur": {
+       "type": "number",
+       "label": "Dissolve (s)",
+       "v": 0.5
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "No cut: the walk starts from S8's final frame"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S10",
+   "name": "Fall",
+   "t": [
+    20.0,
+    29.0
+   ],
+   "els": [
+    {
+     "id": "figure",
+     "label": "Falling",
+     "t": [
+      20.0,
+      29.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:Fall",
+     "props": {
+      "img": {
+       "type": "media",
+       "label": "Image",
+       "v": "assets/falling.png"
+      },
+      "zoom": {
+       "type": "number",
+       "label": "Zoom",
+       "v": 0.5
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "The falling drawing drops in while the page rules rush upward past it, motion lines, AAAAAAH!, shock marks on the beat"
+      }
+     }
+    },
+    {
+     "id": "pulse",
+     "label": "Beat marks",
+     "t": [
+      20.0,
+      29.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/fx.tsx:Shock",
+     "props": {
+      "at": {
+       "type": "list",
+       "label": "Hits (s)",
+       "v": [
+        21.0,
+        23.0,
+        25.0,
+        27.0,
+        28.0
+       ]
+      },
+      "color": {
+       "type": "color",
+       "label": "Color",
+       "v": "brand.ink"
+      }
+     }
+    },
+    {
+     "id": "scream",
+     "label": "Lettering",
+     "t": [
+      20.5,
+      28.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/fx.tsx:Letters",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "AAAAAAH!"
+      },
+      "at": {
+       "type": "list",
+       "label": "Shows at (s), 3s each",
+       "v": [
+        20.5,
+        25.0
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S11",
+   "name": "Burst",
+   "t": [
+    29.0,
+    31.0
+   ],
+   "els": [
+    {
+     "id": "figure",
+     "label": "Front silhouette",
+     "t": [
+      29.0,
+      31.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/scenes.tsx:Burst",
+     "props": {
+      "img": {
+       "type": "media",
+       "label": "Image",
+       "v": "assets/character-sheet.png#front"
+      },
+      "zoom": {
+       "type": "number",
+       "label": "Zoom",
+       "v": 0.27
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Lands facing us with a pop, burst lines, flying doodle stars and TA-DA!, then the page fades to white"
+      }
+     }
+    },
+    {
+     "id": "pulse",
+     "label": "Beat marks",
+     "t": [
+      29.0,
+      31.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/fx.tsx:Shock",
+     "props": {
+      "at": {
+       "type": "list",
+       "label": "Hits (s)",
+       "v": [
+        29.0
+       ]
+      },
+      "color": {
+       "type": "color",
+       "label": "Color",
+       "v": "brand.ink"
+      }
+     }
+    },
+    {
+     "id": "tada",
+     "label": "Lettering",
+     "t": [
+      29.1,
+      31.0
+     ],
+     "box": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "src": "src/fx.tsx:Letters",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "TA-DA!"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "notes": [
+  "Monochrome only: black pen, white page, grey rules.",
+  "S7 to S8 is a dissolve between front and back at the same size (the character turns around); S8 to S9 starts the walk from S8's final frame, so there is no cut."
+ ]
+}

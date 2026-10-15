@@ -182,15 +182,12 @@ const waveTile = (h: number, x: number): React.CSSProperties => ({
   backgroundImage: `url(${staticFile("waves.png")})`, backgroundRepeat: "repeat-x",
   backgroundSize: `${((WAVE.w / WAVE.h) * h).toFixed(1)}px ${h}px`, backgroundPosition: `${x.toFixed(1)}px 0px`,
 });
-/* Pen outline around a shape, for the paler back row. */
-const OUTLINE = [[4, 0], [-4, 0], [0, 4], [0, -4]].map(([x, y]) => `drop-shadow(${x}px ${y}px 0 ${C.ink})`).join(" ");
-
-/* One carousel row of waves sliding left to right, solid sea below its crests. outline: white waves drawn in pen. */
-export const WaveRow: React.FC<{ t: number; top: number; h: number; speed: number; phase?: number; outline?: boolean }> = ({ t, top, h, speed, phase = 0, outline }) => {
+/* One carousel row of the waves sliding left to right, solid sea below its crests. */
+export const WaveRow: React.FC<{ t: number; top: number; h: number; speed: number; phase?: number }> = ({ t, top, h, speed, phase = 0 }) => {
   const tw = (WAVE.w / WAVE.h) * h;
   const x = ((speed * t + phase) % tw + tw) % tw;
   return (
-    <div style={{ position: "absolute", left: 0, right: 0, top, bottom: -400, filter: outline ? `invert(1) ${OUTLINE}` : undefined }}>
+    <div style={{ position: "absolute", left: 0, right: 0, top, bottom: -400 }}>
       <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: h, ...waveTile(h, x) }} />
       <div style={{ position: "absolute", left: 0, right: 0, top: h - 2, bottom: 0, background: "#000" }} />
     </div>

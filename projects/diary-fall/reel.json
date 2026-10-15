@@ -1,7 +1,7 @@
 {
  "id": "diary-fall",
  "title": "Diary fall",
- "version": 3,
+ "version": 4,
  "path": "projects/diary-fall",
  "src": "video.mp4",
  "w": 1920,
@@ -701,18 +701,13 @@
       },
       "speed": {
        "type": "number",
-       "label": "Front row speed (px/s)",
+       "label": "Speed (px/s)",
        "v": 170
-      },
-      "backSpeed": {
-       "type": "number",
-       "label": "Back row speed (px/s)",
-       "v": 80
       },
       "height": {
        "type": "number",
-       "label": "Front row height (px)",
-       "v": 170
+       "label": "Height (px)",
+       "v": 210
       },
       "dive": {
        "type": "list",
@@ -730,7 +725,7 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "Only during the fall: the user's waves rise into frame and scroll left to right as a carousel (pen outlined back row, solid black front row); the sea comes closer, he dives in with a splash, and a wall of sea rises to swallow the frame"
+       "v": "Only during the fall: the user's waves, exactly as drawn, rise into frame and scroll left to right as one carousel layer, coming closer as he nears; he dives in with a splash, and a wall of sea rises to swallow the frame"
       }
      }
     }

@@ -190,8 +190,8 @@ export const Stand: React.FC = () => {
   );
 };
 
-/* S10: the long fall. The page rules rush upward past the user's falling drawing while the sea scrolls by
-   below; at the end the figure dives into the waves and the sea swallows the frame. */
+/* S10: the long fall. The page rules rush upward past the user's falling drawing while the user's waves scroll by
+   below as one carousel layer; at the end the figure dives into the waves and the sea swallows the frame. */
 export const Fall: React.FC = () => {
   const { f, t } = useT();
   const e = el("S10", "figure");
@@ -211,7 +211,6 @@ export const Fall: React.FC = () => {
   const h = sea.v<number>("height") * lerp(1, 1.3, near);
   const rise = 320 * (1 - ramp(t, 0.1, 0.9, easeOut));
   const frontTop = 936 - h + 34 + rise;
-  const backTop = 936 - h * 1.42 + rise * 1.2;
   const hitAt = dive0 + (dive1 - dive0) * 0.68; // when he reaches the front crests
   const wall = lerp(936 + 40, -340, ramp(t, surge0, surge0 + 0.5, easeInOut));
   return (
@@ -219,7 +218,6 @@ export const Fall: React.FC = () => {
       <Page scroll={t * 1400 * (1 - 0.6 * dive)} />
       <Boil>
         <MotionLines t={t} n={10} seed={31} speed={1900} angle={-90} minLen={120} maxLen={380} w={5} o={1 - dive} />
-        <WaveRow t={t} top={backTop} h={h * 0.72} speed={sea.v<number>("backSpeed")} phase={900} outline />
         <div style={{ ...place("fall", 687, 672, x, y, k), transform: `rotate(${rot}deg)` }}>
           <Pic name="fall-lines" style={{ ...full, filter: "brightness(0)" }} />
           <Pic name="fall" style={full} />

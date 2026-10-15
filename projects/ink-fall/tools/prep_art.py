@@ -1,12 +1,13 @@
 """Cut the user's drawings into the layers the video uses (run from the project folder: python3 tools/prep_art.py).
 
 assets/character-sheet.png -> public/front|side|back(.png, -sil.png) at 2x, plus -head close up crops at 7x
-assets/falling.png         -> public/fall.png, fall-sil.png
+assets/falling.png         -> public/fall.png, fall-sil.png (body only), fall-lines.png (its speed lines, white)
 public/lenses.png          (glasses lens mask for the ink pour)
 Line art keeps its ink, the outside goes transparent; -sil is the solid white shape for the glow.
 Needs numpy, pillow, scipy.
 """
 from collections import deque
+from pathlib import Path
 from scipy import ndimage
 import sys
 import numpy as np
@@ -129,9 +130,24 @@ for (_, i), name in zip(figs, ["front", "side", "back"]):
     render(sheet, mm, (ox + hb[0], oy + hb[1], ox + hb[2], oy + hb[3]), 7, name + "-head", pad=0)
 
 fall = load(f"{A}/falling.png")
-mf = figure_mask(fall)
-rows = np.where(mf.any(axis=1))[0]; cols = np.where(mf.any(axis=0))[0]
-render(fall, mf, (cols[0], rows[0], cols[-1] + 1, rows[-1] + 1), 2, "fall")
+# Fill only regions the ink fully closes: the speed lines sit close together and any wall
+# bridging would fill the gaps between them with white.
+ink = fall < 140
+lab_f, _ = ndimage.label(~ink)
+edge = set(np.unique(np.concatenate([lab_f[0], lab_f[-1], lab_f[:, 0], lab_f[:, -1]]))) - {0}
+body = ~np.isin(lab_f, list(edge))
+# the speed lines are the ink that is not part of the body's outline
+lab_i, _ = ndimage.label(ink, structure=np.ones((3, 3)))
+sizes = np.bincount(lab_i.ravel()); sizes[0] = 0
+inner = np.unique(lab_i[ndimage.binary_dilation(body & ~ink, iterations=2) & ink])
+lines = ink & ~np.isin(lab_i, inner)
+body = body & ~lines
+both = body | lines
+rows = np.where(both.any(axis=1))[0]; cols = np.where(both.any(axis=0))[0]
+fbox = (cols[0], rows[0], cols[-1] + 1, rows[-1] + 1)
+render(fall, body, fbox, 2, "fall")
+render(np.where(lines, 255, 0).astype(np.float32), lines, fbox, 2, "fall-lines")
+Path(f"{O}/fall-lines-sil.png").unlink()
 
 # lens mask: the two white regions inside the glasses frame on the front close up
 head = np.asarray(Image.open(f"{O}/front-head.png")).astype(np.float32)

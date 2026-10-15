@@ -20,7 +20,7 @@ export const rnd = (seed: number) => {
 
 /* Pixel sizes of the prepared cutouts in public/ (see README in this folder). */
 export const IMG = {
-  front: [1534, 2866], side: [712, 2878], back: [1534, 2878], fall: [1378, 1270],
+  front: [1534, 2866], side: [712, 2878], back: [1534, 2878], fall: [1374, 1344],
   "front-head": [2730, 2800], "side-head": [2492, 2800], "back-head": [2730, 2800], lenses: [2730, 2800],
 } as const;
 export type ImgName = keyof typeof IMG;

@@ -1,7 +1,7 @@
 {
  "id": "ink-fall",
  "title": "Ink fall",
- "version": 2,
+ "version": 3,
  "path": "projects/ink-fall",
  "src": "video.mp4",
  "w": 1920,
@@ -680,12 +680,12 @@
       "zoom": {
        "type": "number",
        "label": "Zoom",
-       "v": 0.46
+       "v": 0.52
       },
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "The glowing figure tumbles slowly through vertical streaks of light rushing upward, the drawing flickers inside the glow on the beats"
+       "v": "The falling drawing, lit from behind by a white glow, drops slowly through vertical streaks of light rushing upward; the glow swells on the beats"
       }
      }
     },

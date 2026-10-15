@@ -207,24 +207,33 @@ export const GlowWalk: React.FC = () => {
   );
 };
 
-/* S10: the long fall through rushing light. */
+/* S10: the long fall. The user's falling drawing, lit from behind, dropping through rushing light. */
 export const Fall: React.FC = () => {
   const { t } = useT();
   const e = el("S10", "figure");
-  const k = e.v<number>("zoom") * (1 + 0.04 * Math.sin(t * 0.9));
-  const rot = -10 + 16 * Math.sin(t * 0.55) + 4 * Math.sin(t * 1.7);
-  const x = 960 + Math.sin(t * 0.4) * 70;
-  const y = 430 + Math.sin(t * 0.8) * 18;
+  const k = e.v<number>("zoom") * (1 + 0.035 * Math.sin(t * 0.9));
+  // keep the drawing's own speed lines close to vertical: only a gentle sway
+  const rot = 3 * Math.sin(t * 0.55) + 1.2 * Math.sin(t * 1.7);
+  const x = 960 + Math.sin(t * 0.4) * 60;
+  const y = 450 + Math.sin(t * 0.8) * 16;
   const beats = el("S10", "red").v<number[]>("at").map((h) => h - 20);
-  let art = 0;
-  for (const b of beats) if (t >= b) art = Math.max(art, Math.exp(-(t - b) / 0.25));
+  let pulse = 0;
+  for (const b of beats) if (t >= b) pulse = Math.max(pulse, Math.exp(-(t - b) / 0.3));
   const enter = ramp(t, 0, 0.45, easeOut);
+  const box = place("fall", 687, 672, x, lerp(y - 260, y, enter), k);
+  const full: React.CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%" };
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       <AbsoluteFill style={{ background: "radial-gradient(ellipse 60% 70% at 50% 45%, #1a1a1d 0%, #050506 75%)" }} />
-      <Rain t={t + 20} n={140} o={0.55} speed={1300} />
-      <Glow name="fall" style={place("fall", 689, 635, x, lerp(y - 260, y, enter), k)} rot={rot} art={0.55 * art} strength={1.1} />
-      <Rain t={t + 41} n={36} o={0.9} speed={2300} />
+      <Rain t={t + 20} n={140} o={0.5} speed={1300} />
+      <div style={{ ...box, transform: `rotate(${rot}deg)` }}>
+        {/* backlight: the body shape blurred into a halo, so the black pants still read on black */}
+        <Pic name="fall-sil" style={{ ...full, filter: `blur(${34 + 16 * pulse}px)`, opacity: 0.75 + 0.25 * pulse }} />
+        <Pic name="fall-sil" style={{ ...full, filter: "blur(7px)", opacity: 0.9 }} />
+        <Pic name="fall-lines" style={{ ...full, filter: "drop-shadow(0 0 6px rgba(255,255,255,0.9))" }} />
+        <Pic name="fall" style={full} />
+      </div>
+      <Rain t={t + 41} n={30} o={0.85} speed={2300} />
       <Dust t={t + 3} n={40} rise={120} o={0.8} />
     </AbsoluteFill>
   );

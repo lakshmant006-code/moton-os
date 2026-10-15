@@ -116,32 +116,6 @@ export const RedWash: React.FC<{ t: number; at: number[]; dark?: boolean }> = ({
   );
 };
 
-/* The user's ocean waves as a looping carousel along the bottom: two rows, left to right. */
-export const WAVE = { w: 2950, h: 521 };
-export const Waves: React.FC<{ t: number; speed: number; backSpeed: number; height: number; rim: number }> = ({ t, speed, backSpeed, height, rim }) => {
-  const row = (h: number, v: number, top: number, phase: number, grey: number, bob: number) => {
-    const tw = (WAVE.w / WAVE.h) * h;
-    const y = top + Math.sin(t * 1.6 + phase) * bob;
-    return (
-      <div style={{ position: "absolute", left: 0, right: 0, top: y, bottom: 0, filter: `invert(${grey}) drop-shadow(0 -2px 0 rgba(255,255,255,${rim}))` }}>
-        <div style={{
-          position: "absolute", left: 0, right: 0, top: 0, height: h,
-          backgroundImage: `url(${staticFile("waves.png")})`, backgroundRepeat: "repeat-x", backgroundSize: `${tw}px ${h}px`,
-          backgroundPosition: `${((v * t + phase * 300) % tw).toFixed(2)}px 0px`,
-        }} />
-        {/* the sea continues below the PNG */}
-        <div style={{ position: "absolute", left: 0, right: 0, top: h - 2, bottom: 0, background: "#000" }} />
-      </div>
-    );
-  };
-  return (
-    <AbsoluteFill style={{ pointerEvents: "none" }}>
-      {row(height * 0.68, backSpeed, H - height * 1.02, 1.3, 0.13, 5)}
-      {row(height, speed, H - height + 40, 0, 0, 7)}
-    </AbsoluteFill>
-  );
-};
-
 /* Radial speed lines bursting from a point. They re-roll every few frames for a hand drawn shimmer. */
 export const Rays: React.FC<{ f: number; cx: number; cy: number; color: string; n?: number; every?: number; inner?: number; seed?: number; o?: number }> = ({
   f, cx, cy, color, n = 70, every = 2, inner = 120, seed = 5, o = 1,

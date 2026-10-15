@@ -2,8 +2,7 @@
 
 assets/character-sheet.png -> public/front|side|back(.png, -sil.png) at 2x, plus -head close up crops at 7x
 assets/falling.png         -> public/fall.png, fall-sil.png
-assets/waves.png           -> public/waves.png (seamless horizontal loop, black on transparent)
-                              public/lenses.png (glasses lens mask for the ink pour)
+public/lenses.png          (glasses lens mask for the ink pour)
 Line art keeps its ink, the outside goes transparent; -sil is the solid white shape for the glow.
 Needs numpy, pillow, scipy.
 """
@@ -144,20 +143,3 @@ out = ndimage.binary_dilation(ndimage.binary_fill_holes(np.isin(lab2, lens)), it
 a = (ndimage.gaussian_filter(out.astype(np.float32), 1.5) * 255).astype(np.uint8); z = np.zeros_like(a)
 Image.fromarray(np.dstack([z, z, z, a]), "RGBA").save(f"{O}/lenses.png", optimize=True)
 print("lenses", lens)
-
-w = load(f"{A}/waves.png")
-dark = w < 128
-H, W = dark.shape
-top = np.array([np.argmax(dark[:, x]) if dark[:, x].any() else H for x in range(W)])
-best = None
-for x0 in range(0, W // 4):
-    for x1 in range(W - 1, W - W // 3, -1):
-        d = abs(int(top[x0]) - int(top[x1])) + abs(int(top[x0 + 6]) - int(top[x1 + 6 if x1 + 6 < W else x1])) + abs(int(top[x0 - 6 if x0 >= 6 else 0]) - int(top[x1 - 6]))
-        if best is None or d < best[0]:
-            best = (d, x0, x1)
-d, x0, x1 = best
-y0 = max(0, int(top.min()) - 20)
-crop = dark[y0:, x0:x1]
-rgba = np.dstack([np.zeros_like(crop, np.uint8)] * 3 + [(crop * 255).astype(np.uint8)])
-Image.fromarray(rgba, "RGBA").save(f"{O}/waves.png")
-print("waves loop", x0, x1, "width", x1 - x0, "height", crop.shape[0], "seam diff", d)

@@ -1,14 +1,14 @@
 {
  "id": "ink-fall",
  "title": "Ink fall",
- "version": 1,
+ "version": 2,
  "path": "projects/ink-fall",
  "src": "video.mp4",
  "w": 1920,
  "h": 936,
  "fps": 30,
  "duration": 31.0,
- "reference": "Uploaded concert LED screen visual (format, pacing and look only). The character, falling pose and ocean waves are the user's own drawings",
+ "reference": "Uploaded concert LED screen visual (format, pacing and look only). The character and falling pose are the user's own drawings",
  "brand": {
   "colors": [
    {
@@ -52,12 +52,6 @@
   {
    "id": "assets/falling.png",
    "name": "falling.png",
-   "type": "image",
-   "from": "User"
-  },
-  {
-   "id": "assets/waves.png",
-   "name": "waves.png",
    "type": "image",
    "from": "User"
   }
@@ -135,48 +129,6 @@
        "type": "color",
        "label": "Color",
        "v": "brand.red"
-      }
-     }
-    },
-    {
-     "id": "waves",
-     "label": "Ocean waves (whole video)",
-     "t": [
-      0,
-      31.0
-     ],
-     "box": [
-      0,
-      78,
-      100,
-      22
-     ],
-     "src": "src/fx.tsx:Waves",
-     "props": {
-      "img": {
-       "type": "media",
-       "label": "Image",
-       "v": "assets/waves.png"
-      },
-      "speed": {
-       "type": "number",
-       "label": "Front row speed (px/s)",
-       "v": 150
-      },
-      "backSpeed": {
-       "type": "number",
-       "label": "Back row speed (px/s)",
-       "v": 70
-      },
-      "height": {
-       "type": "number",
-       "label": "Front row height (px)",
-       "v": 250
-      },
-      "motion": {
-       "type": "motion",
-       "label": "Motion",
-       "v": "Two rows of the ocean waves PNG loop across the bottom of the frame as a carousel, left to right, the back row slower and greyer for depth"
       }
      }
     }

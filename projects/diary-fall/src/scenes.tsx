@@ -199,11 +199,14 @@ export const Fall: React.FC = () => {
   const [dive0, dive1] = sea.v<number[]>("dive").map((x) => x - 17);
   const surge0 = sea.v<number>("surge") - 17;
   const k = e.v<number>("zoom") * (1 + 0.03 * Math.sin(t * 0.9));
-  const rot = 3 * Math.sin(t * 0.55) + 1.2 * Math.sin(t * 1.7) + 14 * Math.pow(ramp(t, dive0, dive1, (v) => v), 2);
+  const rot = 3 * Math.sin(t * 0.55) + 1.2 * Math.sin(t * 1.7) + 14 * ramp(t, dive0, dive1, easeInOut);
   const x = 960 + Math.sin(t * 0.4) * 60;
   const enter = ramp(t, 0, 0.5, easeOut);
-  const dive = Math.pow(ramp(t, dive0, dive1, (v) => v), 2);
-  const y = lerp(lerp(-420, 420 + Math.sin(t * 0.8) * 14, enter), 1250, dive);
+  // the drop into the sea: eases in from the hover, eases out as he sinks below the crests
+  const dive = ramp(t, dive0, dive1, easeInOut);
+  // before the drop the camera lets him float up to the top third, so the drop reads top to bottom
+  const hover = lerp(420, 300, ramp(t, dive0 - 1.8, dive0, easeInOut)) + Math.sin(t * 0.8) * 14 * (1 - dive);
+  const y = lerp(lerp(-420, hover, enter), 960, dive);
   const full: React.CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%" };
   const hits = beats("S10").filter((h) => h < dive0);
   // the sea rises into frame as the fall starts, and comes closer as he nears it
@@ -211,7 +214,7 @@ export const Fall: React.FC = () => {
   const h = sea.v<number>("height") * lerp(1, 1.3, near);
   const rise = 320 * (1 - ramp(t, 0.1, 0.9, easeOut));
   const frontTop = 936 - h + 34 + rise;
-  const hitAt = dive0 + (dive1 - dive0) * 0.68; // when he reaches the front crests
+  const hitAt = sea.v<number>("splash") - 17; // when he reaches the front crests
   const wall = lerp(936 + 40, -340, ramp(t, surge0, surge0 + 0.5, easeInOut));
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>

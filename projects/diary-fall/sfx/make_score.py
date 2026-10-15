@@ -280,8 +280,8 @@ for i, b in enumerate(beats(s11[0] - 1.0, s11[0], BEAT / 4)):
 # Into the sea: splash, the wave wall surges over the frame and drains away
 sea = next(e for sc in reel["scenes"] for e in sc["els"] if e["id"] == "waves")["props"]
 d0, d1 = sea["dive"]["v"]
-put(whoosh(d1 - d0, up=False), d0, 0.45, verb=0.3)
-put(splash(), d0 + (d1 - d0) * 0.68, 0.9, verb=0.5)
+put(whoosh(sea["splash"]["v"] - d0 + 0.1, up=False), d0, 0.45, verb=0.3)
+put(splash(), sea["splash"]["v"], 0.9, verb=0.5)
 put(whoosh(0.6), sea["surge"]["v"], 0.55, verb=0.4)
 put(lp(rng.standard_normal(int(0.9 * SR)), 500) * env(int(0.9 * SR), 0.15, 0.3), sea["surge"]["v"] + 0.1, 0.5, verb=0.3)
 

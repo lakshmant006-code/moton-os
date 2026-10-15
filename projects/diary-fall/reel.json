@@ -1,7 +1,7 @@
 {
  "id": "diary-fall",
  "title": "Diary fall",
- "version": 4,
+ "version": 5,
  "path": "projects/diary-fall",
  "src": "video.mp4",
  "w": 1920,
@@ -711,21 +711,26 @@
       },
       "dive": {
        "type": "list",
-       "label": "Dive into the sea (s)",
+       "label": "Drop into the sea, ease in and out (s)",
        "v": [
-        24.75,
-        25.45
+        24.0,
+        25.35
        ]
       },
       "surge": {
        "type": "number",
        "label": "Sea swallows the frame at (s)",
-       "v": 25.45
+       "v": 25.38
       },
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "Only during the fall: the user's waves, exactly as drawn, rise into frame and scroll left to right as one carousel layer, coming closer as he nears; he dives in with a splash, and a wall of sea rises to swallow the frame"
+       "v": "Only during the fall: the user's waves rise into frame and scroll left to right as one carousel layer, coming closer as he nears; he drops from the top of the frame down into the waves with an ease in and ease out, splash, and a wall of sea rises to swallow the frame"
+      },
+      "splash": {
+       "type": "number",
+       "label": "Splash at (s)",
+       "v": 24.75
       }
      }
     }

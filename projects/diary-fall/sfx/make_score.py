@@ -199,7 +199,7 @@ def beats(a, b, step=BEAT):
         yield x
         x += step
 
-s1, s2, s3, s4, s5, s6, s7, s8, s10, s11 = (scene[f"S{i}"] for i in (1, 2, 3, 4, 5, 6, 7, 8, 10, 11))
+s1, s2, s3, s4, s5, s6, s7, s8, s10 = (scene[f"S{i}"] for i in (1, 2, 3, 4, 5, 6, 7, 8, 10))
 
 # Ink storm opening: low drone, pulse and brush strokes
 put(pad([D2 / 2, D2, A2 / 2], s5[1], cutoff=420), 0, 0.9)
@@ -273,11 +273,8 @@ for i, b in enumerate(beats(s10[0], s10[1], BEAT * 4)):
 for h in hits:
     if s10[0] <= h < s10[1]:
         put(boom(1.6), h, 0.55, verb=0.5)
-put(riser(1.6), s11[0] - 1.6, 0.7)
-for i, b in enumerate(beats(s11[0] - 1.0, s11[0], BEAT / 4)):
-    put(kick(0.5), b, 0.2 + 0.07 * i)
 
-# Into the sea: splash, the wave wall surges over the frame and drains away
+# Into the sea: splash, then the wave wall surges over the frame
 sea = next(e for sc in reel["scenes"] for e in sc["els"] if e["id"] == "waves")["props"]
 d0, d1 = sea["dive"]["v"]
 put(whoosh(sea["splash"]["v"] - d0 + 0.1, up=False), d0, 0.45, verb=0.3)
@@ -285,14 +282,11 @@ put(splash(), sea["splash"]["v"], 0.9, verb=0.5)
 put(whoosh(0.6), sea["surge"]["v"], 0.55, verb=0.4)
 put(lp(rng.standard_normal(int(0.9 * SR)), 500) * env(int(0.9 * SR), 0.15, 0.3), sea["surge"]["v"] + 0.1, 0.5, verb=0.3)
 
-# Burst
-put(boom(3.5), s11[0], 1.25, verb=0.7)
-put(crash(3.5), s11[0], 0.35, verb=0.5)
-put(ting(2637), s11[0] + 0.05, 0.12, verb=0.9)
-put(ting(3520), s11[0] + 0.12, 0.08, pan=0.5, verb=0.9)
-for k in range(24):
-    put(brush(), s11[0] + rng.uniform(0, 0.6), 0.25, pan=rng.uniform(-1, 1), verb=0.3)
-put(pad([D2, A2, 146.83, 220.0], s11[1] - s11[0], cutoff=900), s11[0], 0.5, verb=0.6)
+# The sea closes over the frame: one low hit that rings out through the black hold
+covered = sea["surge"]["v"] + 0.5
+put(riser(1.4), covered - 1.4, 0.55)
+put(boom(3.0), covered, 1.2, verb=0.8)
+put(crash(2.5), covered, 0.2, verb=0.6)
 
 # Pulses elsewhere get a soft hit
 for h in hits:

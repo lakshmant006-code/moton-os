@@ -1,13 +1,13 @@
 {
  "id": "diary-fall",
  "title": "Diary fall",
- "version": 5,
+ "version": 6,
  "path": "projects/diary-fall",
  "src": "video.mp4",
  "w": 1920,
  "h": 936,
  "fps": 30,
- "duration": 28.0,
+ "duration": 26.9,
  "reference": "Same beats as projects/ink-fall, redrawn in a diary cartoon style (ruled notebook page, clean pen lines, hand lettered sound effects) after the user's reference pages. The character and falling pose are the user's own drawings",
  "brand": {
   "colors": [
@@ -611,7 +611,7 @@
    "name": "Fall",
    "t": [
     17.0,
-    26.0
+    26.9
    ],
    "els": [
     {
@@ -619,7 +619,7 @@
      "label": "Falling",
      "t": [
       17.0,
-      26.0
+      26.9
      ],
      "box": [
       0,
@@ -651,7 +651,7 @@
      "label": "Beat marks",
      "t": [
       17.0,
-      26.0
+      26.9
      ],
      "box": [
       0,
@@ -684,7 +684,7 @@
      "label": "Ocean waves",
      "t": [
       17.0,
-      26.0
+      26.9
      ],
      "box": [
       0,
@@ -725,83 +725,17 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "Only during the fall: the user's waves rise into frame and scroll left to right as one carousel layer, coming closer as he nears; he drops from the top of the frame down into the waves with an ease in and ease out, splash, and a wall of sea rises to swallow the frame"
+       "v": "Only during the fall: the user's waves rise into frame and scroll left to right as one carousel layer, coming closer as he nears; he drops from the top of the frame down into the waves with an ease in and ease out, splash, and a wall of sea rises to swallow the frame; the frame then holds on black for a second and the video ends"
       },
       "splash": {
        "type": "number",
        "label": "Splash at (s)",
        "v": 24.75
-      }
-     }
-    }
-   ]
-  },
-  {
-   "id": "S11",
-   "name": "Burst",
-   "t": [
-    26.0,
-    28.0
-   ],
-   "els": [
-    {
-     "id": "figure",
-     "label": "Front silhouette",
-     "t": [
-      26.0,
-      28.0
-     ],
-     "box": [
-      0,
-      0,
-      100,
-      100
-     ],
-     "src": "src/scenes.tsx:Burst",
-     "props": {
-      "img": {
-       "type": "media",
-       "label": "Image",
-       "v": "assets/character-sheet.png#front"
       },
-      "zoom": {
+      "hold": {
        "type": "number",
-       "label": "Zoom",
-       "v": 0.27
-      },
-      "motion": {
-       "type": "motion",
-       "label": "Motion",
-       "v": "The sea drains down off the frame to reveal him landed facing us with a pop, burst lines and flying doodle stars, then the page fades to white"
-      }
-     }
-    },
-    {
-     "id": "pulse",
-     "label": "Beat marks",
-     "t": [
-      26.0,
-      28.0
-     ],
-     "box": [
-      0,
-      0,
-      100,
-      100
-     ],
-     "src": "src/fx.tsx:Shock",
-     "props": {
-      "at": {
-       "type": "list",
-       "label": "Hits (s)",
-       "v": [
-        26.0
-       ]
-      },
-      "color": {
-       "type": "color",
-       "label": "Color",
-       "v": "brand.ink"
+       "label": "Hold on black (s)",
+       "v": 1.0
       }
      }
     }
@@ -811,6 +745,6 @@
  "notes": [
   "Monochrome only: black pen, white page, grey rules. No lettering.",
   "S7 to S8 is a dissolve between front and back at the same size (the character turns around); S8 ends with the figure dropping out the bottom and S10 picks the drop up from the top.",
-  "Waves appear only in S10 (the fall). S10 to S11 is a wave wipe: the sea rises over the frame, then drains away to reveal S11."
+  "The video ends on the sea swallowing the frame: black, held for a second."
  ]
 }

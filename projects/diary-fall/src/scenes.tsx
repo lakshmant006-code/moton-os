@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { AbsoluteFill, staticFile, useCurrentFrame } from "remotion";
 import { el, FPS, reel } from "./reel";
-import { Boil, BurstLines, C, Doodles, MotionLines, Page, Pic, Shock, Splash, WaveRow, WaveWall, backOut, easeIn, easeInOut, easeOut, lerp, place, ramp, rnd } from "./fx";
+import { Boil, BurstLines, C, MotionLines, Page, Pic, Shock, Splash, WaveRow, WaveWall, backOut, easeIn, easeInOut, easeOut, lerp, place, ramp, rnd } from "./fx";
 
 /* Seconds a scene starts early so it can dissolve over the one before (see Main.tsx). */
 export const PreRoll = createContext(0);
@@ -229,25 +229,6 @@ export const Fall: React.FC = () => {
         <Shock t={t} hits={hits} cx={x} cy={y} rx={420} ry={330} n={12} len={52} w={7} />
         <Splash t={t - hitAt} x={x - 40} y={frontTop + h * 0.25} />
         <WaveWall t={t} top={wall} />
-      </Boil>
-    </AbsoluteFill>
-  );
-};
-
-/* S11: lands facing us, ta-da, burst lines and doodles. */
-export const Burst: React.FC = () => {
-  const { f, t } = useT();
-  const e = el("S11", "figure");
-  const pop = ramp(t, 0.18, 0.4, backOut);
-  const k = e.v<number>("zoom") * lerp(0.8, 1, pop) * lerp(1, 1.04, ramp(t, 0.25, 2));
-  return (
-    <AbsoluteFill style={{ overflow: "hidden" }}>
-      <Page />
-      <Boil>
-        <BurstLines f={f} cx={960} cy={450} r0={300} r1={1100} n={60} w={6} seed={77} grow={ramp(t, 0.15, 0.45, easeOut)} />
-        <Doodles t={t - 0.2} cx={960} cy={450} />
-        <Pic name="front" style={place("front", 767, 1430, 960, 450, k)} />
-        <WaveWall t={t + 9} top={lerp(-340, 936 + 40, ramp(t, 0.04, 0.5, easeInOut))} />
       </Boil>
     </AbsoluteFill>
   );

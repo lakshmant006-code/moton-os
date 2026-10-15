@@ -133,39 +133,6 @@ export const Shock: React.FC<{ t: number; hits: number[]; cx: number; cy: number
   );
 };
 
-/* Doodle stars and plus sparkles flying out of a point. */
-export const Doodles: React.FC<{ t: number; cx: number; cy: number; n?: number }> = ({ t, cx, cy, n = 26 }) => {
-  if (t <= 0) return null;
-  const star = (r: number) => Array.from({ length: 10 }).map((_, i) => {
-    const a = -Math.PI / 2 + (i * Math.PI) / 5;
-    const rr = i % 2 ? r * 0.45 : r;
-    return `${(Math.cos(a) * rr).toFixed(1)},${(Math.sin(a) * rr).toFixed(1)}`;
-  }).join(" ");
-  return (
-    <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
-      {Array.from({ length: n }).map((_, i) => {
-        const s = 6100 + i * 23;
-        const a = rnd(s) * Math.PI * 2;
-        const v = 420 + 900 * rnd(s + 1);
-        const tt = Math.max(0, t - rnd(s + 2) * 0.15);
-        const r = 80 + v * (1 - Math.exp(-tt * 2.6)) / 2.6;
-        const x = cx + Math.cos(a) * r * 1.25, y = cy + Math.sin(a) * r * 0.75;
-        const size = 14 + 22 * rnd(s + 3);
-        const o = Math.min(1, tt / 0.05) * (1 - ramp(tt, 1.1, 1.7));
-        const rot = (rnd(s + 4) - 0.5) * 60 + tt * 90 * (rnd(s + 5) - 0.5);
-        const kind = rnd(s + 6);
-        return (
-          <g key={i} transform={`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${rot.toFixed(1)})`} opacity={o}>
-            {kind < 0.5 ? <polygon points={star(size)} fill={C.paper} stroke={C.ink} strokeWidth={5} strokeLinejoin="round" />
-              : kind < 0.8 ? <path d={`M${-size * 0.7} 0 L${size * 0.7} 0 M0 ${-size * 0.7} L0 ${size * 0.7}`} stroke={C.ink} strokeWidth={5} strokeLinecap="round" />
-              : <circle r={size * 0.25} fill={C.ink} />}
-          </g>
-        );
-      })}
-    </svg>
-  );
-};
-
 /* A faint print texture so the page is not dead flat. */
 export const Finish: React.FC<{ f: number }> = ({ f }) => (
   <AbsoluteFill style={{ pointerEvents: "none" }}>

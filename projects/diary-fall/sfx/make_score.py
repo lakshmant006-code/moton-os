@@ -163,6 +163,21 @@ def brush():
     return bp(n, 1500, 6500) * np.sin(np.pi * p) ** 1.5
 
 
+def splash():
+    d = 1.4
+    n = rng.standard_normal(int(d * SR))
+    t = np.arange(len(n)) / SR
+    body = bp(n, 300, 6000) * env(len(n), 0.003, 0.18)
+    hiss = hp(n, 3000) * np.exp(-t / 0.5) * 0.35
+    thump = np.sin(2 * np.pi * np.cumsum(60 + 90 * np.exp(-t / 0.04)) / SR) * env(len(n), 0.002, 0.12)
+    bubbles = np.zeros(len(n))
+    for k in range(10):
+        st = rng.uniform(0.15, 0.9); f0 = rng.uniform(500, 1400); i0 = int(st * SR); m = int(0.07 * SR)
+        tt = np.arange(m) / SR
+        bubbles[i0:i0 + m] += np.sin(2 * np.pi * np.cumsum(f0 * (1 + 2.5 * tt / 0.07)) / SR) * np.exp(-tt / 0.025) * 0.3
+    return body + hiss + 0.8 * thump + bubbles
+
+
 def wind(d):
     n = rng.standard_normal(int(d * SR))
     t = np.arange(len(n)) / SR
@@ -261,6 +276,14 @@ for h in hits:
 put(riser(1.6), s11[0] - 1.6, 0.7)
 for i, b in enumerate(beats(s11[0] - 1.0, s11[0], BEAT / 4)):
     put(kick(0.5), b, 0.2 + 0.07 * i)
+
+# Into the sea: splash, the wave wall surges over the frame and drains away
+sea = next(e for sc in reel["scenes"] for e in sc["els"] if e["id"] == "waves")["props"]
+d0, d1 = sea["dive"]["v"]
+put(whoosh(d1 - d0, up=False), d0, 0.45, verb=0.3)
+put(splash(), d0 + (d1 - d0) * 0.68, 0.9, verb=0.5)
+put(whoosh(0.6), sea["surge"]["v"], 0.55, verb=0.4)
+put(lp(rng.standard_normal(int(0.9 * SR)), 500) * env(int(0.9 * SR), 0.15, 0.3), sea["surge"]["v"] + 0.1, 0.5, verb=0.3)
 
 # Burst
 put(boom(3.5), s11[0], 1.25, verb=0.7)

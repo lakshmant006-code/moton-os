@@ -175,3 +175,61 @@ export const Finish: React.FC<{ f: number }> = ({ f }) => (
     <AbsoluteFill style={{ filter: "url(#grain)" }} />
   </AbsoluteFill>
 );
+
+/* The user's ocean waves (public/waves.png is a seamless horizontal loop, black on transparent). */
+export const WAVE = { w: 2950, h: 521 };
+const waveTile = (h: number, x: number): React.CSSProperties => ({
+  backgroundImage: `url(${staticFile("waves.png")})`, backgroundRepeat: "repeat-x",
+  backgroundSize: `${((WAVE.w / WAVE.h) * h).toFixed(1)}px ${h}px`, backgroundPosition: `${x.toFixed(1)}px 0px`,
+});
+/* Pen outline around a shape, for the paler back row. */
+const OUTLINE = [[4, 0], [-4, 0], [0, 4], [0, -4]].map(([x, y]) => `drop-shadow(${x}px ${y}px 0 ${C.ink})`).join(" ");
+
+/* One carousel row of waves sliding left to right, solid sea below its crests. outline: white waves drawn in pen. */
+export const WaveRow: React.FC<{ t: number; top: number; h: number; speed: number; phase?: number; outline?: boolean }> = ({ t, top, h, speed, phase = 0, outline }) => {
+  const tw = (WAVE.w / WAVE.h) * h;
+  const x = ((speed * t + phase) % tw + tw) % tw;
+  return (
+    <div style={{ position: "absolute", left: 0, right: 0, top, bottom: -400, filter: outline ? `invert(1) ${OUTLINE}` : undefined }}>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: h, ...waveTile(h, x) }} />
+      <div style={{ position: "absolute", left: 0, right: 0, top: h - 2, bottom: 0, background: "#000" }} />
+    </div>
+  );
+};
+
+/* Splash doodle: teardrop droplets thrown up and out, with a few spray strokes. */
+export const Splash: React.FC<{ t: number; x: number; y: number; n?: number }> = ({ t, x, y, n = 16 }) => {
+  if (t <= 0 || t > 1.2) return null;
+  const o = 1 - ramp(t, 0.8, 1.2);
+  return (
+    <svg width={W} height={H} style={{ position: "absolute", inset: 0, opacity: o }}>
+      {Array.from({ length: n }).map((_, i) => {
+        const s = 8800 + i * 13;
+        const a = -Math.PI / 2 + (rnd(s) - 0.5) * 2.2;
+        const v = 700 + 900 * rnd(s + 1);
+        const px = x + Math.cos(a) * v * t, py = y + Math.sin(a) * v * t + 1400 * t * t;
+        const vx = Math.cos(a) * v, vy = Math.sin(a) * v + 2800 * t;
+        const ang = (Math.atan2(vy, vx) * 180) / Math.PI - 90;
+        const r = 9 + 12 * rnd(s + 2);
+        return (
+          <path key={i} transform={`translate(${px.toFixed(1)} ${py.toFixed(1)}) rotate(${ang.toFixed(1)})`}
+            d={`M0 ${-r * 2.2} C ${r * 0.9} ${-r * 0.6} ${r} 0 0 ${r} C ${-r} 0 ${-r * 0.9} ${-r * 0.6} 0 ${-r * 2.2} Z`}
+            fill={C.paper} stroke={C.ink} strokeWidth={5} strokeLinejoin="round" />
+        );
+      })}
+      {Array.from({ length: 7 }).map((_, i) => {
+        const a = -Math.PI / 2 + (i / 6 - 0.5) * 1.6;
+        const r0 = 40 + 120 * t, r1 = r0 + 140 * (1 - ramp(t, 0.2, 0.6));
+        return <line key={`l${i}`} x1={x + Math.cos(a) * r0} y1={y + Math.sin(a) * r0} x2={x + Math.cos(a) * r1} y2={y + Math.sin(a) * r1} stroke={C.ink} strokeWidth={7} strokeLinecap="round" />;
+      })}
+    </svg>
+  );
+};
+
+/* A wall of sea whose wavy crest sits at `top`: used to swallow the frame and hand over to the next shot. */
+export const WaveWall: React.FC<{ t: number; top: number; h?: number }> = ({ t, top, h = 300 }) => (
+  <div style={{ position: "absolute", left: 0, right: 0, top, height: H + h + 400 }}>
+    <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: h, ...waveTile(h, 260 * t) }} />
+    <div style={{ position: "absolute", left: 0, right: 0, top: h - 2, bottom: 0, background: "#000" }} />
+  </div>
+);

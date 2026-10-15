@@ -1,7 +1,7 @@
 {
  "id": "diary-fall",
  "title": "Diary fall",
- "version": 2,
+ "version": 3,
  "path": "projects/diary-fall",
  "src": "video.mp4",
  "w": 1920,
@@ -47,6 +47,12 @@
   {
    "id": "assets/falling.png",
    "name": "falling.png",
+   "type": "image",
+   "from": "User"
+  },
+  {
+   "id": "assets/waves.png",
+   "name": "waves.png",
    "type": "image",
    "from": "User"
   }
@@ -631,7 +637,7 @@
       "zoom": {
        "type": "number",
        "label": "Zoom",
-       "v": 0.5
+       "v": 0.44
       },
       "motion": {
        "type": "motion",
@@ -670,6 +676,61 @@
        "type": "color",
        "label": "Color",
        "v": "brand.ink"
+      }
+     }
+    },
+    {
+     "id": "waves",
+     "label": "Ocean waves",
+     "t": [
+      17.0,
+      26.0
+     ],
+     "box": [
+      0,
+      70,
+      100,
+      30
+     ],
+     "src": "src/fx.tsx:WaveRow",
+     "props": {
+      "img": {
+       "type": "media",
+       "label": "Image",
+       "v": "assets/waves.png"
+      },
+      "speed": {
+       "type": "number",
+       "label": "Front row speed (px/s)",
+       "v": 170
+      },
+      "backSpeed": {
+       "type": "number",
+       "label": "Back row speed (px/s)",
+       "v": 80
+      },
+      "height": {
+       "type": "number",
+       "label": "Front row height (px)",
+       "v": 170
+      },
+      "dive": {
+       "type": "list",
+       "label": "Dive into the sea (s)",
+       "v": [
+        24.75,
+        25.45
+       ]
+      },
+      "surge": {
+       "type": "number",
+       "label": "Sea swallows the frame at (s)",
+       "v": 25.45
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Only during the fall: the user's waves rise into frame and scroll left to right as a carousel (pen outlined back row, solid black front row); the sea comes closer, he dives in with a splash, and a wall of sea rises to swallow the frame"
       }
      }
     }
@@ -711,7 +772,7 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "Lands facing us with a pop, burst lines and flying doodle stars, then the page fades to white"
+       "v": "The sea drains down off the frame to reveal him landed facing us with a pop, burst lines and flying doodle stars, then the page fades to white"
       }
      }
     },
@@ -749,6 +810,7 @@
  ],
  "notes": [
   "Monochrome only: black pen, white page, grey rules. No lettering.",
-  "S7 to S8 is a dissolve between front and back at the same size (the character turns around); S8 ends with the figure dropping out the bottom and S10 picks the drop up from the top."
+  "S7 to S8 is a dissolve between front and back at the same size (the character turns around); S8 ends with the figure dropping out the bottom and S10 picks the drop up from the top.",
+  "Waves appear only in S10 (the fall). S10 to S11 is a wave wipe: the sea rises over the frame, then drains away to reveal S11."
  ]
 }

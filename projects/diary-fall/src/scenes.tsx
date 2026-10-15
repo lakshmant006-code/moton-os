@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { AbsoluteFill, staticFile, useCurrentFrame } from "remotion";
 import { el, FPS, reel } from "./reel";
-import { Boil, BurstLines, C, Doodles, MotionLines, Page, Pic, Shock, backOut, easeIn, easeInOut, easeOut, lerp, place, ramp, rnd } from "./fx";
+import { Boil, BurstLines, C, Doodles, MotionLines, Page, Pic, Shock, Splash, WaveRow, WaveWall, backOut, easeIn, easeInOut, easeOut, lerp, place, ramp, rnd } from "./fx";
 
 /* Seconds a scene starts early so it can dissolve over the one before (see Main.tsx). */
 export const PreRoll = createContext(0);
@@ -190,27 +190,44 @@ export const Stand: React.FC = () => {
   );
 };
 
-/* S10: the long fall. The page rules rush upward past the user's falling drawing. */
+/* S10: the long fall. The page rules rush upward past the user's falling drawing while the sea scrolls by
+   below; at the end the figure dives into the waves and the sea swallows the frame. */
 export const Fall: React.FC = () => {
   const { f, t } = useT();
   const e = el("S10", "figure");
+  const sea = el("S10", "waves");
+  const [dive0, dive1] = sea.v<number[]>("dive").map((x) => x - 17);
+  const surge0 = sea.v<number>("surge") - 17;
   const k = e.v<number>("zoom") * (1 + 0.03 * Math.sin(t * 0.9));
-  const rot = 3 * Math.sin(t * 0.55) + 1.2 * Math.sin(t * 1.7);
+  const rot = 3 * Math.sin(t * 0.55) + 1.2 * Math.sin(t * 1.7) + 14 * Math.pow(ramp(t, dive0, dive1, (v) => v), 2);
   const x = 960 + Math.sin(t * 0.4) * 60;
   const enter = ramp(t, 0, 0.5, easeOut);
-  const y = lerp(-420, 470 + Math.sin(t * 0.8) * 14, enter);
+  const dive = Math.pow(ramp(t, dive0, dive1, (v) => v), 2);
+  const y = lerp(lerp(-420, 420 + Math.sin(t * 0.8) * 14, enter), 1250, dive);
   const full: React.CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%" };
-  const hits = beats("S10");
+  const hits = beats("S10").filter((h) => h < dive0);
+  // the sea rises into frame as the fall starts, and comes closer as he nears it
+  const near = ramp(t, dive0 - 1.6, dive1, easeInOut);
+  const h = sea.v<number>("height") * lerp(1, 1.3, near);
+  const rise = 320 * (1 - ramp(t, 0.1, 0.9, easeOut));
+  const frontTop = 936 - h + 34 + rise;
+  const backTop = 936 - h * 1.42 + rise * 1.2;
+  const hitAt = dive0 + (dive1 - dive0) * 0.68; // when he reaches the front crests
+  const wall = lerp(936 + 40, -340, ramp(t, surge0, surge0 + 0.5, easeInOut));
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
-      <Page scroll={t * 1400} />
+      <Page scroll={t * 1400 * (1 - 0.6 * dive)} />
       <Boil>
-        <MotionLines t={t} n={10} seed={31} speed={1900} angle={-90} minLen={120} maxLen={380} w={5} />
+        <MotionLines t={t} n={10} seed={31} speed={1900} angle={-90} minLen={120} maxLen={380} w={5} o={1 - dive} />
+        <WaveRow t={t} top={backTop} h={h * 0.72} speed={sea.v<number>("backSpeed")} phase={900} outline />
         <div style={{ ...place("fall", 687, 672, x, y, k), transform: `rotate(${rot}deg)` }}>
           <Pic name="fall-lines" style={{ ...full, filter: "brightness(0)" }} />
           <Pic name="fall" style={full} />
         </div>
+        <WaveRow t={t} top={frontTop} h={h} speed={sea.v<number>("speed")} />
         <Shock t={t} hits={hits} cx={x} cy={y} rx={420} ry={330} n={12} len={52} w={7} />
+        <Splash t={t - hitAt} x={x - 40} y={frontTop + h * 0.25} />
+        <WaveWall t={t} top={wall} />
       </Boil>
     </AbsoluteFill>
   );
@@ -220,15 +237,16 @@ export const Fall: React.FC = () => {
 export const Burst: React.FC = () => {
   const { f, t } = useT();
   const e = el("S11", "figure");
-  const pop = ramp(t, 0, 0.22, backOut);
+  const pop = ramp(t, 0.18, 0.4, backOut);
   const k = e.v<number>("zoom") * lerp(0.8, 1, pop) * lerp(1, 1.04, ramp(t, 0.25, 2));
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       <Page />
       <Boil>
-        <BurstLines f={f} cx={960} cy={450} r0={300} r1={1100} n={60} w={6} seed={77} grow={ramp(t, 0, 0.3, easeOut)} />
-        <Doodles t={t - 0.04} cx={960} cy={450} />
+        <BurstLines f={f} cx={960} cy={450} r0={300} r1={1100} n={60} w={6} seed={77} grow={ramp(t, 0.15, 0.45, easeOut)} />
+        <Doodles t={t - 0.2} cx={960} cy={450} />
         <Pic name="front" style={place("front", 767, 1430, 960, 450, k)} />
+        <WaveWall t={t + 9} top={lerp(-340, 936 + 40, ramp(t, 0.04, 0.5, easeInOut))} />
       </Boil>
     </AbsoluteFill>
   );

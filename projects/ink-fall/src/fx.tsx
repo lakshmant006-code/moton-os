@@ -3,7 +3,7 @@ import { AbsoluteFill, Easing, Img, interpolate, staticFile } from "remotion";
 
 export const W = 1920;
 export const H = 936;
-export const C = { ink: "#0a0a0a", paper: "#efe9e4", red: "#c0142b", glow: "#ffffff" };
+export const C = { ink: "#0a0a0a", paper: "#efe9e4", grey: "#8c8c8c", glow: "#ffffff" };
 
 export const easeOut = Easing.bezier(0.16, 1, 0.3, 1);
 export const easeInOut = Easing.bezier(0.65, 0, 0.35, 1);
@@ -18,7 +18,7 @@ export const rnd = (seed: number) => {
   return x - Math.floor(x);
 };
 
-/* Pixel sizes of the prepared cutouts in public/ (see README in this folder). */
+/* Pixel sizes of the prepared cutouts in public/ (made by tools/prep_art.py). */
 export const IMG = {
   front: [1534, 2866], side: [712, 2878], back: [1534, 2878], fall: [1374, 1344],
   "front-head": [2730, 2800], "side-head": [2492, 2800], "back-head": [2730, 2800], lenses: [2730, 2800],
@@ -99,8 +99,9 @@ export const Spatter: React.FC<{ f: number; color?: string; n?: number; seed?: n
   );
 };
 
-/* Red light bleeding in from the edges on the beat, like the LED wall in the reference. */
-export const RedWash: React.FC<{ t: number; at: number[]; dark?: boolean }> = ({ t, at, dark }) => {
+/* Light pulses on the beat, like the LED wall in the reference, kept in black and white:
+   on paper the ink closes in from the edges, on black the light floods in. */
+export const Pulse: React.FC<{ t: number; at: number[]; dark?: boolean }> = ({ t, at, dark }) => {
   let o = 0;
   for (const h of at) {
     if (t < h - 0.04) continue;
@@ -108,11 +109,9 @@ export const RedWash: React.FC<{ t: number; at: number[]; dark?: boolean }> = ({
     o = Math.max(o, d < 0 ? 1 + d / 0.04 : Math.exp(-d / 0.26));
   }
   if (o < 0.01) return null;
+  const c = dark ? "255,255,255" : "10,10,10";
   return (
-    <AbsoluteFill style={{ pointerEvents: "none" }}>
-      <AbsoluteFill style={{ background: `radial-gradient(ellipse 75% 85% at 50% 45%, rgba(192,20,43,${0.25 * o}) 0%, rgba(192,20,43,${0.85 * o}) 65%, rgba(120,0,18,${o}) 100%)`, mixBlendMode: dark ? "screen" : "multiply" }} />
-      {dark && <AbsoluteFill style={{ background: `radial-gradient(ellipse 60% 70% at 50% 50%, transparent 40%, rgba(192,20,43,${0.55 * o}) 100%)` }} />}
-    </AbsoluteFill>
+    <AbsoluteFill style={{ pointerEvents: "none", background: `radial-gradient(ellipse 75% 85% at 50% 45%, rgba(${c},${(dark ? 0.03 : 0.1) * o}) 0%, rgba(${c},${(dark ? 0.16 : 0.5) * o}) 65%, rgba(${c},${(dark ? 0.34 : 0.8) * o}) 100%)` }} />
   );
 };
 
@@ -173,7 +172,7 @@ export const Dust: React.FC<{ t: number; n?: number; o?: number; rise?: number }
   </AbsoluteFill>
 );
 
-/* Brush strokes exploding out of a point. Red first, cooling to white. */
+/* Brush strokes exploding out of a point. Grey ink first, brightening to white. */
 export const BurstStrokes: React.FC<{ t: number; cx: number; cy: number; n?: number }> = ({ t, cx, cy, n = 170 }) => {
   if (t < 0) return null;
   return (
@@ -190,8 +189,8 @@ export const BurstStrokes: React.FC<{ t: number; cx: number; cy: number; n?: num
         const w = 4 + 18 * rnd(s + 4);
         const x = cx + Math.cos(a) * r, y = cy + Math.sin(a) * r * 0.82;
         const heat = Math.min(1, tt / 0.55);
-        const red = rnd(s + 5) < 0.5 + 0.4 * (1 - heat);
-        const color = red ? C.red : "#ffffff";
+        const grey = rnd(s + 5) < 0.5 + 0.4 * (1 - heat);
+        const color = grey ? C.grey : "#ffffff";
         const o = Math.min(1, tt / 0.04) * (1 - ramp(tt, 1.2, 1.9));
         return <path key={i} d={strokePath(len, w, s)} fill={color} opacity={o} transform={`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${(Math.atan2(Math.sin(a) * 0.82, Math.cos(a)) * 180) / Math.PI + 180})`} />;
       })}

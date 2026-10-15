@@ -1,7 +1,7 @@
 {
  "id": "ink-fall",
  "title": "Ink fall",
- "version": 3,
+ "version": 4,
  "path": "projects/ink-fall",
  "src": "video.mp4",
  "w": 1920,
@@ -22,14 +22,14 @@
     "v": "#efe9e4"
    },
    {
-    "id": "red",
-    "name": "Red",
-    "v": "#c0142b"
-   },
-   {
     "id": "white",
     "name": "Glow",
     "v": "#ffffff"
+   },
+   {
+    "id": "grey",
+    "name": "Grey",
+    "v": "#8c8c8c"
    }
   ],
   "fonts": [],
@@ -40,7 +40,7 @@
   "bpm": 120,
   "sfx": "score.wav",
   "sfxVol": 1.0,
-  "note": "Score and effects are synthesized by sfx/make_score.py from the scene times and red wash hits. Drop a track in public/music.mp3 and set audio.music to use your own song."
+  "note": "Score and effects are synthesized by sfx/make_score.py from the scene times and beat pulses. Drop a track in public/music.mp3 and set audio.music to use your own song."
  },
  "assets": [
   {
@@ -103,8 +103,8 @@
      }
     },
     {
-     "id": "red",
-     "label": "Red washes",
+     "id": "pulse",
+     "label": "Light pulses",
      "t": [
       0,
       2.0
@@ -115,7 +115,7 @@
       100,
       100
      ],
-     "src": "src/fx.tsx:RedWash",
+     "src": "src/fx.tsx:Pulse",
      "props": {
       "at": {
        "type": "list",
@@ -128,7 +128,7 @@
       "color": {
        "type": "color",
        "label": "Color",
-       "v": "brand.red"
+       "v": "brand.white"
       }
      }
     }
@@ -222,8 +222,8 @@
      }
     },
     {
-     "id": "red",
-     "label": "Red washes",
+     "id": "pulse",
+     "label": "Light pulses",
      "t": [
       3.5,
       5.0
@@ -234,7 +234,7 @@
       100,
       100
      ],
-     "src": "src/fx.tsx:RedWash",
+     "src": "src/fx.tsx:Pulse",
      "props": {
       "at": {
        "type": "list",
@@ -246,7 +246,7 @@
       "color": {
        "type": "color",
        "label": "Color",
-       "v": "brand.red"
+       "v": "brand.white"
       }
      }
     }
@@ -293,13 +293,13 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "Extreme close up on the glasses, red washes bleed in from the sides on the beat, ink spatter flicks across"
+       "v": "Extreme close up on the glasses, light pulses close in from the sides on the beat, ink spatter flicks across"
       }
      }
     },
     {
-     "id": "red",
-     "label": "Red washes",
+     "id": "pulse",
+     "label": "Light pulses",
      "t": [
       5.0,
       7.0
@@ -310,7 +310,7 @@
       100,
       100
      ],
-     "src": "src/fx.tsx:RedWash",
+     "src": "src/fx.tsx:Pulse",
      "props": {
       "at": {
        "type": "list",
@@ -324,7 +324,7 @@
       "color": {
        "type": "color",
        "label": "Color",
-       "v": "brand.red"
+       "v": "brand.white"
       }
      }
     }
@@ -392,8 +392,8 @@
      }
     },
     {
-     "id": "red",
-     "label": "Red washes",
+     "id": "pulse",
+     "label": "Light pulses",
      "t": [
       7.0,
       10.5
@@ -404,7 +404,7 @@
       100,
       100
      ],
-     "src": "src/fx.tsx:RedWash",
+     "src": "src/fx.tsx:Pulse",
      "props": {
       "at": {
        "type": "list",
@@ -417,7 +417,7 @@
       "color": {
        "type": "color",
        "label": "Color",
-       "v": "brand.red"
+       "v": "brand.white"
       }
      }
     }
@@ -501,8 +501,8 @@
      }
     },
     {
-     "id": "red",
-     "label": "Red washes",
+     "id": "pulse",
+     "label": "Light pulses",
      "t": [
       11.0,
       14.5
@@ -513,7 +513,7 @@
       100,
       100
      ],
-     "src": "src/fx.tsx:RedWash",
+     "src": "src/fx.tsx:Pulse",
      "props": {
       "at": {
        "type": "list",
@@ -525,7 +525,7 @@
       "color": {
        "type": "color",
        "label": "Color",
-       "v": "brand.red"
+       "v": "brand.white"
       }
      }
     }
@@ -614,13 +614,13 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "Red flash, the silhouette inverts to glowing white on black and walks away with a gentle bob, dust drifts"
+       "v": "A light pulse, the silhouette inverts to glowing white on black and walks away with a gentle bob, dust drifts"
       }
      }
     },
     {
-     "id": "red",
-     "label": "Red washes",
+     "id": "pulse",
+     "label": "Light pulses",
      "t": [
       17.0,
       20.0
@@ -631,7 +631,7 @@
       100,
       100
      ],
-     "src": "src/fx.tsx:RedWash",
+     "src": "src/fx.tsx:Pulse",
      "props": {
       "at": {
        "type": "list",
@@ -643,7 +643,7 @@
       "color": {
        "type": "color",
        "label": "Color",
-       "v": "brand.red"
+       "v": "brand.white"
       }
      }
     }
@@ -690,8 +690,8 @@
      }
     },
     {
-     "id": "red",
-     "label": "Red washes",
+     "id": "pulse",
+     "label": "Light pulses",
      "t": [
       20.0,
       29.0
@@ -702,7 +702,7 @@
       100,
       100
      ],
-     "src": "src/fx.tsx:RedWash",
+     "src": "src/fx.tsx:Pulse",
      "props": {
       "at": {
        "type": "list",
@@ -718,7 +718,7 @@
       "color": {
        "type": "color",
        "label": "Color",
-       "v": "brand.red"
+       "v": "brand.white"
       }
      }
     }
@@ -760,13 +760,13 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "The figure lands facing us and explodes into flying brush strokes, red then white, then fades out"
+       "v": "The figure lands facing us and explodes into flying brush strokes, grey then white, then fades out"
       }
      }
     },
     {
-     "id": "red",
-     "label": "Red washes",
+     "id": "pulse",
+     "label": "Light pulses",
      "t": [
       29.0,
       31.0
@@ -777,7 +777,7 @@
       100,
       100
      ],
-     "src": "src/fx.tsx:RedWash",
+     "src": "src/fx.tsx:Pulse",
      "props": {
       "at": {
        "type": "list",
@@ -789,12 +789,14 @@
       "color": {
        "type": "color",
        "label": "Color",
-       "v": "brand.red"
+       "v": "brand.white"
       }
      }
     }
    ]
   }
  ],
- "notes": []
+ "notes": [
+  "Monochrome only: black, white and greys. The final frame is also forced to grayscale in Main.tsx."
+ ]
 }

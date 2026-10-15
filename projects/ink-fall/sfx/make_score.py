@@ -1,4 +1,4 @@
-"""Synthesize the soundtrack for Ink fall from reel.json (scene times + red wash hits).
+"""Synthesize the soundtrack for Ink fall from reel.json (scene times + beat pulses).
 
 Everything is generated here (no samples), so there is nothing to license.
 Run from the project folder:  python3 sfx/make_score.py  ->  public/score.wav
@@ -19,7 +19,7 @@ BEAT = 60 / reel["audio"]["bpm"]
 N = int(DUR * SR)
 rng = np.random.default_rng(11)
 scene = {s["id"]: s["t"] for s in reel["scenes"]}
-hits = sorted(h for s in reel["scenes"] for e in s["els"] if e["id"] == "red" for h in e["props"]["at"]["v"])
+hits = sorted(h for s in reel["scenes"] for e in s["els"] if e["id"] == "pulse" for h in e["props"]["at"]["v"])
 
 L = np.zeros(N)
 R = np.zeros(N)
@@ -253,7 +253,7 @@ for b in beats(s9[0], s10[0], BEAT * 2):
 for b in beats(s9[0], s10[0], BEAT):
     put(ting(1760 if int(b * 2) % 4 else 2349), b + 0.25, 0.05, pan=rng.uniform(-0.6, 0.6), verb=0.8)
 
-# The fall: wind, wide pads, booms on the red hits
+# The fall: wind, wide pads, booms on the pulses
 put(whoosh(0.8), s10[0] - 0.3, 0.5, verb=0.4)
 put(wind(s10[1] - s10[0] + 0.5), s10[0], 0.8, verb=0.2)
 for i, b in enumerate(beats(s10[0], s10[1], BEAT * 4)):
@@ -276,7 +276,7 @@ for k in range(24):
     put(brush(), s11[0] + rng.uniform(0, 0.6), 0.25, pan=rng.uniform(-1, 1), verb=0.3)
 put(pad([D2, A2, 146.83, 220.0], s11[1] - s11[0], cutoff=900), s11[0], 0.5, verb=0.6)
 
-# Red washes elsewhere get a soft hit
+# Pulses elsewhere get a soft hit
 for h in hits:
     if h < s10[0] and all(abs(h - c) > 0.1 for c in [s7[0], s9[0]]):
         put(boom(0.8), h, 0.3, verb=0.3)
@@ -300,4 +300,4 @@ with wave.open(str(ROOT / "public" / "score.wav"), "wb") as w:
     w.setsampwidth(2)
     w.setframerate(SR)
     w.writeframes((out * 32767).astype(np.int16).tobytes())
-print("score.wav", round(DUR, 2), "s,", len(hits), "red hits")
+print("score.wav", round(DUR, 2), "s,", len(hits), "pulses")

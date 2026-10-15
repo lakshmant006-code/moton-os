@@ -216,7 +216,7 @@ export const Fall: React.FC = () => {
   const rot = 3 * Math.sin(t * 0.55) + 1.2 * Math.sin(t * 1.7);
   const x = 960 + Math.sin(t * 0.4) * 60;
   const y = 450 + Math.sin(t * 0.8) * 16;
-  const beats = el("S10", "red").v<number[]>("at").map((h) => h - 20);
+  const beats = el("S10", "pulse").v<number[]>("at").map((h) => h - 20);
   let pulse = 0;
   for (const b of beats) if (t >= b) pulse = Math.max(pulse, Math.exp(-(t - b) / 0.3));
   const enter = ramp(t, 0, 0.45, easeOut);
@@ -249,7 +249,7 @@ export const Burst: React.FC = () => {
   const flash = Math.exp(-t / 0.09);
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
-      <AbsoluteFill style={{ background: "radial-gradient(ellipse 55% 65% at 50% 50%, #2a0a10 0%, #0a0507 75%)" }} />
+      <AbsoluteFill style={{ background: "radial-gradient(ellipse 55% 65% at 50% 50%, #1c1c1e 0%, #060607 75%)" }} />
       <Rays f={useCurrentFrame()} cx={960} cy={430} color="rgba(255,255,255,0.12)" n={40} inner={300} seed={77} every={2} />
       <BurstStrokes t={t - 0.02} cx={960} cy={430} />
       <Glow name="front" style={place("front", 767, 1430, 960, 430, k)} strength={1.3} art={0.25 * Math.exp(-t / 0.6)} />

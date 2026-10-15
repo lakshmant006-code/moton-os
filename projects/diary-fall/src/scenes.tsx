@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { AbsoluteFill, staticFile, useCurrentFrame } from "remotion";
 import { el, FPS, reel } from "./reel";
-import { Boil, BurstLines, C, Doodles, Letters, MotionLines, Page, Pic, Puff, Shock, backOut, easeIn, easeInOut, easeOut, lerp, place, ramp, rnd } from "./fx";
+import { Boil, BurstLines, C, Doodles, MotionLines, Page, Pic, Shock, backOut, easeIn, easeInOut, easeOut, lerp, place, ramp, rnd } from "./fx";
 
 /* Seconds a scene starts early so it can dissolve over the one before (see Main.tsx). */
 export const PreRoll = createContext(0);
@@ -15,7 +15,6 @@ const beats = (id: string) => {
   const s = reel.scenes.find((x) => x.id === id)!;
   return s.els.some((e) => e.id === "pulse") ? el(id, "pulse").v<number[]>("at").map((h) => h - s.t[0]) : [];
 };
-const txt = (id: string, elId: string) => el(id, elId).v<string>("text");
 const shake = (t: number, amt: number) => ({ x: Math.sin(t * 13.1) * amt + Math.sin(t * 7.3) * amt * 0.6, y: Math.cos(t * 11.7) * amt * 0.8 });
 
 /* S1: back view on the page, wind lines whipping past. */
@@ -132,7 +131,6 @@ export const Shades: React.FC = () => {
         </div>
         <Shock t={t} hits={beats("S5")} cx={960} cy={420} rx={760} ry={300} len={56} w={8} />
       </Boil>
-      <Letters text={txt("S5", "glug")} f={f} t={t} x={1580} y={96} size={78} rot={6} inAt={p0 + 0.05} outAt={p1 + 0.5} shake={3} />
       <AbsoluteFill style={{ background: C.ink, opacity: ramp(t, d1 - 0.15, d1) }} />
     </AbsoluteFill>
   );
@@ -169,48 +167,24 @@ export const LowAngle: React.FC = () => {
         <BurstLines f={f} cx={960} cy={sy + 40} r0={lerp(300, 330, back)} r1={1150} n={56} w={6} seed={3} />
         <Pic name="front" style={place("front", 767, fy, 960 + s.x, sy + s.y, k)} />
       </Boil>
-      <Letters text={txt("S7", "stomp")} f={f} t={t} x={1490} y={230} size={130} rot={-6} inAt={0.02} outAt={1.0} shake={4} />
     </AbsoluteFill>
   );
 };
 
-/* S8: the whole figure from behind inside the burst. Starts where S7 ends, ends where S9 begins. */
+/* S8: the whole figure from behind inside the burst. Starts where S7 ends, then drops out of frame into the fall. */
 export const Stand: React.FC = () => {
   const { f, t } = useT();
   const e = el("S8", "figure");
-  const k = lerp(e.v<number>("zoomFrom"), e.v<number>("zoomTo"), ramp(t, 0, 2.5, easeInOut));
+  const k = lerp(e.v<number>("zoomFrom"), e.v<number>("zoomTo"), ramp(t, 0, 2.1, easeInOut));
+  // a little hop, then the floor gives way and the figure drops out of the bottom of the frame
+  const drop = -24 * Math.sin(Math.PI * ramp(t, 1.85, 2.05, (x) => x)) + 1000 * ramp(t, 2.05, 2.5, easeIn);
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       <Page />
       <Boil>
-        <BurstLines f={f} cx={960} cy={495} r0={330 * k / 0.27} r1={1150} n={56} w={6} seed={3} o={1 - ramp(t, 2.0, 2.5)} />
-        <Pic name="back" style={place("back", 780, 1440, 960, 455, k)} />
-      </Boil>
-    </AbsoluteFill>
-  );
-};
-
-/* S9: walks away up the page, a puff of dust on every step. The first frames match S8's last. */
-export const Walk: React.FC = () => {
-  const { f, t } = useT();
-  const e = el("S9", "figure");
-  const go = ramp(t, 0, 0.4);
-  const k = e.v<number>("zoom") * lerp(1, 0.86, ramp(t, 0, 3, easeOut));
-  const stepHz = 1.1;
-  const ph = Math.max(0, t) * Math.PI * 2 * stepHz;
-  const bob = -Math.abs(Math.sin(ph)) * 9 * go;
-  const sway = Math.sin(ph) * 1.6 * go;
-  const y = 455 - 50 * ramp(t, 0, 3, easeOut);
-  const feetY = y + (2829 - 1440) * k;
-  const steps = Array.from({ length: 8 }).map((_, i) => (i + 0.5) / (2 * stepHz));
-  return (
-    <AbsoluteFill style={{ overflow: "hidden" }}>
-      <Page />
-      <Boil>
-        {steps.map((s, i) => <Puff key={i} x={960 + (i % 2 ? 46 : -46)} y={feetY - 4} p={ramp(t, s, s + 0.7, (x) => x)} s={0.7} seed={i * 9} />)}
-        <div style={{ ...place("back", 780, 1440, 960, y + bob, k), transform: `rotate(${sway}deg)`, transformOrigin: "50% 100%" }}>
-          <Pic name="back" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />
-        </div>
+        <BurstLines f={f} cx={960} cy={495} r0={330 * k / 0.27} r1={1150} n={56} w={6} seed={3} o={1 - ramp(t, 2.05, 2.3)} />
+        <MotionLines t={t} n={8} seed={41} speed={2200} angle={-90} minLen={120} maxLen={360} o={ramp(t, 2.05, 2.15)} />
+        <Pic name="back" style={place("back", 780, 1440, 960, 455 + drop, k)} />
       </Boil>
     </AbsoluteFill>
   );
@@ -223,11 +197,10 @@ export const Fall: React.FC = () => {
   const k = e.v<number>("zoom") * (1 + 0.03 * Math.sin(t * 0.9));
   const rot = 3 * Math.sin(t * 0.55) + 1.2 * Math.sin(t * 1.7);
   const x = 960 + Math.sin(t * 0.4) * 60;
-  const enter = ramp(t, 0, 0.45, easeOut);
-  const y = lerp(-300, 470 + Math.sin(t * 0.8) * 14, enter);
+  const enter = ramp(t, 0, 0.5, easeOut);
+  const y = lerp(-420, 470 + Math.sin(t * 0.8) * 14, enter);
   const full: React.CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%" };
   const hits = beats("S10");
-  const scream = el("S10", "scream");
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       <Page scroll={t * 1400} />
@@ -239,9 +212,6 @@ export const Fall: React.FC = () => {
         </div>
         <Shock t={t} hits={hits} cx={x} cy={y} rx={420} ry={330} n={12} len={52} w={7} />
       </Boil>
-      {scream.v<number[]>("at").map((a, i) => (
-        <Letters key={i} text={scream.v<string>("text")} f={f} t={t} x={x + 600} y={y - 40 - i * 30} size={100 + 20 * i} rot={-12 + 6 * i} inAt={a - 20} outAt={a - 20 + 3} shake={5} />
-      ))}
     </AbsoluteFill>
   );
 };
@@ -260,7 +230,6 @@ export const Burst: React.FC = () => {
         <Doodles t={t - 0.04} cx={960} cy={450} />
         <Pic name="front" style={place("front", 767, 1430, 960, 450, k)} />
       </Boil>
-      <Letters text={txt("S11", "tada")} f={f} t={t} x={1450} y={170} size={130} rot={-8} inAt={0.12} shake={3} />
     </AbsoluteFill>
   );
 };

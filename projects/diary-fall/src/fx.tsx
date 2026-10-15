@@ -5,7 +5,6 @@ export const W = 1920;
 export const H = 936;
 /* Diary page look: black pen on white ruled paper, nothing else. */
 export const C = { ink: "#111111", paper: "#fdfdfb", rule: "#cdcdcd" };
-export const HAND = "'Patrick Hand', 'Comic Sans MS', sans-serif";
 
 export const easeOut = Easing.bezier(0.16, 1, 0.3, 1);
 export const easeInOut = Easing.bezier(0.65, 0, 0.35, 1);
@@ -134,20 +133,6 @@ export const Shock: React.FC<{ t: number; hits: number[]; cx: number; cy: number
   );
 };
 
-/* Puff cloud doodle (dust when feet land). Outline of a union of circles: strokes first, then fills on top. */
-export const Puff: React.FC<{ x: number; y: number; p: number; s?: number; seed?: number }> = ({ x, y, p, s = 1, seed = 1 }) => {
-  if (p <= 0 || p >= 1) return null;
-  const k = s * (0.6 + 0.5 * ramp(p, 0, 0.4, easeOut));
-  const o = 1 - ramp(p, 0.55, 1);
-  const bubbles = [[-34, 0, 22], [-8, -14, 28], [22, -6, 24], [40, 6, 16], [6, 8, 22]].map(([bx, by, br], i) => [bx * k, by * k - 20 * p, br * k * (0.9 + 0.2 * rnd(seed + i))]);
-  return (
-    <svg width={W} height={H} style={{ position: "absolute", inset: 0, opacity: o }}>
-      {bubbles.map(([bx, by, br], i) => <circle key={`s${i}`} cx={x + bx} cy={y + by} r={br} fill="none" stroke={C.ink} strokeWidth={9} />)}
-      {bubbles.map(([bx, by, br], i) => <circle key={`f${i}`} cx={x + bx} cy={y + by} r={br} fill={C.paper} />)}
-    </svg>
-  );
-};
-
 /* Doodle stars and plus sparkles flying out of a point. */
 export const Doodles: React.FC<{ t: number; cx: number; cy: number; n?: number }> = ({ t, cx, cy, n = 26 }) => {
   if (t <= 0) return null;
@@ -178,28 +163,6 @@ export const Doodles: React.FC<{ t: number; cx: number; cy: number; n?: number }
         );
       })}
     </svg>
-  );
-};
-
-/* White outline around the lettering so it reads over rules, lines and ink. */
-const KNOCKOUT = Array.from({ length: 16 }).map((_, i) => `${(Math.cos((i / 16) * Math.PI * 2) * 7).toFixed(1)}px ${(Math.sin((i / 16) * Math.PI * 2) * 7).toFixed(1)}px 0 ${C.paper}`).join(", ");
-
-/* Hand lettered sound effects. Each letter is re-inked every few frames. */
-export const Letters: React.FC<{ text: string; f: number; t: number; x: number; y: number; size?: number; rot?: number; inAt?: number; outAt?: number; shake?: number }> = ({
-  text, f, t, x, y, size = 96, rot = -6, inAt = 0, outAt = 1e9, shake = 2,
-}) => {
-  if (t < inAt || t > outAt) return null;
-  const pop = ramp(t, inAt, inAt + 0.22, backOut);
-  const o = 1 - ramp(t, outAt - 0.2, outAt);
-  const k = Math.floor(f / 3);
-  return (
-    <div style={{ position: "absolute", left: x, top: y, transform: `translate(-50%, -50%) rotate(${rot}deg) scale(${pop})`, opacity: o, whiteSpace: "nowrap", fontFamily: HAND, fontSize: size, color: C.ink, letterSpacing: size * 0.04, lineHeight: 1, textShadow: KNOCKOUT }}>
-      {text.split("").map((ch, i) => (
-        <span key={i} style={{ display: "inline-block", transform: `translate(${((rnd(k * 31 + i) - 0.5) * shake).toFixed(1)}px, ${((rnd(k * 17 + i) - 0.5) * shake).toFixed(1)}px) rotate(${((rnd(k * 7 + i) - 0.5) * 8).toFixed(1)}deg)` }}>
-          {ch === " " ? " " : ch}
-        </span>
-      ))}
-    </div>
   );
 };
 

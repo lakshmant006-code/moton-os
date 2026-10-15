@@ -2,10 +2,10 @@ import React from "react";
 import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { FPS, reel, sceneFrames } from "./reel";
 import { BoilDefs, C, Finish, ramp } from "./fx";
-import { Burst, Eyes, Fall, Flash, LowAngle, Nape, PreRoll, Profile, Shades, Stand, Storm, Walk } from "./scenes";
+import { Burst, Eyes, Fall, Flash, LowAngle, Nape, PreRoll, Profile, Shades, Stand, Storm } from "./scenes";
 
 const SCENES: Record<string, React.FC> = {
-  S1: Storm, S2: Nape, S3: Profile, S4: Eyes, S5: Shades, S6: Flash, S7: LowAngle, S8: Stand, S9: Walk, S10: Fall, S11: Burst,
+  S1: Storm, S2: Nape, S3: Profile, S4: Eyes, S5: Shades, S6: Flash, S7: LowAngle, S8: Stand, S10: Fall, S11: Burst,
 };
 /* A scene with an "in" element dissolves over the previous one for that many seconds. */
 const dissolve = (id: string) => {

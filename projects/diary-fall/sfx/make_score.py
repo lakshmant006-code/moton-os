@@ -184,7 +184,7 @@ def beats(a, b, step=BEAT):
         yield x
         x += step
 
-s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11 = (scene[f"S{i}"] for i in range(1, 12))
+s1, s2, s3, s4, s5, s6, s7, s8, s10, s11 = (scene[f"S{i}"] for i in (1, 2, 3, 4, 5, 6, 7, 8, 10, 11))
 
 # Ink storm opening: low drone, pulse and brush strokes
 put(pad([D2 / 2, D2, A2 / 2], s5[1], cutoff=420), 0, 0.9)
@@ -228,13 +228,13 @@ put(crash(3.5), s7[0], 0.3, verb=0.4)
 
 # Low angle and stand: the groove
 prog = [(D2, Dm), (D2 * 0.794, Bb), (F2, F), (C3 / 2, Cc)]
-for b in beats(s7[0], s9[0]):
+for b in beats(s7[0], s8[1]):
     put(kick(), b, 0.85)
     if round((b - s7[0]) / BEAT) % 2 == 1:
         put(clap(), b, 0.35, verb=0.25)
-for b in beats(s7[0], s9[0], BEAT / 2):
+for b in beats(s7[0], s8[1], BEAT / 2):
     put(hat(open_=round((b - s7[0]) / (BEAT / 2)) % 2 == 1), b, 0.12, pan=0.25)
-for i, b in enumerate(beats(s7[0], s9[0], BEAT * 2)):
+for i, b in enumerate(beats(s7[0], s8[1], BEAT * 2)):
     root, chord = prog[i % 4]
     for k, bb in enumerate(beats(b, b + BEAT * 2, BEAT / 2)):
         put(bass(root, BEAT / 2), bb, 0.6)
@@ -244,14 +244,9 @@ for i, b in enumerate(beats(s7[0], s9[0], BEAT * 2)):
         put(pluck(f), bb, 0.13, pan=0.5 * np.sin(k), verb=0.3)
 put(whoosh(0.5), s8[0] - 0.25, 0.4, verb=0.3)
 
-# Glow walk: hush
-put(boom(2.0), s9[0], 0.7, verb=0.6)
-put(crash(2.5), s9[0], 0.15, verb=0.6)
-put(pad(Dm + [293.66], s9[1] - s9[0] + 0.5, cutoff=1200), s9[0], 0.55, verb=0.4)
-for b in beats(s9[0], s10[0], BEAT * 2):
-    put(kick(0.7), b, 0.45)
-for b in beats(s9[0], s10[0], BEAT):
-    put(ting(1760 if int(b * 2) % 4 else 2349), b + 0.25, 0.05, pan=rng.uniform(-0.6, 0.6), verb=0.8)
+# Stand drops out of frame into the fall
+put(whoosh(0.6, up=False), s8[1] - 0.45, 0.6, verb=0.3)
+put(boom(1.4), s10[0], 0.5, verb=0.5)
 
 # The fall: wind, wide pads, booms on the pulses
 put(whoosh(0.8), s10[0] - 0.3, 0.5, verb=0.4)
@@ -278,7 +273,7 @@ put(pad([D2, A2, 146.83, 220.0], s11[1] - s11[0], cutoff=900), s11[0], 0.5, verb
 
 # Pulses elsewhere get a soft hit
 for h in hits:
-    if h < s10[0] and all(abs(h - c) > 0.1 for c in [s7[0], s9[0]]):
+    if h < s10[0] and all(abs(h - c) > 0.1 for c in [s7[0], s10[0]]):
         put(boom(0.8), h, 0.3, verb=0.3)
 
 # ---- mix --------------------------------------------------------------------

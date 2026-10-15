@@ -1,13 +1,13 @@
 {
  "id": "diary-fall",
  "title": "Diary fall",
- "version": 1,
+ "version": 2,
  "path": "projects/diary-fall",
  "src": "video.mp4",
  "w": 1920,
  "h": 936,
  "fps": 30,
- "duration": 31.0,
+ "duration": 28.0,
  "reference": "Same beats as projects/ink-fall, redrawn in a diary cartoon style (ruled notebook page, clean pen lines, hand lettered sound effects) after the user's reference pages. The character and falling pose are the user's own drawings",
  "brand": {
   "colors": [
@@ -27,13 +27,7 @@
     "v": "#cdcdcd"
    }
   ],
-  "fonts": [
-   {
-    "id": "hand",
-    "name": "Lettering",
-    "v": "Patrick Hand"
-   }
-  ],
+  "fonts": [],
   "logo": ""
  },
  "audio": {
@@ -421,28 +415,6 @@
        "v": "brand.ink"
       }
      }
-    },
-    {
-     "id": "glug",
-     "label": "Lettering",
-     "t": [
-      7.15,
-      8.45
-     ],
-     "box": [
-      0,
-      0,
-      100,
-      100
-     ],
-     "src": "src/fx.tsx:Letters",
-     "props": {
-      "text": {
-       "type": "text",
-       "label": "Text",
-       "v": "GLUG GLUG GLUG"
-      }
-     }
     }
    ]
   },
@@ -519,7 +491,7 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "Low angle on the sneakers in a pen burst, STOMP!, the camera tilts up the body then pulls back to the full figure"
+       "v": "Low angle on the sneakers in a pen burst, the camera tilts up the body then pulls back to the full figure"
       }
      }
     },
@@ -549,28 +521,6 @@
        "type": "color",
        "label": "Color",
        "v": "brand.ink"
-      }
-     }
-    },
-    {
-     "id": "stomp",
-     "label": "Lettering",
-     "t": [
-      11.0,
-      12.0
-     ],
-     "box": [
-      0,
-      0,
-      100,
-      100
-     ],
-     "src": "src/fx.tsx:Letters",
-     "props": {
-      "text": {
-       "type": "text",
-       "label": "Text",
-       "v": "STOMP!"
       }
      }
     }
@@ -617,7 +567,7 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "Dissolves from front to back at the same size, so the character turns around; the burst lines fade as the camera eases back"
+       "v": "Dissolves from front to back at the same size, so the character turns around; the camera eases back, then the figure drops out of the bottom of the frame"
       }
      }
     },
@@ -651,117 +601,19 @@
    ]
   },
   {
-   "id": "S9",
-   "name": "Glow walk",
-   "t": [
-    17.0,
-    20.0
-   ],
-   "els": [
-    {
-     "id": "figure",
-     "label": "Walking away",
-     "t": [
-      17.0,
-      20.0
-     ],
-     "box": [
-      0,
-      0,
-      100,
-      100
-     ],
-     "src": "src/scenes.tsx:Walk",
-     "props": {
-      "img": {
-       "type": "media",
-       "label": "Image",
-       "v": "assets/character-sheet.png#back"
-      },
-      "zoom": {
-       "type": "number",
-       "label": "Zoom",
-       "v": 0.22
-      },
-      "motion": {
-       "type": "motion",
-       "label": "Motion",
-       "v": "Picks up from S8's last frame and walks away up the page, a puff of dust at every step"
-      }
-     }
-    },
-    {
-     "id": "pulse",
-     "label": "Beat marks",
-     "t": [
-      17.0,
-      20.0
-     ],
-     "box": [
-      0,
-      0,
-      100,
-      100
-     ],
-     "src": "src/fx.tsx:Shock",
-     "props": {
-      "at": {
-       "type": "list",
-       "label": "Hits (s)",
-       "v": [
-        17.0
-       ]
-      },
-      "color": {
-       "type": "color",
-       "label": "Color",
-       "v": "brand.ink"
-      }
-     }
-    },
-    {
-     "id": "in",
-     "label": "Transition in",
-     "t": [
-      16.5,
-      17.0
-     ],
-     "box": [
-      0,
-      0,
-      100,
-      100
-     ],
-     "src": "src/Main.tsx",
-     "props": {
-      "dur": {
-       "type": "number",
-       "label": "Dissolve (s)",
-       "v": 0.5
-      },
-      "motion": {
-       "type": "motion",
-       "label": "Motion",
-       "v": "No cut: the walk starts from S8's final frame"
-      }
-     }
-    }
-   ]
-  },
-  {
    "id": "S10",
    "name": "Fall",
    "t": [
-    20.0,
-    29.0
+    17.0,
+    26.0
    ],
    "els": [
     {
      "id": "figure",
      "label": "Falling",
      "t": [
-      20.0,
-      29.0
+      17.0,
+      26.0
      ],
      "box": [
       0,
@@ -784,7 +636,7 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "The falling drawing drops in while the page rules rush upward past it, motion lines, AAAAAAH!, shock marks on the beat"
+       "v": "The falling drawing drops in from the top, carrying on S8's drop, while the page rules rush upward past it; motion lines and shock marks on the beat"
       }
      }
     },
@@ -792,8 +644,8 @@
      "id": "pulse",
      "label": "Beat marks",
      "t": [
-      20.0,
-      29.0
+      17.0,
+      26.0
      ],
      "box": [
       0,
@@ -807,47 +659,17 @@
        "type": "list",
        "label": "Hits (s)",
        "v": [
-        21.0,
-        23.0,
-        25.0,
-        27.0,
-        28.0
+        18.0,
+        20.0,
+        22.0,
+        24.0,
+        25.0
        ]
       },
       "color": {
        "type": "color",
        "label": "Color",
        "v": "brand.ink"
-      }
-     }
-    },
-    {
-     "id": "scream",
-     "label": "Lettering",
-     "t": [
-      20.5,
-      28.0
-     ],
-     "box": [
-      0,
-      0,
-      100,
-      100
-     ],
-     "src": "src/fx.tsx:Letters",
-     "props": {
-      "text": {
-       "type": "text",
-       "label": "Text",
-       "v": "AAAAAAH!"
-      },
-      "at": {
-       "type": "list",
-       "label": "Shows at (s), 3s each",
-       "v": [
-        20.5,
-        25.0
-       ]
       }
      }
     }
@@ -857,16 +679,16 @@
    "id": "S11",
    "name": "Burst",
    "t": [
-    29.0,
-    31.0
+    26.0,
+    28.0
    ],
    "els": [
     {
      "id": "figure",
      "label": "Front silhouette",
      "t": [
-      29.0,
-      31.0
+      26.0,
+      28.0
      ],
      "box": [
       0,
@@ -889,7 +711,7 @@
       "motion": {
        "type": "motion",
        "label": "Motion",
-       "v": "Lands facing us with a pop, burst lines, flying doodle stars and TA-DA!, then the page fades to white"
+       "v": "Lands facing us with a pop, burst lines and flying doodle stars, then the page fades to white"
       }
      }
     },
@@ -897,8 +719,8 @@
      "id": "pulse",
      "label": "Beat marks",
      "t": [
-      29.0,
-      31.0
+      26.0,
+      28.0
      ],
      "box": [
       0,
@@ -912,7 +734,7 @@
        "type": "list",
        "label": "Hits (s)",
        "v": [
-        29.0
+        26.0
        ]
       },
       "color": {
@@ -921,34 +743,12 @@
        "v": "brand.ink"
       }
      }
-    },
-    {
-     "id": "tada",
-     "label": "Lettering",
-     "t": [
-      29.1,
-      31.0
-     ],
-     "box": [
-      0,
-      0,
-      100,
-      100
-     ],
-     "src": "src/fx.tsx:Letters",
-     "props": {
-      "text": {
-       "type": "text",
-       "label": "Text",
-       "v": "TA-DA!"
-      }
-     }
     }
    ]
   }
  ],
  "notes": [
-  "Monochrome only: black pen, white page, grey rules.",
-  "S7 to S8 is a dissolve between front and back at the same size (the character turns around); S8 to S9 starts the walk from S8's final frame, so there is no cut."
+  "Monochrome only: black pen, white page, grey rules. No lettering.",
+  "S7 to S8 is a dissolve between front and back at the same size (the character turns around); S8 ends with the figure dropping out the bottom and S10 picks the drop up from the top."
  ]
 }

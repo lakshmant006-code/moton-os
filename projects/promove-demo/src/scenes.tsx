@@ -88,6 +88,9 @@ export const End: React.FC = () => {
       <Appear at={e.start + 56} dy={10} blur={6}>
         <div style={{ fontFamily: FONT, fontSize: 40, color: C.muted, marginTop: 40, letterSpacing: -0.4 }}>{e.v("text")}</div>
       </Appear>
+      <Appear at={e.start + 68} dy={10} blur={6}>
+        <div style={{ fontFamily: FONT, fontSize: 22, fontWeight: 500, color: "#111", marginTop: 26, padding: "10px 20px", borderRadius: 999, boxShadow: "inset 0 0 0 1.5px #111" }}>{e.v("addon")}</div>
+      </Appear>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 # ProMove demo video
 
-An 80-second walkthrough of ProMove (the Motion Rig prototype in `Kalyan0025/pro-move`), built in Remotion and
+A walkthrough of pro-move, the motion add-on for Procreate (the Motion Rig prototype in `Kalyan0025/pro-move`), built in Remotion and
 reviewed in the Motion OS player. Its structure follows a design-competition walkthrough: a chapter label, a text
 column on the left, a card on the right, a question card to open, option cards, and a speed pill on sped-up
 screen recordings. The look is ProMove's own: a warm paper background, white cards, and accents taken from the

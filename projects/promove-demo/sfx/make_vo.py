@@ -9,17 +9,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 reel = json.loads((ROOT / "reel.json").read_text())
-src = ROOT / reel["audio"]["voice"]["source"]
+main = reel["audio"]["voice"]["source"]
 lines = reel["audio"]["voLines"]
+# each line can come from its own take (a re-recorded line); inputs are numbered in first-use order
+sources = list(dict.fromkeys(ln.get("src", main) for ln in lines))
 PAD = 0.06  # keep a little air around each line so consonants aren't clipped
 
 parts, labels = [], []
 for i, ln in enumerate(lines):
     a, b = max(0, ln["from"] - PAD), ln["to"] + PAD
     delay = int(round(ln["at"] * 1000))
-    parts.append(f"[0:a]atrim={a}:{b},asetpts=PTS-STARTPTS,afade=t=in:d=0.02,afade=t=out:st={b - a - 0.04}:d=0.04,adelay={delay}|{delay}[v{i}]")
+    parts.append(f"[{sources.index(ln.get('src', main))}:a]atrim={a}:{b},asetpts=PTS-STARTPTS,afade=t=in:d=0.02,afade=t=out:st={b - a - 0.04}:d=0.04,adelay={delay}|{delay}[v{i}]")
     labels.append(f"[v{i}]")
 graph = ";".join(parts) + ";" + "".join(labels) + f"amix=inputs={len(lines)}:normalize=0,apad=whole_dur={reel['duration']},atrim=0:{reel['duration']}[out]"
 out = ROOT / "public" / reel["audio"]["vo"]
-subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-filter_complex", graph, "-map", "[out]", "-ar", "44100", "-ac", "2", str(out)], check=True)
+inputs = [x for src in sources for x in ("-i", str(ROOT / src))]
+subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", graph, "-map", "[out]", "-ar", "44100", "-ac", "2", str(out)], check=True)
 print(f"wrote {out} with {len(lines)} lines")

@@ -1,13 +1,13 @@
 {
  "id": "promove-demo",
  "title": "ProMove demo",
- "version": 4,
+ "version": 5,
  "path": "projects/promove-demo",
  "src": "video.mp4",
  "w": 1920,
  "h": 1080,
  "fps": 30,
- "duration": 89.0,
+ "duration": 83.5,
  "reference": "Vent On | SVSD Design Competition walkthrough (WhatsApp clip, 46 s): black stage, gray chapter label, left text column, dark rounded card on the right, purple-to-orange question cards, glowing option cards, 2x badge on sped-up screens. Format only: the colours are ProMove's own (paper background, white cards, accents from the character and playground art), and all copy and screens are ProMove's own.",
  "brand": {
   "colors": [
@@ -74,521 +74,477 @@
  "audio": {
   "music": "music.wav",
   "bpm": 88,
-  "musicVol": 0.32,
-  "sfxVol": 0.6,
+  "musicVol": 0.42,
+  "sfxVol": 0.55,
   "note": "music.wav and sfx.wav are synthesized in sfx/; vo.wav is the ElevenLabs narration placed per scene by sfx/make_vo.py.",
   "sfx": "sfx.wav",
   "sfxCues": [
    {
     "t": 0.1,
     "kind": "shimmer",
-    "dur": 1.2,
-    "gain": 0.16,
+    "dur": 0.6,
+    "gain": 0.07,
     "what": "logo pinwheel spins in"
    },
    {
     "t": 1.7,
     "kind": "chime",
-    "gain": 0.22,
+    "gain": 0.14,
     "what": "by procreate"
    },
    {
-    "t": 3.45,
-    "kind": "whoosh",
-    "dur": 0.45,
-    "gain": 0.16,
-    "what": "scene change"
+    "t": 3.95,
+    "kind": "soft",
+    "gain": 0.12,
+    "what": "card settles"
    },
    {
-    "t": 3.7,
-    "kind": "air",
-    "what": "question card rises",
-    "dur": 1.6,
-    "gain": 0.14
+    "t": 8.55,
+    "kind": "soft",
+    "gain": 0.12,
+    "what": "card settles"
    },
    {
-    "t": 8.45,
-    "kind": "whoosh",
-    "what": "scene change",
-    "dur": 0.45,
-    "gain": 0.16
-   },
-   {
-    "t": 9.633,
+    "t": 8.933,
     "kind": "tick",
     "what": "drawing tile lands",
     "freq": 900,
-    "gain": 0.12
+    "gain": 0.084
    },
    {
-    "t": 9.847,
+    "t": 9.147,
     "kind": "tick",
     "what": "drawing tile lands",
     "freq": 950,
-    "gain": 0.12
+    "gain": 0.084
    },
    {
-    "t": 10.06,
+    "t": 9.36,
     "kind": "tick",
     "what": "drawing tile lands",
     "freq": 1000,
-    "gain": 0.12
+    "gain": 0.084
    },
    {
-    "t": 10.273,
+    "t": 9.573,
     "kind": "tick",
     "what": "drawing tile lands",
     "freq": 1050,
-    "gain": 0.12
+    "gain": 0.084
    },
    {
-    "t": 10.487,
+    "t": 9.787,
     "kind": "tick",
     "what": "drawing tile lands",
     "freq": 1100,
-    "gain": 0.12
+    "gain": 0.084
    },
    {
-    "t": 10.7,
+    "t": 10.0,
     "kind": "tick",
     "what": "drawing tile lands",
     "freq": 1150,
-    "gain": 0.12
+    "gain": 0.084
    },
    {
-    "t": 10.913,
+    "t": 10.213,
     "kind": "tick",
     "what": "drawing tile lands",
     "freq": 1200,
-    "gain": 0.12
+    "gain": 0.084
    },
    {
-    "t": 11.127,
+    "t": 10.427,
     "kind": "tick",
     "what": "drawing tile lands",
     "freq": 1250,
-    "gain": 0.12
+    "gain": 0.084
    },
    {
-    "t": 11.34,
+    "t": 10.64,
     "kind": "tick",
     "what": "drawing tile lands",
     "freq": 1300,
-    "gain": 0.12
+    "gain": 0.084
    },
    {
-    "t": 11.553,
+    "t": 10.853,
     "kind": "tick",
     "what": "drawing tile lands",
     "freq": 1350,
-    "gain": 0.12
+    "gain": 0.084
    },
    {
-    "t": 11.767,
+    "t": 11.067,
     "kind": "tick",
     "what": "drawing tile lands",
     "freq": 1400,
-    "gain": 0.12
+    "gain": 0.084
    },
    {
-    "t": 11.98,
+    "t": 11.28,
     "kind": "tick",
     "what": "drawing tile lands",
     "freq": 1450,
-    "gain": 0.12
+    "gain": 0.084
    },
    {
-    "t": 16.45,
-    "kind": "whoosh",
-    "what": "scene change",
-    "dur": 0.45,
-    "gain": 0.16
+    "t": 16.55,
+    "kind": "soft",
+    "gain": 0.12,
+    "what": "card settles"
    },
    {
-    "t": 17.567,
+    "t": 16.867,
     "kind": "pop",
     "what": "camera orb",
     "freq": 520,
-    "gain": 0.3
+    "gain": 0.18
    },
    {
-    "t": 18.567,
+    "t": 17.867,
     "kind": "pop",
     "what": "tracked node",
     "freq": 640,
-    "gain": 0.28
+    "gain": 0.168
    },
    {
-    "t": 18.733,
+    "t": 18.033,
     "kind": "pop",
     "what": "tracked node",
     "freq": 730,
-    "gain": 0.28
+    "gain": 0.168
    },
    {
-    "t": 18.9,
+    "t": 18.2,
     "kind": "pop",
     "what": "tracked node",
     "freq": 820,
-    "gain": 0.28
+    "gain": 0.168
    },
    {
-    "t": 20.833,
+    "t": 20.133,
     "kind": "reveal",
     "what": "rigged drawing",
-    "gain": 0.32
+    "gain": 0.192
    },
    {
-    "t": 25.45,
-    "kind": "whoosh",
-    "what": "scene change",
-    "dur": 0.45,
-    "gain": 0.16
+    "t": 26.95,
+    "kind": "soft",
+    "gain": 0.12,
+    "what": "card settles"
    },
    {
-    "t": 29.733,
+    "t": 28.933,
     "kind": "click",
     "what": "Actions > Rig opens",
-    "gain": 0.4
+    "gain": 0.22
    },
    {
-    "t": 33.45,
-    "kind": "whoosh",
-    "what": "scene change",
-    "dur": 0.45,
-    "gain": 0.16
+    "t": 34.35,
+    "kind": "soft",
+    "gain": 0.12,
+    "what": "card settles"
    },
    {
-    "t": 35.6,
+    "t": 34.7,
     "kind": "click",
     "what": "camera button",
-    "gain": 0.4
+    "gain": 0.22
    },
    {
-    "t": 36.8,
+    "t": 35.9,
     "kind": "click",
     "what": "Try demo",
-    "gain": 0.4
+    "gain": 0.22
    },
    {
-    "t": 41.45,
-    "kind": "whoosh",
-    "what": "scene change",
-    "dur": 0.45,
+    "t": 39.6,
+    "kind": "soft",
+    "what": "Pose card",
     "gain": 0.16
    },
    {
-    "t": 42.0,
-    "kind": "cardslide",
-    "what": "Pose card",
-    "gain": 0.3
-   },
-   {
-    "t": 42.2,
-    "kind": "cardslide",
+    "t": 39.8,
+    "kind": "soft",
     "what": "Motion card",
-    "gain": 0.3
+    "gain": 0.16
    },
    {
-    "t": 42.733,
+    "t": 40.333,
     "kind": "tick",
     "what": "countdown",
     "freq": 1100,
-    "gain": 0.3
+    "gain": 0.21
    },
    {
-    "t": 43.0,
+    "t": 40.6,
     "kind": "chip",
     "what": "motion drawing lands",
-    "gain": 0.18
+    "gain": 0.126
    },
    {
-    "t": 43.2,
+    "t": 40.8,
     "kind": "tick",
     "what": "countdown",
     "freq": 1100,
-    "gain": 0.3
+    "gain": 0.21
    },
    {
-    "t": 43.3,
+    "t": 40.9,
     "kind": "chip",
     "what": "motion drawing lands",
-    "gain": 0.18
+    "gain": 0.126
    },
    {
-    "t": 43.6,
+    "t": 41.2,
     "kind": "chip",
     "what": "motion drawing lands",
-    "gain": 0.18
+    "gain": 0.126
    },
    {
-    "t": 43.667,
+    "t": 41.267,
     "kind": "tick",
     "what": "countdown",
     "freq": 1100,
-    "gain": 0.3
+    "gain": 0.21
    },
    {
-    "t": 43.9,
+    "t": 41.5,
     "kind": "chip",
     "what": "motion drawing lands",
-    "gain": 0.18
+    "gain": 0.126
    },
    {
-    "t": 44.2,
+    "t": 41.8,
     "kind": "shimmer",
     "what": "pose captured",
-    "dur": 0.8,
-    "gain": 0.2
+    "dur": 0.6,
+    "gain": 0.07
    },
    {
-    "t": 44.2,
+    "t": 41.8,
     "kind": "chip",
     "what": "motion drawing lands",
-    "gain": 0.18
+    "gain": 0.126
    },
    {
-    "t": 46.95,
-    "kind": "whoosh",
-    "what": "scene change",
-    "dur": 0.45,
-    "gain": 0.16
+    "t": 45.25,
+    "kind": "soft",
+    "gain": 0.12,
+    "what": "card settles"
    },
    {
-    "t": 48.2,
+    "t": 45.3,
     "kind": "tick",
     "what": "pose countdown in app",
     "freq": 1100,
-    "gain": 0.28
+    "gain": 0.196
    },
    {
-    "t": 49.2,
+    "t": 46.3,
     "kind": "tick",
     "what": "pose countdown in app",
     "freq": 1100,
-    "gain": 0.28
+    "gain": 0.196
    },
    {
-    "t": 50.2,
+    "t": 47.3,
     "kind": "tick",
     "what": "pose countdown in app",
     "freq": 1100,
-    "gain": 0.28
+    "gain": 0.196
    },
    {
-    "t": 51.2,
+    "t": 48.3,
     "kind": "shimmer",
     "what": "pose lands in filmstrip",
-    "dur": 0.8,
-    "gain": 0.2
+    "dur": 0.6,
+    "gain": 0.07
    },
    {
-    "t": 52.45,
-    "kind": "whoosh",
-    "what": "scene change",
-    "dur": 0.45,
-    "gain": 0.16
+    "t": 49.55,
+    "kind": "soft",
+    "gain": 0.12,
+    "what": "card settles"
    },
    {
-    "t": 53.12,
+    "t": 49.72,
     "kind": "click",
     "what": "record",
-    "gain": 0.4
+    "gain": 0.22
    },
    {
-    "t": 56.8,
+    "t": 53.4,
     "kind": "click",
     "what": "stop",
-    "gain": 0.4
+    "gain": 0.22
    },
    {
-    "t": 57.0,
-    "kind": "cardslide",
+    "t": 53.6,
+    "kind": "soft",
     "what": "take lands",
-    "gain": 0.28
-   },
-   {
-    "t": 59.45,
-    "kind": "whoosh",
-    "what": "scene change",
-    "dur": 0.45,
     "gain": 0.16
    },
    {
-    "t": 60.367,
+    "t": 55.85,
+    "kind": "soft",
+    "gain": 0.12,
+    "what": "card settles"
+   },
+   {
+    "t": 55.967,
     "kind": "chip",
     "what": "Turn tag",
-    "gain": 0.25
+    "gain": 0.175
    },
    {
-    "t": 62.9,
+    "t": 58.5,
     "kind": "chip",
     "what": "Stretch tag",
-    "gain": 0.25
+    "gain": 0.175
    },
    {
-    "t": 65.95,
-    "kind": "whoosh",
-    "what": "scene change",
-    "dur": 0.45,
+    "t": 62.1,
+    "kind": "soft",
+    "what": "feel card",
     "gain": 0.16
    },
    {
-    "t": 66.5,
-    "kind": "cardslide",
+    "t": 62.3,
+    "kind": "soft",
     "what": "feel card",
-    "gain": 0.26
-   },
-   {
-    "t": 66.7,
-    "kind": "cardslide",
-    "what": "feel card",
-    "gain": 0.26
-   },
-   {
-    "t": 66.9,
-    "kind": "cardslide",
-    "what": "feel card",
-    "gain": 0.26
-   },
-   {
-    "t": 71.45,
-    "kind": "whoosh",
-    "what": "scene change",
-    "dur": 0.45,
     "gain": 0.16
    },
    {
-    "t": 72.567,
+    "t": 62.5,
+    "kind": "soft",
+    "what": "feel card",
+    "gain": 0.16
+   },
+   {
+    "t": 67.65,
+    "kind": "soft",
+    "gain": 0.12,
+    "what": "card settles"
+   },
+   {
+    "t": 67.967,
     "kind": "tick",
     "what": "rig check step",
     "freq": 1000,
-    "gain": 0.2
+    "gain": 0.14
    },
    {
-    "t": 73.007,
+    "t": 68.407,
     "kind": "chip",
     "what": "joint fixed",
-    "gain": 0.22
+    "gain": 0.154
    },
    {
-    "t": 73.3,
+    "t": 68.7,
     "kind": "tick",
     "what": "rig check step",
     "freq": 1000,
-    "gain": 0.2
+    "gain": 0.14
    },
    {
-    "t": 73.74,
+    "t": 69.14,
     "kind": "chip",
     "what": "joint fixed",
-    "gain": 0.22
+    "gain": 0.154
    },
    {
-    "t": 74.033,
+    "t": 69.433,
     "kind": "tick",
     "what": "rig check step",
     "freq": 1000,
-    "gain": 0.2
+    "gain": 0.14
    },
    {
-    "t": 74.473,
+    "t": 69.873,
     "kind": "chip",
     "what": "joint fixed",
-    "gain": 0.22
+    "gain": 0.154
    },
    {
-    "t": 74.767,
+    "t": 70.167,
     "kind": "tick",
     "what": "rig check step",
     "freq": 1000,
-    "gain": 0.2
+    "gain": 0.14
    },
    {
-    "t": 75.207,
+    "t": 70.607,
     "kind": "chip",
     "what": "joint fixed",
-    "gain": 0.22
+    "gain": 0.154
    },
    {
-    "t": 75.5,
+    "t": 70.9,
     "kind": "tick",
     "what": "rig check step",
     "freq": 1000,
-    "gain": 0.2
+    "gain": 0.14
    },
    {
-    "t": 75.94,
+    "t": 71.34,
     "kind": "chip",
     "what": "joint fixed",
-    "gain": 0.22
+    "gain": 0.154
    },
    {
-    "t": 76.233,
+    "t": 71.633,
     "kind": "tick",
     "what": "rig check step",
     "freq": 1000,
-    "gain": 0.2
+    "gain": 0.14
    },
    {
-    "t": 76.673,
+    "t": 72.073,
     "kind": "reveal",
     "what": "joint fixed",
-    "gain": 0.22
+    "gain": 0.132
    },
    {
-    "t": 77.95,
-    "kind": "whoosh",
-    "what": "scene change",
-    "dur": 0.45,
-    "gain": 0.16
-   },
-   {
-    "t": 78.5,
+    "t": 73.8,
     "kind": "pop",
     "what": "export card",
     "freq": 600,
-    "gain": 0.24
+    "gain": 0.144
    },
    {
-    "t": 78.7,
+    "t": 74.0,
     "kind": "pop",
     "what": "export card",
     "freq": 680,
-    "gain": 0.24
+    "gain": 0.144
    },
    {
-    "t": 78.9,
+    "t": 74.2,
     "kind": "pop",
     "what": "export card",
     "freq": 760,
-    "gain": 0.24
+    "gain": 0.144
    },
    {
-    "t": 79.1,
+    "t": 74.4,
     "kind": "pop",
     "what": "export card",
     "freq": 840,
-    "gain": 0.24
+    "gain": 0.144
    },
    {
-    "t": 83.95,
-    "kind": "whoosh",
-    "what": "scene change",
-    "dur": 0.45,
-    "gain": 0.16
-   },
-   {
-    "t": 84.1,
+    "t": 78.6,
     "kind": "shimmer",
-    "dur": 1.2,
-    "gain": 0.16,
+    "dur": 0.6,
+    "gain": 0.07,
     "what": "outro pinwheel"
    },
    {
-    "t": 85.7,
+    "t": 80.2,
     "kind": "chime",
-    "gain": 0.22,
+    "gain": 0.14,
     "what": "outro by procreate"
    }
   ],
@@ -614,21 +570,21 @@
     "scene": "S1",
     "from": 2.48,
     "to": 4.96,
-    "at": 3.95,
+    "at": 4.05,
     "text": "What if your drawing could move the moment you do?"
    },
    {
     "scene": "S2",
     "from": 5.44,
     "to": 12.4,
-    "at": 8.95,
+    "at": 8.25,
     "text": "Today, animating a character means redrawing it, frame after frame. Twenty-four drawings, for one second."
    },
    {
     "scene": "S3",
     "from": 0.0,
     "to": 9.17,
-    "at": 16.95,
+    "at": 16.25,
     "text": "With Pro Move, an add-on for Procreate, you perform, and your character copies you. Body and face are tracked right on your iPad. Nothing goes to the cloud.",
     "src": "assets/vo/addon-take1.mp3"
    },
@@ -636,7 +592,7 @@
     "scene": "S4",
     "from": 9.55,
     "to": 15.82,
-    "at": 27.45,
+    "at": 26.65,
     "text": "It installs right into Procreate, as one extra tab in Actions. Everything else stays just the way you know it.",
     "src": "assets/vo/addon-take1.mp3"
    },
@@ -644,66 +600,71 @@
     "scene": "S5",
     "from": 26.32,
     "to": 29.64,
-    "at": 34.95,
+    "at": 34.05,
     "text": "Tap the camera, and your character follows you, live."
    },
    {
     "scene": "S6",
     "from": 29.84,
     "to": 33.68,
-    "at": 41.95,
+    "at": 39.55,
     "text": "Capture a single pose, or record up to ten seconds of motion."
    },
    {
     "scene": "S7",
     "from": 33.92,
     "to": 37.12,
-    "at": 47.1,
+    "at": 44.2,
     "text": "Strike a pose. Three, two, one."
    },
    {
     "scene": "S8",
     "from": 37.52,
     "to": 41.2,
-    "at": 52.95,
+    "at": 49.55,
     "text": "Every take lands in the filmstrip, ready to reorder and play back."
    },
    {
     "scene": "S9",
     "from": 41.6,
     "to": 46.56,
-    "at": 59.95,
+    "at": 55.55,
     "text": "Tap any limb to turn it, or stretch it. On one drawing, or across the whole take."
    },
    {
     "scene": "S10",
     "from": 46.96,
     "to": 50.96,
-    "at": 66.45,
+    "at": 62.05,
     "text": "Then pick how it feels. Snappy, smooth, or floaty."
    },
    {
     "scene": "S11",
     "from": 51.36,
     "to": 56.68,
-    "at": 71.95,
+    "at": 67.35,
     "text": "A quick rig check finds where the drawing tears, and local AI patches just those spots."
    },
    {
     "scene": "S12",
     "from": 56.88,
     "to": 60.76,
-    "at": 78.45,
+    "at": 73.75,
     "text": "Export your frames back to Procreate, or to your favorite motion tools."
    },
    {
     "scene": "S13",
     "from": 61.04,
     "to": 64.48,
-    "at": 84.45,
+    "at": 78.95,
     "text": "Pro Move. Draw it once. Perform it forever."
    }
-  ]
+  ],
+  "duck": {
+   "under_vo": 0.45,
+   "ramp": 0.3,
+   "note": "music.wav is ducked under each narration line by sfx/make_music.py"
+  }
  },
  "assets": [
   {
@@ -773,7 +734,7 @@
    "name": "Logo intro",
    "t": [
     0.0,
-    3.5
+    3.6
    ],
    "els": [
     {
@@ -781,7 +742,7 @@
      "label": "pro-move logo",
      "t": [
       0.1,
-      3.5
+      3.6
      ],
      "box": [
       26,
@@ -814,16 +775,16 @@
    "id": "S1",
    "name": "Question",
    "t": [
-    3.5,
-    8.5
+    3.6,
+    7.8
    ],
    "els": [
     {
      "id": "s1card",
      "label": "Gradient card",
      "t": [
-      3.7,
-      8.5
+      3.8,
+      7.8
      ],
      "box": [
       11.7,
@@ -861,16 +822,16 @@
    "id": "S2",
    "name": "The problem",
    "t": [
-    8.5,
-    16.5
+    7.8,
+    15.8
    ],
    "els": [
     {
      "id": "s2label",
      "label": "Chapter label",
      "t": [
-      8.5,
-      16.5
+      7.8,
+      15.8
      ],
      "box": [
       11.7,
@@ -891,8 +852,8 @@
      "id": "s2text",
      "label": "Left text",
      "t": [
-      8.8,
-      16.5
+      8.1,
+      15.8
      ],
      "box": [
       11.7,
@@ -918,8 +879,8 @@
      "id": "s2card",
      "label": "Flipbook card",
      "t": [
-      9.1,
-      16.5
+      8.4,
+      15.8
      ],
      "box": [
       48.5,
@@ -947,16 +908,16 @@
    "id": "S3",
    "name": "How it works",
    "t": [
-    16.5,
-    27.0
+    15.8,
+    26.2
    ],
    "els": [
     {
      "id": "s3label",
      "label": "Chapter label",
      "t": [
-      16.5,
-      27.0
+      15.8,
+      26.2
      ],
      "box": [
       11.7,
@@ -977,8 +938,8 @@
      "id": "s3text",
      "label": "Left text",
      "t": [
-      16.8,
-      27.0
+      16.1,
+      26.2
      ],
      "box": [
       11.7,
@@ -1004,8 +965,8 @@
      "id": "s3tree",
      "label": "Pipeline tree",
      "t": [
-      17.1,
-      27.0
+      16.4,
+      26.2
      ],
      "box": [
       48.5,
@@ -1060,16 +1021,16 @@
    "id": "S4",
    "name": "Inside Procreate",
    "t": [
-    27.0,
-    34.5
+    26.2,
+    33.6
    ],
    "els": [
     {
      "id": "s4label",
      "label": "Chapter label",
      "t": [
-      27.0,
-      34.5
+      26.2,
+      33.6
      ],
      "box": [
       11.7,
@@ -1090,8 +1051,8 @@
      "id": "s4text",
      "label": "Left text",
      "t": [
-      27.3,
-      34.5
+      26.5,
+      33.6
      ],
      "box": [
       11.7,
@@ -1117,8 +1078,8 @@
      "id": "s4screen",
      "label": "iPad screen",
      "t": [
-      27.6,
-      34.5
+      26.8,
+      33.6
      ],
      "box": [
       44,
@@ -1151,16 +1112,16 @@
    "id": "S5",
    "name": "Live",
    "t": [
-    34.5,
-    41.5
+    33.6,
+    39.1
    ],
    "els": [
     {
      "id": "s5label",
      "label": "Chapter label",
      "t": [
-      34.5,
-      41.5
+      33.6,
+      39.1
      ],
      "box": [
       11.7,
@@ -1181,8 +1142,8 @@
      "id": "s5text",
      "label": "Left text",
      "t": [
-      34.8,
-      41.5
+      33.9,
+      39.1
      ],
      "box": [
       11.7,
@@ -1208,8 +1169,8 @@
      "id": "s5screen",
      "label": "Live clip",
      "t": [
-      35.1,
-      41.5
+      34.2,
+      39.1
      ],
      "box": [
       44,
@@ -1237,16 +1198,16 @@
    "id": "S6",
    "name": "Two ways to capture",
    "t": [
-    41.5,
-    47.0
+    39.1,
+    44.1
    ],
    "els": [
     {
      "id": "s6label",
      "label": "Chapter label",
      "t": [
-      41.5,
-      47.0
+      39.1,
+      44.1
      ],
      "box": [
       11.7,
@@ -1267,8 +1228,8 @@
      "id": "s6title",
      "label": "Title",
      "t": [
-      41.7,
-      47.0
+      39.3,
+      44.1
      ],
      "box": [
       11.7,
@@ -1289,8 +1250,8 @@
      "id": "s6cards",
      "label": "Pose and Motion cards",
      "t": [
-      42.0,
-      47.0
+      39.6,
+      44.1
      ],
      "box": [
       11.7,
@@ -1326,16 +1287,16 @@
    "id": "S7",
    "name": "Pose capture",
    "t": [
-    47.0,
-    52.5
+    44.1,
+    49.1
    ],
    "els": [
     {
      "id": "s7label",
      "label": "Chapter label",
      "t": [
-      47.0,
-      52.5
+      44.1,
+      49.1
      ],
      "box": [
       11.7,
@@ -1356,8 +1317,8 @@
      "id": "s7text",
      "label": "Left text",
      "t": [
-      47.3,
-      52.5
+      44.4,
+      49.1
      ],
      "box": [
       11.7,
@@ -1383,8 +1344,8 @@
      "id": "s7screen",
      "label": "Pose clip",
      "t": [
-      48.0,
-      52.5
+      45.1,
+      49.1
      ],
      "box": [
       44,
@@ -1417,16 +1378,16 @@
    "id": "S8",
    "name": "Motion to filmstrip",
    "t": [
-    52.5,
-    59.5
+    49.1,
+    55.1
    ],
    "els": [
     {
      "id": "s8label",
      "label": "Chapter label",
      "t": [
-      52.5,
-      59.5
+      49.1,
+      55.1
      ],
      "box": [
       11.7,
@@ -1447,8 +1408,8 @@
      "id": "s8text",
      "label": "Left text",
      "t": [
-      52.8,
-      59.5
+      49.4,
+      55.1
      ],
      "box": [
       11.7,
@@ -1474,8 +1435,8 @@
      "id": "s8screen",
      "label": "Motion clip",
      "t": [
-      52.8,
-      59.5
+      49.4,
+      55.1
      ],
      "box": [
       44,
@@ -1506,8 +1467,8 @@
      "id": "s8learn",
      "label": "Learning note",
      "t": [
-      54.5,
-      59.5
+      51.1,
+      55.1
      ],
      "box": [
       11.7,
@@ -1530,16 +1491,16 @@
    "id": "S9",
    "name": "Rig a limb",
    "t": [
-    59.5,
-    66.0
+    55.1,
+    61.6
    ],
    "els": [
     {
      "id": "s9label",
      "label": "Chapter label",
      "t": [
-      59.5,
-      66.0
+      55.1,
+      61.6
      ],
      "box": [
       11.7,
@@ -1560,8 +1521,8 @@
      "id": "s9text",
      "label": "Left text",
      "t": [
-      59.8,
-      66.0
+      55.4,
+      61.6
      ],
      "box": [
       11.7,
@@ -1587,8 +1548,8 @@
      "id": "s9screen",
      "label": "Rig clips",
      "t": [
-      60.1,
-      66.0
+      55.7,
+      61.6
      ],
      "box": [
       44,
@@ -1636,16 +1597,16 @@
    "id": "S10",
    "name": "Feel",
    "t": [
-    66.0,
-    71.5
+    61.6,
+    66.9
    ],
    "els": [
     {
      "id": "s10label",
      "label": "Chapter label",
      "t": [
-      66.0,
-      71.5
+      61.6,
+      66.9
      ],
      "box": [
       11.7,
@@ -1666,8 +1627,8 @@
      "id": "s10title",
      "label": "Title",
      "t": [
-      66.2,
-      71.5
+      61.8,
+      66.9
      ],
      "box": [
       11.7,
@@ -1688,8 +1649,8 @@
      "id": "s10cards",
      "label": "Feel cards",
      "t": [
-      66.5,
-      71.5
+      62.1,
+      66.9
      ],
      "box": [
       11.7,
@@ -1729,16 +1690,16 @@
    "id": "S11",
    "name": "Rig check",
    "t": [
-    71.5,
-    78.0
+    66.9,
+    73.3
    ],
    "els": [
     {
      "id": "s11label",
      "label": "Chapter label",
      "t": [
-      71.5,
-      78.0
+      66.9,
+      73.3
      ],
      "box": [
       11.7,
@@ -1759,8 +1720,8 @@
      "id": "s11text",
      "label": "Left text",
      "t": [
-      71.8,
-      78.0
+      67.2,
+      73.3
      ],
      "box": [
       11.7,
@@ -1786,8 +1747,8 @@
      "id": "s11card",
      "label": "Rig check card",
      "t": [
-      72.1,
-      78.0
+      67.5,
+      73.3
      ],
      "box": [
       48.5,
@@ -1837,16 +1798,16 @@
    "id": "S12",
    "name": "Export",
    "t": [
-    78.0,
-    84.0
+    73.3,
+    78.5
    ],
    "els": [
     {
      "id": "s12label",
      "label": "Chapter label",
      "t": [
-      78.0,
-      84.0
+      73.3,
+      78.5
      ],
      "box": [
       11.7,
@@ -1867,8 +1828,8 @@
      "id": "s12title",
      "label": "Title",
      "t": [
-      78.2,
-      84.0
+      73.5,
+      78.5
      ],
      "box": [
       11.7,
@@ -1889,8 +1850,8 @@
      "id": "s12cards",
      "label": "Export cards",
      "t": [
-      78.5,
-      84.0
+      73.8,
+      78.5
      ],
      "box": [
       11.7,
@@ -1934,16 +1895,16 @@
    "id": "S13",
    "name": "Logo outro",
    "t": [
-    84.0,
-    89.0
+    78.5,
+    83.5
    ],
    "els": [
     {
      "id": "s13logo",
      "label": "pro-move logo and tagline",
      "t": [
-      84.1,
-      89.0
+      78.6,
+      83.5
      ],
      "box": [
       26,

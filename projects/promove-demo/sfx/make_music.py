@@ -97,6 +97,15 @@ mix[:, 0] += L + sub
 mix[:, 1] += R + pl * 0.6 + sub
 fade = np.minimum(1, t / 2.0) * np.minimum(1, (DUR - t) / 3.0)
 mix *= fade[:, None]
+# duck the bed under each narration line so the voice sits clearly on top
+duck = reel["audio"].get("duck")
+if duck:
+    g = np.ones(N)
+    r = duck.get("ramp", 0.3)
+    for ln in reel["audio"].get("voLines", []):
+        a, b = ln["at"], ln["at"] + ln["to"] - ln["from"]
+        g = np.minimum(g, np.interp(t, [a - r, a, b, b + r], [1, duck["under_vo"], duck["under_vo"], 1], left=1, right=1))
+    mix *= g[:, None]
 mix = np.tanh(mix * 1.1)
 mix = mix / np.max(np.abs(mix)) * 0.7
 out = ROOT / "public" / "music.wav"

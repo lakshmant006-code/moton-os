@@ -253,6 +253,14 @@ def reveal(**_):
     return norm(out)
 
 
+def soft(**_):
+    """A small felt tap for a card settling: a low, quickly damped tone with a hint of texture. No sweep."""
+    t = t_axis(0.09)
+    tone = np.sin(2 * np.pi * 330 * t) * env(len(t), 0.002, 0.03)
+    tex = onepole(highpass(noise(0.09), 900), 2600) * env(len(t), 0.001, 0.012)
+    return norm(onepole(tone + 0.25 * tex, 2400))
+
+
 def chip(**_):
     t = t_axis(0.1)
     tick = np.sin(2 * np.pi * 2400 * t) * env(len(t), 0.0005, 0.01)
@@ -262,7 +270,7 @@ def chip(**_):
     return norm(0.7 * tick + x)
 
 
-KINDS = {"cardslide": cardslide, "cardtap": cardtap, "cardflip": cardflip, "reveal": reveal, "chip": chip,
+KINDS = {"soft": soft, "cardslide": cardslide, "cardtap": cardtap, "cardflip": cardflip, "reveal": reveal, "chip": chip,
          "ding": ding, "chime": chime, "click": click, "tick": tick, "key": key, "space": space, "pop": pop, "thud": thud,
          "whoosh": whoosh, "air": air, "swish": swish, "flip": flip, "send": send, "bonk": bonk, "riser": riser,
          "zip": zip_, "shimmer": shimmer}

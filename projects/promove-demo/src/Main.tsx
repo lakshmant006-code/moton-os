@@ -24,11 +24,21 @@ const SCENES: Record<string, React.FC> = {
   S13: End,
 };
 
-// Each scene fades up from black and fades out into the next, like the reference's soft cuts.
+// Scenes crossfade: each one lingers XF frames past its end, drifting up and softening as the next
+// one fades in underneath, so a cut never dips to an empty page. A slow push keeps every hold alive.
+const XF = 12;
 const Fade: React.FC<{ dur: number; children: React.ReactNode; first: boolean; last: boolean }> = ({ dur, children, first, last }) => {
   const f = useCurrentFrame();
-  const o = interpolate(f, [0, first ? 1 : 8, dur - (last ? 20 : 8), dur], [first ? 1 : 0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  return <AbsoluteFill style={{ opacity: o }}>{children}</AbsoluteFill>;
+  const fin = first ? 1 : interpolate(f, [0, XF], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const out = last
+    ? interpolate(f, [dur - 20, dur], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })
+    : interpolate(f, [dur, dur + XF], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const push = 1 + 0.012 * Math.min(1, f / (dur + XF));
+  return (
+    <AbsoluteFill style={{ opacity: fin * (1 - out), transform: `translateY(${-14 * out}px) scale(${push})`, filter: out > 0 ? `blur(${out * 4}px)` : undefined }}>
+      {children}
+    </AbsoluteFill>
+  );
 };
 
 export const Main: React.FC = () => {
@@ -48,7 +58,7 @@ export const Main: React.FC = () => {
         const { from, dur } = sceneFrames(id);
         const Comp = SCENES[id];
         return (
-          <Sequence key={id} from={from} durationInFrames={dur} name={id}>
+          <Sequence key={id} from={from} durationInFrames={i === ids.length - 1 ? dur : dur + XF} name={id}>
             <Fade dur={dur} first={i === 0} last={i === ids.length - 1}><Comp /></Fade>
           </Sequence>
         );

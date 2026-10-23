@@ -568,6 +568,12 @@
  },
  "assets": [
   {
+   "id": "public/backgrounds/playground.jpg",
+   "name": "Playground background",
+   "type": "image",
+   "from": "pro-move public/backgrounds"
+  },
+  {
    "id": "public/screens/home.png",
    "name": "Home screen",
    "type": "image",
@@ -660,6 +666,11 @@
        "type": "motion",
        "label": "Motion",
        "v": "Card rises and sharpens, gradient drifts slowly, words blur in"
+      },
+      "bg": {
+       "type": "media",
+       "label": "Background behind the character",
+       "v": "backgrounds/playground.jpg"
       }
      }
     }
@@ -1775,6 +1786,11 @@
        "type": "text",
        "label": "Tagline",
        "v": "Draw it once. Perform it forever."
+      },
+      "bg": {
+       "type": "media",
+       "label": "Background behind the character",
+       "v": "backgrounds/playground.jpg"
       }
      }
     }

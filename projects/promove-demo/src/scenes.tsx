@@ -8,11 +8,13 @@ import {
 
 // Frame (relative to the scene) at which an element appears.
 const at = (s: string, e: string) => el(s, e).start;
+// The app's playground background, as set on the opening card.
+const BG = el("S1", "s1card").v("bg");
 const v = (s: string, e: string, k: string) => el(s, e).v(k);
 
 // ---------------------------------------------------------------- S1 / S13 hero card
-// A white card with the character standing in a little sky, in place of the reference's gradient card.
-const HeroCard: React.FC<{ at: number; pose: string; children: React.ReactNode }> = ({ at: a, pose, children }) => {
+// A white card with the character standing in the app's playground, in place of the reference's gradient card.
+const HeroCard: React.FC<{ at: number; pose: string; bg: string; children: React.ReactNode }> = ({ at: a, pose, bg, children }) => {
   const f = useCurrentFrame();
   const t = ramp(f, a, a + 26);
   const sky = ramp(f, a + 10, a + 34);
@@ -28,12 +30,11 @@ const HeroCard: React.FC<{ at: number; pose: string; children: React.ReactNode }
       }}
     >
       <div style={{ position: "absolute", inset: 0, backgroundImage: `radial-gradient(${C.line} 1.6px, transparent 1.6px)`, backgroundSize: "26px 26px", opacity: 0.7 }} />
-      {/* sky panel */}
-      <div style={{ position: "absolute", right: 18, top: 18, bottom: 18, width: 520, borderRadius: 26, overflow: "hidden", background: `linear-gradient(180deg, ${C.sky} 0%, #EAF4FF 100%)`, opacity: sky, transform: `scale(${lerp(0.94, 1, sky)})` }}>
-        <div style={{ position: "absolute", right: 60, top: 54 + (1 - sky) * 40, width: 150, height: 150, borderRadius: "50%", background: C.yellow, boxShadow: `0 0 0 18px ${hexA(C.yellow, 0.18)}` }} />
-        <div style={{ position: "absolute", left: -40, right: -40, bottom: -150, height: 260, borderRadius: "50%", background: C.green }} />
-        <div style={{ position: "absolute", left: "50%", bottom: 40, transform: `translateX(-50%) translateY(${(1 - pt) * 120 + bob}px)`, opacity: pt }}>
-          <Pose name={pose} h={470} style={{ filter: "drop-shadow(0 18px 24px rgba(28,43,75,0.25))" }} />
+      {/* the app's own playground behind the character */}
+      <div style={{ position: "absolute", right: 18, top: 18, bottom: 18, width: 520, borderRadius: 26, overflow: "hidden", opacity: sky, transform: `scale(${lerp(0.94, 1, sky)})` }}>
+        <Img src={staticFile(bg)} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "64% 60%", transform: `scale(${1.08 + (f / FPS) * 0.008})` }} />
+        <div style={{ position: "absolute", left: "50%", bottom: 30, transform: `translateX(-50%) translateY(${(1 - pt) * 120 + bob}px)`, opacity: pt }}>
+          <Pose name={pose} h={470} style={{ filter: "drop-shadow(0 16px 18px rgba(28,43,75,0.35))" }} />
         </div>
       </div>
       {children}
@@ -50,7 +51,7 @@ const Kicker: React.FC<{ text: string; at: number }> = ({ text, at: a }) => (
 export const Question: React.FC = () => {
   const e = el("S1", "s1card");
   return (
-    <HeroCard at={e.start} pose="wave">
+    <HeroCard at={e.start} pose="wave" bg={e.v("bg")}>
       <div style={{ position: "absolute", left: 72, top: 0, bottom: 0, width: 880, display: "flex", flexDirection: "column", justifyContent: "center", fontFamily: FONT, color: C.text }}>
         <div><Kicker text={e.v("kicker")} at={e.start + 14} /></div>
         <Words text={e.v("text")} at={e.start + 20} step={2.6} style={{ fontSize: 58, lineHeight: 1.14, fontWeight: 600, letterSpacing: -1.5 }} />
@@ -62,7 +63,7 @@ export const Question: React.FC = () => {
 export const End: React.FC = () => {
   const e = el("S13", "s13card");
   return (
-    <HeroCard at={e.start} pose="armsup">
+    <HeroCard at={e.start} pose="armsup" bg={e.v("bg")}>
       <div style={{ position: "absolute", left: 72, top: 0, bottom: 0, width: 880, display: "flex", flexDirection: "column", justifyContent: "center", fontFamily: FONT, color: C.text }}>
         <div><Kicker text={e.v("kicker")} at={e.start + 12} /></div>
         <Words text={e.v("name")} at={e.start + 16} style={{ fontSize: 132, fontWeight: 700, letterSpacing: -4.5, lineHeight: 1, color: C.navy }} />
@@ -169,7 +170,8 @@ export const Pipeline: React.FC = () => {
         ))}
         <div style={{ position: "absolute", left: cx - 75, top: yBot - 80, display: "flex", flexDirection: "column", alignItems: "center", width: 150 }}>
           <Appear at={a + 98}>
-            <div style={{ width: 150, height: 150, borderRadius: "50%", overflow: "hidden", position: "relative", background: `linear-gradient(180deg, ${C.sky}, #EAF4FF)`, boxShadow: `0 0 0 6px #fff, 0 0 0 9px ${C.yellow}, 0 18px 40px rgba(28,43,75,0.18)` }}>
+            <div style={{ width: 150, height: 150, borderRadius: "50%", overflow: "hidden", position: "relative", boxShadow: `0 0 0 6px #fff, 0 0 0 9px ${C.yellow}, 0 18px 40px rgba(28,43,75,0.18)` }}>
+              <Img src={staticFile(BG)} style={{ position: "absolute", height: 150, left: -100 }} />
               <Img src={staticFile("poses/rest.png")} style={{ position: "absolute", height: 520, left: -121, top: -10 }} />
             </div>
           </Appear>
@@ -468,8 +470,9 @@ export const RigCheck: React.FC = () => {
             );
           })}
         </div>
-        <div style={{ position: "absolute", left: 470, top: 170, width: 380, height: 560, borderRadius: 24, background: `linear-gradient(180deg, ${C.sky}, #EEF6FF)`, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-          <Pose name={CHECK_POSES[cur]} h={440} style={{ maxWidth: 340, objectFit: "contain" }} />
+        <div style={{ position: "absolute", left: 470, top: 170, width: 380, height: 560, borderRadius: 24, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+          <Img src={staticFile(BG)} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "64% 60%" }} />
+          <Pose name={CHECK_POSES[cur]} h={440} style={{ maxWidth: 340, objectFit: "contain", position: "relative", filter: "drop-shadow(0 14px 16px rgba(28,43,75,0.3))" }} />
           {!done && (
             <div style={{ position: "absolute", left: 0, right: 0, top: `${(local * 120) % 100}%`, height: 3, background: `linear-gradient(90deg, transparent, ${C.blue}, transparent)` }} />
           )}

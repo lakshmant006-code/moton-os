@@ -5,6 +5,7 @@ import {
   Appear, C, CARD, Card, Chip, Clip, ColorCard, FONT, Icon, Label, Learning, Orb, Pose, Screen, Speed, Tablet, TextBlock,
   Title, Words, X0, hexA, lerp, ramp, SHADOW,
 } from "./ui";
+import { Logo, Pinwheel } from "./logo";
 
 // Frame (relative to the scene) at which an element appears.
 const at = (s: string, e: string) => el(s, e).start;
@@ -42,34 +43,52 @@ const HeroCard: React.FC<{ at: number; pose: string; bg: string; children: React
   );
 };
 
-const Kicker: React.FC<{ text: string; at: number }> = ({ text, at: a }) => (
-  <Appear at={a} dy={8} blur={4}>
-    <div style={{ display: "inline-block", padding: "8px 16px", borderRadius: 999, background: C.red, color: "#fff", fontSize: 20, fontWeight: 600, marginBottom: 26 }}>{text}</div>
-  </Appear>
-);
+// Small black lockup for the opening card: the pinwheel, "pro-move", then "by procreate".
+const MiniLogo: React.FC<{ text: string; at: number }> = ({ text, at: a }) => {
+  const [name, ...by] = text.split(" by ");
+  return (
+    <Appear at={a} dy={8} blur={4}>
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 26, color: "#111", fontFamily: FONT }}>
+        <Pinwheel size={34} color="#111" />
+        <span style={{ fontSize: 30, fontWeight: 500, letterSpacing: -0.4 }}>{name}</span>
+        {by.length > 0 && <span style={{ fontSize: 20, color: C.muted, marginLeft: 4, position: "relative", top: 3 }}>by {by.join(" by ")}</span>}
+      </div>
+    </Appear>
+  );
+};
 
 export const Question: React.FC = () => {
   const e = el("S1", "s1card");
   return (
     <HeroCard at={e.start} pose="wave" bg={e.v("bg")}>
       <div style={{ position: "absolute", left: 72, top: 0, bottom: 0, width: 880, display: "flex", flexDirection: "column", justifyContent: "center", fontFamily: FONT, color: C.text }}>
-        <div><Kicker text={e.v("kicker")} at={e.start + 14} /></div>
+        <div><MiniLogo text={e.v("kicker")} at={e.start + 14} /></div>
         <Words text={e.v("text")} at={e.start + 20} step={2.6} style={{ fontSize: 58, lineHeight: 1.14, fontWeight: 600, letterSpacing: -1.5 }} />
       </div>
     </HeroCard>
   );
 };
 
-export const End: React.FC = () => {
-  const e = el("S13", "s13card");
+// S0 and S13: the pro-move logo, black on a white page.
+export const LogoIntro: React.FC = () => {
+  const e = el("S0", "s0logo");
   return (
-    <HeroCard at={e.start} pose="armsup" bg={e.v("bg")}>
-      <div style={{ position: "absolute", left: 72, top: 0, bottom: 0, width: 880, display: "flex", flexDirection: "column", justifyContent: "center", fontFamily: FONT, color: C.text }}>
-        <div><Kicker text={e.v("kicker")} at={e.start + 12} /></div>
-        <Words text={e.v("name")} at={e.start + 16} style={{ fontSize: 132, fontWeight: 700, letterSpacing: -4.5, lineHeight: 1, color: C.navy }} />
-        <Words text={e.v("text")} at={e.start + 26} step={2.4} style={{ fontSize: 46, fontWeight: 500, letterSpacing: -0.8, marginTop: 22, color: C.muted }} />
-      </div>
-    </HeroCard>
+    <div style={{ position: "absolute", inset: 0, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <Logo at={e.start} name={e.v("name")} by={e.v("by")} />
+    </div>
+  );
+};
+
+export const End: React.FC = () => {
+  const e = el("S13", "s13logo");
+  const intro = el("S0", "s0logo");
+  return (
+    <div style={{ position: "absolute", inset: 0, background: "#fff", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+      <Logo at={e.start} name={intro.v("name")} by={intro.v("by")} scale={0.85} />
+      <Appear at={e.start + 56} dy={10} blur={6}>
+        <div style={{ fontFamily: FONT, fontSize: 40, color: C.muted, marginTop: 40, letterSpacing: -0.4 }}>{e.v("text")}</div>
+      </Appear>
+    </div>
   );
 };
 

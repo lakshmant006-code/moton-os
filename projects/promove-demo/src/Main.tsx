@@ -1,13 +1,14 @@
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { FPS, reel, sceneFrames } from "./reel";
-import { ClipScene, End, Export, Feel, Live, Pipeline, Problem, Procreate, Question, RigCheck, RigClips, TwoWays } from "./scenes";
+import { ClipScene, End, Export, Feel, Live, LogoIntro, Pipeline, Problem, Procreate, Question, RigCheck, RigClips, TwoWays } from "./scenes";
 import { C } from "./ui";
 
 // Frames into S9 where the turn clip hands over to the stretch clip.
 const RIG_SPLIT = 84;
 
 const SCENES: Record<string, React.FC> = {
+  S0: LogoIntro,
   S1: Question,
   S2: Problem,
   S3: Pipeline,
@@ -39,6 +40,8 @@ export const Main: React.FC = () => {
         volume={(fr) => reel.audio.musicVol * interpolate(fr, [0, 20, lastFrame - 60, lastFrame], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })} />
       {/* Synthesized from reel.json audio.sfxCues by sfx/make_sfx.py */}
       <Audio src={staticFile(reel.audio.sfx)} volume={reel.audio.sfxVol} />
+      {/* ElevenLabs narration, one line per scene, placed by sfx/make_vo.py */}
+      <Audio src={staticFile(reel.audio.vo)} volume={reel.audio.voVol} />
       {/* the thin rule down the left, as in the reference */}
       <div style={{ position: "absolute", left: 172, top: 0, bottom: 0, width: 1.5, background: C.line }} />
       {ids.map((id, i) => {

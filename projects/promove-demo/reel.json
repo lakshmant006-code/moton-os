@@ -1,7 +1,7 @@
 {
  "id": "promove-demo",
  "title": "ProMove demo",
- "version": 1,
+ "version": 2,
  "path": "projects/promove-demo",
  "src": "video.mp4",
  "w": 1920,

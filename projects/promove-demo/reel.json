@@ -8,63 +8,58 @@
  "h": 1080,
  "fps": 30,
  "duration": 80.0,
- "reference": "Vent On | SVSD Design Competition walkthrough (WhatsApp clip, 46 s): black stage, gray chapter label, left text column, dark rounded card on the right, purple-to-orange question cards, glowing option cards, 2x badge on sped-up screens. Format only; all copy and screens are ProMove's own.",
+ "reference": "Vent On | SVSD Design Competition walkthrough (WhatsApp clip, 46 s): black stage, gray chapter label, left text column, dark rounded card on the right, purple-to-orange question cards, glowing option cards, 2x badge on sped-up screens. Format only: the colours are ProMove's own (paper background, white cards, accents from the character and playground art), and all copy and screens are ProMove's own.",
  "brand": {
   "colors": [
    {
     "id": "stage",
-    "name": "Stage",
-    "v": "#000000"
+    "name": "Paper (background)",
+    "v": "#EFEBE3"
    },
    {
     "id": "card",
     "name": "Card",
-    "v": "#141416"
+    "v": "#FFFFFF"
    },
    {
     "id": "text",
-    "name": "Text",
-    "v": "#F2F2F3"
+    "name": "Ink",
+    "v": "#17181C"
    },
    {
     "id": "muted",
     "name": "Muted",
-    "v": "#76767C"
+    "v": "#6F727B"
+   },
+   {
+    "id": "navy",
+    "name": "Navy",
+    "v": "#1C2B4B"
    },
    {
     "id": "blue",
     "name": "Procreate blue",
-    "v": "#2F7BFF"
+    "v": "#1F6FEB"
    },
    {
     "id": "red",
     "name": "Beanie red",
-    "v": "#E8384F"
+    "v": "#E5383B"
    },
    {
-    "id": "orange",
-    "name": "Orange",
-    "v": "#FF8A3D"
+    "id": "yellow",
+    "name": "Sun yellow",
+    "v": "#FFB020"
    },
    {
     "id": "green",
-    "name": "Green",
-    "v": "#4FD08A"
+    "name": "Playground green",
+    "v": "#22A35A"
    },
    {
-    "id": "violet",
-    "name": "Violet",
-    "v": "#9C6BFF"
-   },
-   {
-    "id": "gradA",
-    "name": "Card gradient start",
-    "v": "#8D6BF0"
-   },
-   {
-    "id": "gradB",
-    "name": "Card gradient end",
-    "v": "#F08A3C"
+    "id": "sky",
+    "name": "Sky",
+    "v": "#CFE6FF"
    }
   ],
   "fonts": [
@@ -659,7 +654,7 @@
       "text": {
        "type": "longtext",
        "label": "Question",
-       "v": "What if your drawing could move\nthe moment you do?"
+       "v": "What if your drawing could\nmove the moment you do?"
       },
       "motion": {
        "type": "motion",

@@ -1,9 +1,10 @@
 # ProMove demo video
 
 An 80-second walkthrough of ProMove (the Motion Rig prototype in `Kalyan0025/pro-move`), built in Remotion and
-reviewed in the Motion OS player. Its format follows a design-competition walkthrough: a black stage, a gray
-chapter label, a text column on the left, a dark card on the right, purple-to-orange question cards, glowing
-option cards, and a speed pill on sped-up screen recordings.
+reviewed in the Motion OS player. Its structure follows a design-competition walkthrough: a chapter label, a text
+column on the left, a card on the right, a question card to open, option cards, and a speed pill on sped-up
+screen recordings. The look is ProMove's own: a warm paper background, white cards, and accents taken from the
+character and the playground art (beanie red, Procreate blue, sun yellow, playground green, navy).
 
 Every on-screen word, color and timing is in `reel.json`, so most changes are "edit reel.json, re-render".
 

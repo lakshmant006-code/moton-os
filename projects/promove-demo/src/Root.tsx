@@ -10,7 +10,7 @@ const FONTS: [string, string, string][] = [
 ];
 
 if (typeof document !== "undefined") {
-  const handle = delayRender("fonts", { timeoutInMilliseconds: 60000 });
+  const handle = delayRender("fonts", { timeoutInMilliseconds: 120000 });
   Promise.allSettled(
     FONTS.map(([family, file, weight]) =>
       // A stalled font request must never hang a render tab.

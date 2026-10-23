@@ -1,0 +1,13 @@
+import { open } from './slow.mjs';
+const OUT = process.argv[2];
+const { b, advance, start, stop, shot, click } = await open(OUT);
+await click('#btnCam'); await advance(0.5);
+await click('#capStartDemo'); await advance(1.5);
+await click('.cap-modes [data-mode="motion"]'); await advance(0.5);
+await start();
+await advance(0.4);
+await click('#capShutter'); await advance(4.6);
+await click('#capShutter'); await advance(4.0);
+await stop('motion');
+await shot('filmstrip2');
+await b.close();

@@ -1,0 +1,1790 @@
+{
+ "id": "promove-demo",
+ "title": "ProMove demo",
+ "version": 1,
+ "path": "projects/promove-demo",
+ "src": "video.mp4",
+ "w": 1920,
+ "h": 1080,
+ "fps": 30,
+ "duration": 80.0,
+ "reference": "Vent On | SVSD Design Competition walkthrough (WhatsApp clip, 46 s): black stage, gray chapter label, left text column, dark rounded card on the right, purple-to-orange question cards, glowing option cards, 2x badge on sped-up screens. Format only; all copy and screens are ProMove's own.",
+ "brand": {
+  "colors": [
+   {
+    "id": "stage",
+    "name": "Stage",
+    "v": "#000000"
+   },
+   {
+    "id": "card",
+    "name": "Card",
+    "v": "#141416"
+   },
+   {
+    "id": "text",
+    "name": "Text",
+    "v": "#F2F2F3"
+   },
+   {
+    "id": "muted",
+    "name": "Muted",
+    "v": "#76767C"
+   },
+   {
+    "id": "blue",
+    "name": "Procreate blue",
+    "v": "#2F7BFF"
+   },
+   {
+    "id": "red",
+    "name": "Beanie red",
+    "v": "#E8384F"
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "v": "#FF8A3D"
+   },
+   {
+    "id": "green",
+    "name": "Green",
+    "v": "#4FD08A"
+   },
+   {
+    "id": "violet",
+    "name": "Violet",
+    "v": "#9C6BFF"
+   },
+   {
+    "id": "gradA",
+    "name": "Card gradient start",
+    "v": "#8D6BF0"
+   },
+   {
+    "id": "gradB",
+    "name": "Card gradient end",
+    "v": "#F08A3C"
+   }
+  ],
+  "fonts": [
+   {
+    "id": "ui",
+    "name": "Everything",
+    "v": "Inter"
+   }
+  ],
+  "logo": null
+ },
+ "audio": {
+  "music": "music.wav",
+  "bpm": 88,
+  "musicVol": 0.55,
+  "sfxVol": 0.8,
+  "note": "Both tracks are synthesized in sfx/ (no samples, nothing to license). music.wav is a soft pad and pluck bed; sfx.wav is built from sfxCues.",
+  "sfx": "sfx.wav",
+  "sfxCues": [
+   {
+    "t": 0.2,
+    "kind": "air",
+    "what": "question card rises",
+    "dur": 1.6,
+    "gain": 0.14
+   },
+   {
+    "t": 4.95,
+    "kind": "whoosh",
+    "what": "scene change",
+    "dur": 0.45,
+    "gain": 0.16
+   },
+   {
+    "t": 6.133,
+    "kind": "tick",
+    "what": "drawing tile lands",
+    "freq": 900,
+    "gain": 0.12
+   },
+   {
+    "t": 6.347,
+    "kind": "tick",
+    "what": "drawing tile lands",
+    "freq": 950,
+    "gain": 0.12
+   },
+   {
+    "t": 6.56,
+    "kind": "tick",
+    "what": "drawing tile lands",
+    "freq": 1000,
+    "gain": 0.12
+   },
+   {
+    "t": 6.773,
+    "kind": "tick",
+    "what": "drawing tile lands",
+    "freq": 1050,
+    "gain": 0.12
+   },
+   {
+    "t": 6.987,
+    "kind": "tick",
+    "what": "drawing tile lands",
+    "freq": 1100,
+    "gain": 0.12
+   },
+   {
+    "t": 7.2,
+    "kind": "tick",
+    "what": "drawing tile lands",
+    "freq": 1150,
+    "gain": 0.12
+   },
+   {
+    "t": 7.413,
+    "kind": "tick",
+    "what": "drawing tile lands",
+    "freq": 1200,
+    "gain": 0.12
+   },
+   {
+    "t": 7.627,
+    "kind": "tick",
+    "what": "drawing tile lands",
+    "freq": 1250,
+    "gain": 0.12
+   },
+   {
+    "t": 7.84,
+    "kind": "tick",
+    "what": "drawing tile lands",
+    "freq": 1300,
+    "gain": 0.12
+   },
+   {
+    "t": 8.053,
+    "kind": "tick",
+    "what": "drawing tile lands",
+    "freq": 1350,
+    "gain": 0.12
+   },
+   {
+    "t": 8.267,
+    "kind": "tick",
+    "what": "drawing tile lands",
+    "freq": 1400,
+    "gain": 0.12
+   },
+   {
+    "t": 8.48,
+    "kind": "tick",
+    "what": "drawing tile lands",
+    "freq": 1450,
+    "gain": 0.12
+   },
+   {
+    "t": 11.45,
+    "kind": "whoosh",
+    "what": "scene change",
+    "dur": 0.45,
+    "gain": 0.16
+   },
+   {
+    "t": 12.567,
+    "kind": "pop",
+    "what": "camera orb",
+    "freq": 520,
+    "gain": 0.3
+   },
+   {
+    "t": 13.567,
+    "kind": "pop",
+    "what": "tracked node",
+    "freq": 640,
+    "gain": 0.28
+   },
+   {
+    "t": 13.733,
+    "kind": "pop",
+    "what": "tracked node",
+    "freq": 730,
+    "gain": 0.28
+   },
+   {
+    "t": 13.9,
+    "kind": "pop",
+    "what": "tracked node",
+    "freq": 820,
+    "gain": 0.28
+   },
+   {
+    "t": 15.833,
+    "kind": "reveal",
+    "what": "rigged drawing",
+    "gain": 0.32
+   },
+   {
+    "t": 19.95,
+    "kind": "whoosh",
+    "what": "scene change",
+    "dur": 0.45,
+    "gain": 0.16
+   },
+   {
+    "t": 22.733,
+    "kind": "click",
+    "what": "Actions > Rig opens",
+    "gain": 0.4
+   },
+   {
+    "t": 25.95,
+    "kind": "whoosh",
+    "what": "scene change",
+    "dur": 0.45,
+    "gain": 0.16
+   },
+   {
+    "t": 27.1,
+    "kind": "click",
+    "what": "camera button",
+    "gain": 0.4
+   },
+   {
+    "t": 28.3,
+    "kind": "click",
+    "what": "Try demo",
+    "gain": 0.4
+   },
+   {
+    "t": 32.95,
+    "kind": "whoosh",
+    "what": "scene change",
+    "dur": 0.45,
+    "gain": 0.16
+   },
+   {
+    "t": 33.5,
+    "kind": "cardslide",
+    "what": "Pose card",
+    "gain": 0.3
+   },
+   {
+    "t": 33.7,
+    "kind": "cardslide",
+    "what": "Motion card",
+    "gain": 0.3
+   },
+   {
+    "t": 34.233,
+    "kind": "tick",
+    "what": "countdown",
+    "freq": 1100,
+    "gain": 0.3
+   },
+   {
+    "t": 34.5,
+    "kind": "chip",
+    "what": "motion drawing lands",
+    "gain": 0.18
+   },
+   {
+    "t": 34.7,
+    "kind": "tick",
+    "what": "countdown",
+    "freq": 1100,
+    "gain": 0.3
+   },
+   {
+    "t": 34.8,
+    "kind": "chip",
+    "what": "motion drawing lands",
+    "gain": 0.18
+   },
+   {
+    "t": 35.1,
+    "kind": "chip",
+    "what": "motion drawing lands",
+    "gain": 0.18
+   },
+   {
+    "t": 35.167,
+    "kind": "tick",
+    "what": "countdown",
+    "freq": 1100,
+    "gain": 0.3
+   },
+   {
+    "t": 35.4,
+    "kind": "chip",
+    "what": "motion drawing lands",
+    "gain": 0.18
+   },
+   {
+    "t": 35.7,
+    "kind": "shimmer",
+    "what": "pose captured",
+    "dur": 0.8,
+    "gain": 0.2
+   },
+   {
+    "t": 35.7,
+    "kind": "chip",
+    "what": "motion drawing lands",
+    "gain": 0.18
+   },
+   {
+    "t": 38.45,
+    "kind": "whoosh",
+    "what": "scene change",
+    "dur": 0.45,
+    "gain": 0.16
+   },
+   {
+    "t": 39.0,
+    "kind": "tick",
+    "what": "pose countdown in app",
+    "freq": 1100,
+    "gain": 0.28
+   },
+   {
+    "t": 40.0,
+    "kind": "tick",
+    "what": "pose countdown in app",
+    "freq": 1100,
+    "gain": 0.28
+   },
+   {
+    "t": 41.0,
+    "kind": "tick",
+    "what": "pose countdown in app",
+    "freq": 1100,
+    "gain": 0.28
+   },
+   {
+    "t": 42.0,
+    "kind": "shimmer",
+    "what": "pose lands in filmstrip",
+    "dur": 0.8,
+    "gain": 0.2
+   },
+   {
+    "t": 43.45,
+    "kind": "whoosh",
+    "what": "scene change",
+    "dur": 0.45,
+    "gain": 0.16
+   },
+   {
+    "t": 44.12,
+    "kind": "click",
+    "what": "record",
+    "gain": 0.4
+   },
+   {
+    "t": 47.8,
+    "kind": "click",
+    "what": "stop",
+    "gain": 0.4
+   },
+   {
+    "t": 48.0,
+    "kind": "cardslide",
+    "what": "take lands",
+    "gain": 0.28
+   },
+   {
+    "t": 50.45,
+    "kind": "whoosh",
+    "what": "scene change",
+    "dur": 0.45,
+    "gain": 0.16
+   },
+   {
+    "t": 51.367,
+    "kind": "chip",
+    "what": "Turn tag",
+    "gain": 0.25
+   },
+   {
+    "t": 53.9,
+    "kind": "chip",
+    "what": "Stretch tag",
+    "gain": 0.25
+   },
+   {
+    "t": 56.95,
+    "kind": "whoosh",
+    "what": "scene change",
+    "dur": 0.45,
+    "gain": 0.16
+   },
+   {
+    "t": 57.5,
+    "kind": "cardslide",
+    "what": "feel card",
+    "gain": 0.26
+   },
+   {
+    "t": 57.7,
+    "kind": "cardslide",
+    "what": "feel card",
+    "gain": 0.26
+   },
+   {
+    "t": 57.9,
+    "kind": "cardslide",
+    "what": "feel card",
+    "gain": 0.26
+   },
+   {
+    "t": 62.45,
+    "kind": "whoosh",
+    "what": "scene change",
+    "dur": 0.45,
+    "gain": 0.16
+   },
+   {
+    "t": 63.567,
+    "kind": "tick",
+    "what": "rig check step",
+    "freq": 1000,
+    "gain": 0.2
+   },
+   {
+    "t": 64.007,
+    "kind": "chip",
+    "what": "joint fixed",
+    "gain": 0.22
+   },
+   {
+    "t": 64.3,
+    "kind": "tick",
+    "what": "rig check step",
+    "freq": 1000,
+    "gain": 0.2
+   },
+   {
+    "t": 64.74,
+    "kind": "chip",
+    "what": "joint fixed",
+    "gain": 0.22
+   },
+   {
+    "t": 65.033,
+    "kind": "tick",
+    "what": "rig check step",
+    "freq": 1000,
+    "gain": 0.2
+   },
+   {
+    "t": 65.473,
+    "kind": "chip",
+    "what": "joint fixed",
+    "gain": 0.22
+   },
+   {
+    "t": 65.767,
+    "kind": "tick",
+    "what": "rig check step",
+    "freq": 1000,
+    "gain": 0.2
+   },
+   {
+    "t": 66.207,
+    "kind": "chip",
+    "what": "joint fixed",
+    "gain": 0.22
+   },
+   {
+    "t": 66.5,
+    "kind": "tick",
+    "what": "rig check step",
+    "freq": 1000,
+    "gain": 0.2
+   },
+   {
+    "t": 66.94,
+    "kind": "chip",
+    "what": "joint fixed",
+    "gain": 0.22
+   },
+   {
+    "t": 67.233,
+    "kind": "tick",
+    "what": "rig check step",
+    "freq": 1000,
+    "gain": 0.2
+   },
+   {
+    "t": 67.673,
+    "kind": "reveal",
+    "what": "joint fixed",
+    "gain": 0.22
+   },
+   {
+    "t": 68.95,
+    "kind": "whoosh",
+    "what": "scene change",
+    "dur": 0.45,
+    "gain": 0.16
+   },
+   {
+    "t": 69.5,
+    "kind": "pop",
+    "what": "export card",
+    "freq": 600,
+    "gain": 0.24
+   },
+   {
+    "t": 69.7,
+    "kind": "pop",
+    "what": "export card",
+    "freq": 680,
+    "gain": 0.24
+   },
+   {
+    "t": 69.9,
+    "kind": "pop",
+    "what": "export card",
+    "freq": 760,
+    "gain": 0.24
+   },
+   {
+    "t": 70.1,
+    "kind": "pop",
+    "what": "export card",
+    "freq": 840,
+    "gain": 0.24
+   },
+   {
+    "t": 74.95,
+    "kind": "whoosh",
+    "what": "scene change",
+    "dur": 0.45,
+    "gain": 0.16
+   },
+   {
+    "t": 75.6,
+    "kind": "chime",
+    "what": "end card",
+    "gain": 0.3
+   }
+  ]
+ },
+ "assets": [
+  {
+   "id": "public/screens/home.png",
+   "name": "Home screen",
+   "type": "image",
+   "from": "pro-move app, captured headless"
+  },
+  {
+   "id": "public/screens/actions-rig.png",
+   "name": "Actions > Rig tab",
+   "type": "image",
+   "from": "pro-move app"
+  },
+  {
+   "id": "public/screens/layers.png",
+   "name": "Layers",
+   "type": "image",
+   "from": "pro-move app"
+  },
+  {
+   "id": "public/clips/live.mp4",
+   "name": "Live demo performer",
+   "type": "video",
+   "from": "pro-move app, stepped at 30 fps"
+  },
+  {
+   "id": "public/clips/pose.mp4",
+   "name": "Pose capture",
+   "type": "video",
+   "from": "pro-move app"
+  },
+  {
+   "id": "public/clips/motion.mp4",
+   "name": "Motion capture to filmstrip",
+   "type": "video",
+   "from": "pro-move app"
+  },
+  {
+   "id": "public/clips/turn.mp4",
+   "name": "Rig: turn a limb",
+   "type": "video",
+   "from": "pro-move app"
+  },
+  {
+   "id": "public/clips/stretch.mp4",
+   "name": "Rig: stretch a limb",
+   "type": "video",
+   "from": "pro-move app"
+  },
+  {
+   "id": "public/poses/rest.png",
+   "name": "Red beanie poses (cutouts)",
+   "type": "image",
+   "from": "pro-move app ?testpose"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "S1",
+   "name": "Question",
+   "t": [
+    0,
+    5.0
+   ],
+   "els": [
+    {
+     "id": "s1card",
+     "label": "Gradient card",
+     "t": [
+      0.2,
+      5.0
+     ],
+     "box": [
+      11.7,
+      22,
+      77,
+      56
+     ],
+     "src": "src/scenes.tsx:Question",
+     "props": {
+      "kicker": {
+       "type": "text",
+       "label": "Small label",
+       "v": "ProMove · Motion Rig"
+      },
+      "text": {
+       "type": "longtext",
+       "label": "Question",
+       "v": "What if your drawing could move\nthe moment you do?"
+      },
+      "motion": {
+       "type": "motion",
+       "label": "Motion",
+       "v": "Card rises and sharpens, gradient drifts slowly, words blur in"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S2",
+   "name": "The problem",
+   "t": [
+    5.0,
+    11.5
+   ],
+   "els": [
+    {
+     "id": "s2label",
+     "label": "Chapter label",
+     "t": [
+      5.0,
+      11.5
+     ],
+     "box": [
+      11.7,
+      4,
+      30,
+      4
+     ],
+     "src": "src/ui.tsx:Label",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "01  Why it matters"
+      }
+     }
+    },
+    {
+     "id": "s2text",
+     "label": "Left text",
+     "t": [
+      5.3,
+      11.5
+     ],
+     "box": [
+      11.7,
+      38,
+      33,
+      22
+     ],
+     "src": "src/ui.tsx:TextBlock",
+     "props": {
+      "head": {
+       "type": "longtext",
+       "label": "Headline",
+       "v": "To make a character move, artists redraw it frame after frame."
+      },
+      "sub": {
+       "type": "longtext",
+       "label": "Subline",
+       "v": "Rigging tools help, but they're built for technical animators, not doodle artists."
+      }
+     }
+    },
+    {
+     "id": "s2card",
+     "label": "Flipbook card",
+     "t": [
+      5.6,
+      11.5
+     ],
+     "box": [
+      48.5,
+      5.5,
+      40.5,
+      89
+     ],
+     "src": "src/scenes.tsx:Flipbook",
+     "props": {
+      "count": {
+       "type": "number",
+       "label": "Drawings",
+       "v": 24
+      },
+      "caption": {
+       "type": "text",
+       "label": "Caption",
+       "v": "24 drawings = 1 second of animation"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S3",
+   "name": "How it works",
+   "t": [
+    11.5,
+    20.0
+   ],
+   "els": [
+    {
+     "id": "s3label",
+     "label": "Chapter label",
+     "t": [
+      11.5,
+      20.0
+     ],
+     "box": [
+      11.7,
+      4,
+      30,
+      4
+     ],
+     "src": "src/ui.tsx:Label",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "02  How it works"
+      }
+     }
+    },
+    {
+     "id": "s3text",
+     "label": "Left text",
+     "t": [
+      11.8,
+      20.0
+     ],
+     "box": [
+      11.7,
+      38,
+      33,
+      22
+     ],
+     "src": "src/ui.tsx:TextBlock",
+     "props": {
+      "head": {
+       "type": "longtext",
+       "label": "Headline",
+       "v": "You perform. Your character copies you."
+      },
+      "sub": {
+       "type": "longtext",
+       "label": "Subline",
+       "v": "Body and face are tracked right on the device. Nothing goes to the cloud."
+      }
+     }
+    },
+    {
+     "id": "s3tree",
+     "label": "Pipeline tree",
+     "t": [
+      12.1,
+      20.0
+     ],
+     "box": [
+      48.5,
+      5.5,
+      40.5,
+      89
+     ],
+     "src": "src/scenes.tsx:Pipeline",
+     "props": {
+      "top": {
+       "type": "text",
+       "label": "Top node",
+       "v": "You, on camera"
+      },
+      "nodes": {
+       "type": "list",
+       "label": "Middle nodes",
+       "cols": [
+        "name",
+        "chip"
+       ],
+       "v": [
+        [
+         "Body",
+         "33 joints: shoulders, elbows, wrists, hips, knees"
+        ],
+        [
+         "Face",
+         "Blinks, mouth, smile, brows, head tilt"
+        ],
+        [
+         "Smoothing",
+         "One Euro filter removes jitter, keeps fast moves"
+        ]
+       ]
+      },
+      "bottom": {
+       "type": "text",
+       "label": "Bottom node",
+       "v": "Your drawing, rigged"
+      },
+      "foot": {
+       "type": "text",
+       "label": "Footnote",
+       "v": "MediaPipe · mesh skinning · WebGL2"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S4",
+   "name": "Inside Procreate",
+   "t": [
+    20.0,
+    26.0
+   ],
+   "els": [
+    {
+     "id": "s4label",
+     "label": "Chapter label",
+     "t": [
+      20.0,
+      26.0
+     ],
+     "box": [
+      11.7,
+      4,
+      30,
+      4
+     ],
+     "src": "src/ui.tsx:Label",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "03  Built like Procreate"
+      }
+     }
+    },
+    {
+     "id": "s4text",
+     "label": "Left text",
+     "t": [
+      20.3,
+      26.0
+     ],
+     "box": [
+      11.7,
+      38,
+      30,
+      22
+     ],
+     "src": "src/ui.tsx:TextBlock",
+     "props": {
+      "head": {
+       "type": "longtext",
+       "label": "Headline",
+       "v": "It lives on a canvas artists already know."
+      },
+      "sub": {
+       "type": "longtext",
+       "label": "Subline",
+       "v": "Motion Rig is one extra tab in Actions. Everything else stays as it is."
+      }
+     }
+    },
+    {
+     "id": "s4screen",
+     "label": "iPad screen",
+     "t": [
+      20.6,
+      26.0
+     ],
+     "box": [
+      44,
+      13,
+      48,
+      74
+     ],
+     "src": "src/scenes.tsx:Procreate",
+     "props": {
+      "first": {
+       "type": "media",
+       "label": "First screen",
+       "v": "screens/home.png"
+      },
+      "second": {
+       "type": "media",
+       "label": "Second screen",
+       "v": "screens/actions-rig.png"
+      },
+      "tag": {
+       "type": "text",
+       "label": "Callout",
+       "v": "Actions › Rig"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S5",
+   "name": "Live",
+   "t": [
+    26.0,
+    33.0
+   ],
+   "els": [
+    {
+     "id": "s5label",
+     "label": "Chapter label",
+     "t": [
+      26.0,
+      33.0
+     ],
+     "box": [
+      11.7,
+      4,
+      30,
+      4
+     ],
+     "src": "src/ui.tsx:Label",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "04  Capture"
+      }
+     }
+    },
+    {
+     "id": "s5text",
+     "label": "Left text",
+     "t": [
+      26.3,
+      33.0
+     ],
+     "box": [
+      11.7,
+      38,
+      30,
+      22
+     ],
+     "src": "src/ui.tsx:TextBlock",
+     "props": {
+      "head": {
+       "type": "longtext",
+       "label": "Headline",
+       "v": "Tap the camera, and your character follows you live."
+      },
+      "sub": {
+       "type": "longtext",
+       "label": "Subline",
+       "v": "No camera handy? A demo performer moves for you."
+      }
+     }
+    },
+    {
+     "id": "s5screen",
+     "label": "Live clip",
+     "t": [
+      26.6,
+      33.0
+     ],
+     "box": [
+      44,
+      13,
+      48,
+      74
+     ],
+     "src": "src/scenes.tsx:Live",
+     "props": {
+      "clip": {
+       "type": "media",
+       "label": "Clip",
+       "v": "clips/live.mp4"
+      },
+      "from": {
+       "type": "number",
+       "label": "Clip start (s)",
+       "v": 0.3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S6",
+   "name": "Two ways to capture",
+   "t": [
+    33.0,
+    38.5
+   ],
+   "els": [
+    {
+     "id": "s6label",
+     "label": "Chapter label",
+     "t": [
+      33.0,
+      38.5
+     ],
+     "box": [
+      11.7,
+      4,
+      30,
+      4
+     ],
+     "src": "src/ui.tsx:Label",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "04  Capture"
+      }
+     }
+    },
+    {
+     "id": "s6title",
+     "label": "Title",
+     "t": [
+      33.2,
+      38.5
+     ],
+     "box": [
+      11.7,
+      9,
+      40,
+      5
+     ],
+     "src": "src/scenes.tsx:TwoWays",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "Two ways to capture"
+      }
+     }
+    },
+    {
+     "id": "s6cards",
+     "label": "Pose and Motion cards",
+     "t": [
+      33.5,
+      38.5
+     ],
+     "box": [
+      11.7,
+      22,
+      77,
+      66
+     ],
+     "src": "src/scenes.tsx:TwoWays",
+     "props": {
+      "cards": {
+       "type": "list",
+       "label": "Cards",
+       "cols": [
+        "name",
+        "desc"
+       ],
+       "v": [
+        [
+         "Pose",
+         "A 3-second countdown, then one drawing."
+        ],
+        [
+         "Motion",
+         "Up to 10 seconds. Keeps the drawings where you move the most."
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S7",
+   "name": "Pose capture",
+   "t": [
+    38.5,
+    43.5
+   ],
+   "els": [
+    {
+     "id": "s7label",
+     "label": "Chapter label",
+     "t": [
+      38.5,
+      43.5
+     ],
+     "box": [
+      11.7,
+      4,
+      30,
+      4
+     ],
+     "src": "src/ui.tsx:Label",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "04  Capture · Pose"
+      }
+     }
+    },
+    {
+     "id": "s7text",
+     "label": "Left text",
+     "t": [
+      38.8,
+      43.5
+     ],
+     "box": [
+      11.7,
+      38,
+      30,
+      22
+     ],
+     "src": "src/ui.tsx:TextBlock",
+     "props": {
+      "head": {
+       "type": "longtext",
+       "label": "Headline",
+       "v": "Strike a pose. Three, two, one."
+      },
+      "sub": {
+       "type": "longtext",
+       "label": "Subline",
+       "v": "The countdown gives you time to get into position."
+      }
+     }
+    },
+    {
+     "id": "s7screen",
+     "label": "Pose clip",
+     "t": [
+      38.8,
+      43.5
+     ],
+     "box": [
+      44,
+      13,
+      48,
+      74
+     ],
+     "src": "src/scenes.tsx:Clip",
+     "props": {
+      "clip": {
+       "type": "media",
+       "label": "Clip",
+       "v": "clips/pose.mp4"
+      },
+      "from": {
+       "type": "number",
+       "label": "Clip start (s)",
+       "v": 0.2
+      },
+      "rate": {
+       "type": "number",
+       "label": "Speed",
+       "v": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S8",
+   "name": "Motion to filmstrip",
+   "t": [
+    43.5,
+    50.5
+   ],
+   "els": [
+    {
+     "id": "s8label",
+     "label": "Chapter label",
+     "t": [
+      43.5,
+      50.5
+     ],
+     "box": [
+      11.7,
+      4,
+      30,
+      4
+     ],
+     "src": "src/ui.tsx:Label",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "04  Capture · Motion"
+      }
+     }
+    },
+    {
+     "id": "s8text",
+     "label": "Left text",
+     "t": [
+      43.8,
+      50.5
+     ],
+     "box": [
+      11.7,
+      38,
+      30,
+      22
+     ],
+     "src": "src/ui.tsx:TextBlock",
+     "props": {
+      "head": {
+       "type": "longtext",
+       "label": "Headline",
+       "v": "Every take lands in the filmstrip."
+      },
+      "sub": {
+       "type": "longtext",
+       "label": "Subline",
+       "v": "Reorder drawings, add in-betweens where the pose jumps, and play it back with onion skin."
+      }
+     }
+    },
+    {
+     "id": "s8screen",
+     "label": "Motion clip",
+     "t": [
+      43.8,
+      50.5
+     ],
+     "box": [
+      44,
+      13,
+      48,
+      74
+     ],
+     "src": "src/scenes.tsx:Clip",
+     "props": {
+      "clip": {
+       "type": "media",
+       "label": "Clip",
+       "v": "clips/motion.mp4"
+      },
+      "from": {
+       "type": "number",
+       "label": "Clip start (s)",
+       "v": 0
+      },
+      "rate": {
+       "type": "number",
+       "label": "Speed",
+       "v": 1.25
+      }
+     }
+    },
+    {
+     "id": "s8learn",
+     "label": "Learning note",
+     "t": [
+      45.5,
+      50.5
+     ],
+     "box": [
+      11.7,
+      88,
+      30,
+      5
+     ],
+     "src": "src/ui.tsx:Learning",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "Build 5: captures skip the arrival sheet and land straight in the filmstrip."
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S9",
+   "name": "Rig a limb",
+   "t": [
+    50.5,
+    57.0
+   ],
+   "els": [
+    {
+     "id": "s9label",
+     "label": "Chapter label",
+     "t": [
+      50.5,
+      57.0
+     ],
+     "box": [
+      11.7,
+      4,
+      30,
+      4
+     ],
+     "src": "src/ui.tsx:Label",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "05  Refine"
+      }
+     }
+    },
+    {
+     "id": "s9text",
+     "label": "Left text",
+     "t": [
+      50.8,
+      57.0
+     ],
+     "box": [
+      11.7,
+      38,
+      30,
+      22
+     ],
+     "src": "src/ui.tsx:TextBlock",
+     "props": {
+      "head": {
+       "type": "longtext",
+       "label": "Headline",
+       "v": "Tap a limb to turn or stretch it."
+      },
+      "sub": {
+       "type": "longtext",
+       "label": "Subline",
+       "v": "Animate changes this drawing. Rig changes every drawing in the take."
+      }
+     }
+    },
+    {
+     "id": "s9screen",
+     "label": "Rig clips",
+     "t": [
+      51.1,
+      57.0
+     ],
+     "box": [
+      44,
+      13,
+      48,
+      74
+     ],
+     "src": "src/scenes.tsx:RigClips",
+     "props": {
+      "a": {
+       "type": "media",
+       "label": "Turn clip",
+       "v": "clips/turn.mp4"
+      },
+      "fromA": {
+       "type": "number",
+       "label": "Turn clip start (s)",
+       "v": 0.3
+      },
+      "b": {
+       "type": "media",
+       "label": "Stretch clip",
+       "v": "clips/stretch.mp4"
+      },
+      "fromB": {
+       "type": "number",
+       "label": "Stretch clip start (s)",
+       "v": 0.2
+      },
+      "tagA": {
+       "type": "text",
+       "label": "Turn tag",
+       "v": "Turn"
+      },
+      "tagB": {
+       "type": "text",
+       "label": "Stretch tag",
+       "v": "Stretch"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S10",
+   "name": "Feel",
+   "t": [
+    57.0,
+    62.5
+   ],
+   "els": [
+    {
+     "id": "s10label",
+     "label": "Chapter label",
+     "t": [
+      57.0,
+      62.5
+     ],
+     "box": [
+      11.7,
+      4,
+      30,
+      4
+     ],
+     "src": "src/ui.tsx:Label",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "05  Refine"
+      }
+     }
+    },
+    {
+     "id": "s10title",
+     "label": "Title",
+     "t": [
+      57.2,
+      62.5
+     ],
+     "box": [
+      11.7,
+      9,
+      40,
+      5
+     ],
+     "src": "src/scenes.tsx:Feel",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "Pick how the motion feels"
+      }
+     }
+    },
+    {
+     "id": "s10cards",
+     "label": "Feel cards",
+     "t": [
+      57.5,
+      62.5
+     ],
+     "box": [
+      11.7,
+      22,
+      77,
+      66
+     ],
+     "src": "src/scenes.tsx:Feel",
+     "props": {
+      "cards": {
+       "type": "list",
+       "label": "Cards",
+       "cols": [
+        "name",
+        "desc"
+       ],
+       "v": [
+        [
+         "Snappy",
+         "Holds, then moves quickly."
+        ],
+        [
+         "Smooth",
+         "One flowing line."
+        ],
+        [
+         "Floaty",
+         "Trails a little behind, then settles."
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S11",
+   "name": "Rig check",
+   "t": [
+    62.5,
+    69.0
+   ],
+   "els": [
+    {
+     "id": "s11label",
+     "label": "Chapter label",
+     "t": [
+      62.5,
+      69.0
+     ],
+     "box": [
+      11.7,
+      4,
+      30,
+      4
+     ],
+     "src": "src/ui.tsx:Label",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "06  Rig check"
+      }
+     }
+    },
+    {
+     "id": "s11text",
+     "label": "Left text",
+     "t": [
+      62.8,
+      69.0
+     ],
+     "box": [
+      11.7,
+      38,
+      33,
+      22
+     ],
+     "src": "src/ui.tsx:TextBlock",
+     "props": {
+      "head": {
+       "type": "longtext",
+       "label": "Headline",
+       "v": "Where the drawing tears, local AI patches it."
+      },
+      "sub": {
+       "type": "longtext",
+       "label": "Subline",
+       "v": "Six test poses find the joints that break. Only those spots are repainted."
+      }
+     }
+    },
+    {
+     "id": "s11card",
+     "label": "Rig check card",
+     "t": [
+      63.1,
+      69.0
+     ],
+     "box": [
+      48.5,
+      5.5,
+      40.5,
+      89
+     ],
+     "src": "src/scenes.tsx:RigCheck",
+     "props": {
+      "steps": {
+       "type": "list",
+       "label": "Steps",
+       "cols": [
+        "step"
+       ],
+       "v": [
+        [
+         "Arms up"
+        ],
+        [
+         "Arms out"
+        ],
+        [
+         "Tilt your head left"
+        ],
+        [
+         "Tilt your head right"
+        ],
+        [
+         "Elbows bent"
+        ],
+        [
+         "Lift one knee"
+        ]
+       ]
+      },
+      "fixed": {
+       "type": "text",
+       "label": "Fixed tag",
+       "v": "Joint fix saved"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S12",
+   "name": "Export",
+   "t": [
+    69.0,
+    75.0
+   ],
+   "els": [
+    {
+     "id": "s12label",
+     "label": "Chapter label",
+     "t": [
+      69.0,
+      75.0
+     ],
+     "box": [
+      11.7,
+      4,
+      30,
+      4
+     ],
+     "src": "src/ui.tsx:Label",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "07  Export"
+      }
+     }
+    },
+    {
+     "id": "s12title",
+     "label": "Title",
+     "t": [
+      69.2,
+      75.0
+     ],
+     "box": [
+      11.7,
+      9,
+      40,
+      5
+     ],
+     "src": "src/scenes.tsx:Export",
+     "props": {
+      "text": {
+       "type": "text",
+       "label": "Text",
+       "v": "Take it back to Procreate, or anywhere else"
+      }
+     }
+    },
+    {
+     "id": "s12cards",
+     "label": "Export cards",
+     "t": [
+      69.5,
+      75.0
+     ],
+     "box": [
+      11.7,
+      22,
+      77,
+      66
+     ],
+     "src": "src/scenes.tsx:Export",
+     "props": {
+      "cards": {
+       "type": "list",
+       "label": "Cards",
+       "cols": [
+        "name",
+        "desc"
+       ],
+       "v": [
+        [
+         "Procreate",
+         "Frames as PSD layers, ready for Animation Assist."
+        ],
+        [
+         "Motion tools",
+         "Layered SVG or PSD for After Effects, Rive and Figma."
+        ],
+        [
+         "Sprite sheet & video",
+         "One PNG strip, or a video of the take."
+        ],
+        [
+         "AI pack",
+         "Pose and line-art guides to redraw every frame in your style."
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "S13",
+   "name": "End",
+   "t": [
+    75.0,
+    80.0
+   ],
+   "els": [
+    {
+     "id": "s13card",
+     "label": "End card",
+     "t": [
+      75.2,
+      80.0
+     ],
+     "box": [
+      11.7,
+      22,
+      77,
+      56
+     ],
+     "src": "src/scenes.tsx:End",
+     "props": {
+      "kicker": {
+       "type": "text",
+       "label": "Small label",
+       "v": "Motion Rig prototype · runs on your device"
+      },
+      "name": {
+       "type": "text",
+       "label": "Name",
+       "v": "ProMove"
+      },
+      "text": {
+       "type": "text",
+       "label": "Tagline",
+       "v": "Draw it once. Perform it forever."
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "notes": []
+}

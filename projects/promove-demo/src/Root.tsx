@@ -10,19 +10,21 @@ const FONTS: [string, string, string][] = [
 ];
 
 if (typeof document !== "undefined") {
+  // Fonts are declared in CSS, and the render waits for them for at most a few seconds: a stalled
+  // font request in one tab must never hang the whole render.
+  const css = FONTS.map(([family, file, weight]) => `@font-face{font-family:${family};src:url(${staticFile(`fonts/${file}`)});font-weight:${weight};font-display:block}`).join("");
+  const style = document.createElement("style");
+  style.textContent = css;
+  document.head.appendChild(style);
   const handle = delayRender("fonts", { timeoutInMilliseconds: 120000 });
-  Promise.allSettled(
-    FONTS.map(([family, file, weight]) =>
-      // A stalled font request must never hang a render tab.
-      Promise.race([
-        new FontFace(family, `url(${staticFile(`fonts/${file}`)})`, { weight }).load().then((f) => document.fonts.add(f)),
-        new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 15000)),
-      ]),
-    ),
-  ).then((r) => {
-    r.forEach((x, i) => x.status === "rejected" && console.warn("font failed", FONTS[i][1], x.reason));
-    continueRender(handle);
-  });
+  let done = false;
+  const finish = () => { if (!done) { done = true; continueRender(handle); } };
+  setTimeout(finish, 8000);
+  try {
+    Promise.allSettled(FONTS.map(([family, , weight]) => document.fonts.load(`${weight} 20px ${family}`))).then(finish, finish);
+  } catch {
+    finish();
+  }
 }
 
 export const Root = () => (

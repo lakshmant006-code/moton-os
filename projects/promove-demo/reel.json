@@ -1,7 +1,7 @@
 {
  "id": "promove-demo",
  "title": "ProMove demo",
- "version": 5,
+ "version": 6,
  "path": "projects/promove-demo",
  "src": "video.mp4",
  "w": 1920,
@@ -556,7 +556,7 @@
    "voice_id": "DtQLDxHbTiQTpVVanTy1",
    "model": "eleven_v4",
    "source": "assets/vo/take1.mp3",
-   "note": "Main take cut per line from Scribe word timings; the S3 and S4 lines were re-recorded (assets/vo/addon-take1.mp3) to say pro-move is an add-on for Procreate. Placed per scene by sfx/make_vo.py."
+   "note": "Main take cut per line from Scribe word timings; re-recorded lines: S3 and S4 (assets/vo/addon-take1.mp3, add-on wording) and S13 (assets/vo/tagline-take1.mp3, tagline). Placed per scene by sfx/make_vo.py."
   },
   "voLines": [
    {
@@ -654,10 +654,11 @@
    },
    {
     "scene": "S13",
-    "from": 61.04,
-    "to": 64.48,
+    "from": 0.0,
+    "to": 2.79,
     "at": 78.95,
-    "text": "Pro Move. Draw it once. Perform it forever."
+    "text": "Pro Move. Imagination in motion.",
+    "src": "assets/vo/tagline-take1.mp3"
    }
   ],
   "duck": {
@@ -1917,7 +1918,7 @@
       "text": {
        "type": "text",
        "label": "Tagline",
-       "v": "Draw it once. Perform it forever."
+       "v": "Imagination in motion."
       },
       "addon": {
        "type": "text",

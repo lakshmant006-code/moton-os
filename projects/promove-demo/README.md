@@ -12,19 +12,20 @@ Every on-screen word, color and timing is in `reel.json`, so most changes are "e
 
 | # | Time | Beat |
 |---|---|---|
-| S1 | 0–5 s | Question card: what if your drawing could move the moment you do? |
-| S2 | 5–11.5 s | Why: 24 drawings for one second of animation |
-| S3 | 11.5–20 s | How it works: camera → body, face, smoothing → rigged drawing |
-| S4 | 20–26 s | Built like Procreate: Actions › Rig tab (real screen) |
-| S5 | 26–33 s | Live capture with the demo performer (real footage) |
-| S6 | 33–38.5 s | Two ways to capture: Pose and Motion cards |
-| S7 | 38.5–43.5 s | Pose countdown (real footage) |
-| S8 | 43.5–50.5 s | Motion take lands in the filmstrip (real footage, 1.25x) |
-| S9 | 50.5–57 s | Tap a limb: Turn, then Stretch (real footage, zoomed) |
-| S10 | 57–62.5 s | Feel: Snappy, Smooth, Floaty, with animated curves |
-| S11 | 62.5–69 s | Rig check: six poses, local AI joint fixes |
-| S12 | 69–75 s | Export: Procreate, motion tools, sprite sheet and video, AI pack |
-| S13 | 75–80 s | End card: ProMove. Draw it once. Perform it forever. |
+| S0 | 0–3.6 s | Logo intro: pro-move by procreate |
+| S1 | 3.6–7.8 s | Question card: what if your drawing could move the moment you do? |
+| S2 | 7.8–15.8 s | Why: 24 drawings for one second of animation |
+| S3 | 15.8–26.2 s | How it works: camera → body, face, smoothing → rigged drawing |
+| S4 | 26.2–33.6 s | A Procreate add-on: Actions › Rig tab (real screen) |
+| S5 | 33.6–39.1 s | Live capture with the demo performer (real footage) |
+| S6 | 39.1–44.1 s | Two ways to capture: Pose and Motion cards |
+| S7 | 44.1–49.1 s | Pose countdown (real footage) |
+| S8 | 49.1–55.1 s | Motion take lands in the filmstrip (real footage, 1.25x) |
+| S9 | 55.1–61.6 s | Tap a limb: Turn, then Stretch (real footage, zoomed) |
+| S10 | 61.6–66.9 s | Feel: Snappy, Smooth, Floaty, with animated curves |
+| S11 | 66.9–73.3 s | Rig check: six poses, local AI joint fixes |
+| S12 | 73.3–78.5 s | Export: Procreate, motion tools, sprite sheet and video, AI pack |
+| S13 | 78.5–83.5 s | Logo outro: pro-move by procreate. Imagination in motion. |
 
 ## Render
 
